@@ -6,25 +6,22 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 function App() {
   return (
+ 
     <Router>
       <Header />
       <Routes>
-
-        <Route exact path="/" element={< ClientHomePage />} />
+        <Route exact path="/client" element={< ClientHomePage />} />
       </Routes>
 
-        <Route exact path='/' element=<LandingPage /> />
+      <Routes>
+        <Route exact path='/' element={<LandingPage />} />
       </Routes>
+
       <Footer/>
 
-
-      {/* <Routes>
-          <Route path="/canddidate/:id" element={<CompareScreen />} />
-        </Routes> */}
-
-      {/* <Footer /> */}
     </Router>
+
   )
 }
 
-export default App
+export default App;
