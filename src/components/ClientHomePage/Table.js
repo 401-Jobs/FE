@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import "../ClientHomePage/Table.css";
-import Button from "react-bootstrap/Button";
+
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -75,13 +75,10 @@ export default function DataTable() {
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}
-          checkboxSelection
+        //   checkboxSelection
         />
       </div>
    
-        <Button variant="success">Accept</Button>{" "}
-        <Button id = 'button' variant="success">Reject</Button>{" "}
-      
     </div>
   );
 }

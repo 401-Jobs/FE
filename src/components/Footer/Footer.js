@@ -1,7 +1,10 @@
 import React from 'react'
+import { useLocation } from "react-router-dom";
 import "./footer.css"
 
 const Footer = () => {
+  const { pathname } = useLocation();
+    if (pathname ==='/resetPassword')  return null
   return (
     <footer class="site-footer">
       <div class="container">
