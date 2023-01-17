@@ -26,6 +26,7 @@
 // };
 
 import React from 'react';
+import lastImg from '../ResetPassword/Assets/imageees.png'
 import {
   MDBBtn,
   MDBContainer,
@@ -68,9 +69,9 @@ export const Reset = () => {
                 <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
               </div> */}
 
-              <MDBBtn className='w-100 mb-4' size='md'>Reset Password</MDBBtn>
+              <MDBBtn className='w-100 mb-4 mt-3' size='md'>Reset Password</MDBBtn>
 
-              <div className="text-center">
+              {/* <div className="text-center">
 
                 <p>or sign up with:</p>
 
@@ -90,15 +91,15 @@ export const Reset = () => {
                   <MDBIcon fab icon='github' size="sm"/>
                 </MDBBtn>
 
-              </div>
+              </div> */}
 
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
 
         <MDBCol col='6' style={{marginRight:'7%'}}>
-          <img src="https://img.freepik.com/free-photo/businessman-logging-his-tablet_53876-102029.jpg?size=626&ext=jpg&uid=R79050762&ga=GA1.1.98983144.1673426577&semt=sph" height={490} width={500}
-           class="w-100 rounded-4 shadow-4"
+          <img src={lastImg} height={490} width={500}
+           class="w-100"
             alt="" fluid/>
         </MDBCol>
 
