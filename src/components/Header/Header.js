@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import profilePic from '../ClientHomePage/Assets/profile_pic.png'
 // import './Header.css'
 
 const Header = () => {
@@ -11,6 +12,7 @@ const Header = () => {
     <div>
         <Navbar bg="light" expand="lg" style={{padding:"15px"}}>
       <Container>
+        <img class="profilePic" src={profilePic} alt="Logo" />
         <Navbar.Brand href="#home">RecruitIQ</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
