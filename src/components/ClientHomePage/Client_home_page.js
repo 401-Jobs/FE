@@ -1,46 +1,17 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Calendar from "moedim";
 import "./Client_home.css";
 import image1 from "./Assets/businessman.png";
-import profilePic from "./Assets/profile_pic.png";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { CircularProgressbar } from 'react-circular-progressbar';
+// import GridListView from '../ClientHomePage/GridListView.jsx';
+import Table from '../ClientHomePage/Table'
 import 'react-circular-progressbar/dist/styles.css';
 
 export const Client_home_page = () => {
-  const [value, setValue] = useState(new Date());
-  const value1 = 0.66;
+  const value = 0.66;
   return (
-    <>
-      {/* <Navbar bg="light" expand="lg">
-        <Container>
-          <img class="profilePic" src={profilePic} alt="Logo" />
-          <Navbar.Brand href="#home">RecruitIQ</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Profile</Nav.Link>
-              <Nav.Link href="#link">Contact Us</Nav.Link>
-              <Nav.Link href="#link">About</Nav.Link>
-              <NavDropdown title="Services" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Build your CV
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Progress</NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-          <Button variant="light">Sign Out</Button>{" "}
-        </Container>
-      </Navbar> */}
-
+    <div>
       <div class="mainDiv">
         <div class="progressbarBox">
           <span class="profileButton">
@@ -59,28 +30,28 @@ export const Client_home_page = () => {
 
          
           <div class='div1'>
-          <div style={{ width: 50, height: 50  }}><CircularProgressbar value={value1} maxValue={1} text={`${value1 * 100}%`} /></div>
+          <div style={{ width: 50, height: 50  }}><CircularProgressbar value={value} maxValue={1} text={`${value * 100}%`} /></div>
           <div style={{paddingLeft:'10px'}}>
           <h4>Resume Not Uploaded</h4>
           <a href="/">Upload Resume</a></div>
           </div>
           
           <div class='div2'>
-          <div style={{ width: 50, height: 50 }}><CircularProgressbar value={value1} maxValue={1} text={`${value1 * 100}%`} /></div>
+          <div style={{ width: 50, height: 50 }}><CircularProgressbar value={value} maxValue={1} text={`${value * 100}%`} /></div>
           <div style={{paddingLeft:'10px'}}>
           <h4>Image Not Uploaded</h4>
           <a href="/">Upload Image</a></div>
           </div>
 
           <div class='div3'>
-          <div style={{ width: 50, height: 50 }}><CircularProgressbar value={value1} maxValue={1} text={`${value1 * 100}%`} /></div>
+          <div style={{ width: 50, height: 50 }}><CircularProgressbar value={value} maxValue={1} text={`${value * 100}%`} /></div>
           <div style={{paddingLeft:'10px'}}>
           <h4>Years Of Experience</h4>
           <a href="/">Add Years Of Experience</a></div>
           </div>
           
           <div class='div4'>
-          <div style={{ width: 50, height: 50 }}><CircularProgressbar value={value1} maxValue={1} text={`${value1 * 100}%`} /></div>
+          <div style={{ width: 50, height: 50 }}><CircularProgressbar value={value} maxValue={1} text={`${value * 100}%`} /></div>
           <div style={{paddingLeft:'10px'}}>
           <h4>Profile Summary</h4>
           <a href="/">Add Profile Summary</a></div>
@@ -88,25 +59,17 @@ export const Client_home_page = () => {
           
 
           <div class='div5'>
-          <div style={{ width: 50, height: 50 }}><CircularProgressbar value={value1} maxValue={1} text={`${value1 * 100}%`} /></div>
+          <div style={{ width: 50, height: 50 }}><CircularProgressbar value={value} maxValue={1} text={`${value * 100}%`} /></div>
           <div style={{paddingLeft:'10px'}}>
           <h4>Rate Info</h4>
           <a href="/">Add Rate Info</a></div>
           </div>
-
         </div>
         </div>
+          <Table/>
         
-
-        {/* <div class="divCalendar">
-          <div class="calendar">
-            <Calendar value={value} onChange={(d) => setValue(d)} />
-          </div>
-          <span>
-            <h3 class="upcoming">UpComing Interviews</h3>
-          </span>
-        </div> */}
-
+        {/* <GridListView/> */}
+       
       <img class="image1" src={image1} alt="Logo" />
       <svg style={{marginTop:'57px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
@@ -116,6 +79,8 @@ export const Client_home_page = () => {
           ></path>
       </svg>
     </div>
-    </>
+
+    </div>
+  
   );
 };
