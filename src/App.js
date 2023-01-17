@@ -1,4 +1,4 @@
-//import "bootstrap/dist/css/bootstrap.min.css";
+import { ClientHomePage } from "./screens/ClientHomePage";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { LandingPage } from './screens/LandingPage'
@@ -9,9 +9,14 @@ function App() {
     <Router>
       <Header />
       <Routes>
+
+        <Route exact path="/" element={< ClientHomePage />} />
+      </Routes>
+
         <Route exact path='/' element=<LandingPage /> />
       </Routes>
       <Footer/>
+
 
       {/* <Routes>
           <Route path="/canddidate/:id" element={<CompareScreen />} />
