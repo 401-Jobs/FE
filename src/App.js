@@ -2,6 +2,7 @@ import { ClientHomePage } from "./screens/ClientHomePage";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { LandingPage } from './screens/LandingPage'
+import {ResetPassword} from './screens/ResetPassword'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 function App() {
@@ -11,6 +12,10 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/client" element={< ClientHomePage />} />
+      </Routes>
+
+      <Routes>
+        <Route exact path="/resetPassword" element={< ResetPassword />} />
       </Routes>
 
       <Routes>

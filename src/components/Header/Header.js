@@ -5,9 +5,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import profilePic from '../ClientHomePage/Assets/profile_pic.png'
+import { useLocation } from "react-router-dom";
 // import './Header.css'
 
 const Header = () => {
+  const { pathname } = useLocation();
+    if (pathname ==='/resetPassword')  return null
   return (
     <div>
         <Navbar bg="light" expand="lg" style={{padding:"15px"}}>
