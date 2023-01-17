@@ -1,15 +1,17 @@
 //import "bootstrap/dist/css/bootstrap.min.css";
-
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { LandingPage } from "./screens/LandingPage";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { LandingPage } from './screens/LandingPage'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 function App() {
   return (
     <Router>
-      {/* <Header /> */}
-
+      <Header />
       <Routes>
-        <Route exact path="/" element={<LandingPage />} />
+        <Route exact path='/' element=<LandingPage /> />
       </Routes>
+      <Footer/>
 
       {/* <Routes>
           <Route path="/canddidate/:id" element={<CompareScreen />} />
@@ -17,7 +19,7 @@ function App() {
 
       {/* <Footer /> */}
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App
