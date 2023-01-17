@@ -1,13 +1,18 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchUsers } from "../redux/slices/sampleSlice";
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { fetchUsers } from '../redux/slices/sampleSlice'
+import Landing from '../components/LandingPage/Landing'
 
 export const LandingPage = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  //   useEffect(() => {
-  //     dispatch(fetchUsers());
-  //   }, []);
+    useEffect(() => {
+      dispatch(fetchUsers());
+    });
 
-  return <div>LandingPage</div>;
-};
+  return (
+    <div>
+      <Landing />
+    </div>
+  )
+}
