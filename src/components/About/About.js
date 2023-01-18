@@ -74,7 +74,7 @@ const About = () => {
         <div class='container py-5'>
           <div class='row mb-4'>
             <div class='team'>
-              <h2 class='display-4 font-weight-light'>Our team</h2>
+              <h2 class='display-4 font-weight-light'>Our Team</h2>
             </div>
           </div>
 
