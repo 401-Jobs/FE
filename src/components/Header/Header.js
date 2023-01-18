@@ -1,16 +1,20 @@
 import React from 'react'
+import { useLocation } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import profilePic from '../ClientHomePage/Assets/profile_pic.png'
-import { useLocation } from "react-router-dom";
 // import './Header.css'
 
 const Header = () => {
   const { pathname } = useLocation();
+  // console.log(pathname);
+  if (pathname==='/forgot') return null
+  if (pathname==='/email-varification') return null
     if (pathname ==='/resetPassword')  return null
+
   return (
     <div>
         <Navbar bg="light" expand="lg" style={{padding:"15px"}}>
