@@ -19,7 +19,7 @@ const Header = () => {
     <div>
         <Navbar bg="light" expand="lg" style={{padding:"15px"}}>
       <Container>
-        <img class="profilePic" src={profilePic} alt="Logo" />
+        {/* <img class="profilePic" src={profilePic} alt="Logo" /> */}
         <Navbar.Brand href="#home">RecruitIQ</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
