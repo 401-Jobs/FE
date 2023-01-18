@@ -7,6 +7,7 @@ import ForgotPasswordPage from "./screens/ForgotPasswordPage";
 import EmailVerificationPage from "./screens/EmailVerificationPage";
 import ContactusPage from "./screens/ContactusPage";
 import AboutUsPage from "./screens/AboutUsPage";
+import {ResetPassword} from './screens/ResetPassword'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 function App() {
@@ -31,6 +32,9 @@ function App() {
         <Route exact path="/client" element={< ClientHomePage />} />
       </Routes>
       <Routes>
+        <Route exact path="/resetPassword" element={< ResetPassword />} />
+      </Routes>
+      <Routes>
         <Route exact path='/' element=<LandingPage /> />
       </Routes>
 
@@ -38,8 +42,7 @@ function App() {
 
   </Router>
     </div>
-    
   )
 }
 
-export default App
+export default App;

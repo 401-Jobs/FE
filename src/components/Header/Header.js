@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import profilePic from '../ClientHomePage/Assets/profile_pic.png'
 // import './Header.css'
 
 const Header = () => {
@@ -12,10 +13,13 @@ const Header = () => {
   // console.log(pathname);
   if (pathname==='/forgot') return null
   if (pathname==='/email-varification') return null
+    if (pathname ==='/resetPassword')  return null
+
   return (
     <div>
         <Navbar bg="light" expand="lg" style={{padding:"15px"}}>
       <Container>
+        <img class="profilePic" src={profilePic} alt="Logo" />
         <Navbar.Brand href="#home">RecruitIQ</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
