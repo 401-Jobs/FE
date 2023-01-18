@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -7,6 +8,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 // import './Header.css'
 
 const Header = () => {
+  const { pathname } = useLocation();
+  // console.log(pathname);
+  if (pathname==='/forgot') return null
+  if (pathname==='/email-varification') return null
   return (
     <div>
         <Navbar bg="light" expand="lg" style={{padding:"15px"}}>

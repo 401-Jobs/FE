@@ -2,6 +2,7 @@ import React from 'react'
 import Section1 from './Section1'
 import Card from './Sliding'
 import Section3 from './Section3'
+// import ScrollToTop from '../ScrollToUp/ScrollToUp'
 import './LandingPage.css'
 
 import '../Header/Header.css'
@@ -9,7 +10,7 @@ import '../Header/Header.css'
 const Landing = () => {
   return (
     <div>
-      
+      {/* <ScrollToTop /> */}
       <Section1 />
 
       <section >
