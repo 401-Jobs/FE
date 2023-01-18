@@ -1,4 +1,4 @@
-import { ClientHomePage } from "./screens/ClientHomePage";
+// import { ClientHomePage } from "./screens/ClientHomePage";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { LandingPage } from './screens/LandingPage'
@@ -28,9 +28,9 @@ function App() {
       <Routes>
         <Route exact path="/contact" element={< ContactusPage />} />
       </Routes>
-      <Routes>
+      {/* <Routes>
         <Route exact path="/client" element={< ClientHomePage />} />
-      </Routes>
+      </Routes> */}
       <Routes>
         <Route exact path="/resetPassword" element={< ResetPassword />} />
       </Routes>
