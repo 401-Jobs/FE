@@ -8,6 +8,8 @@ import EmailVerificationPage from "./screens/EmailVerificationPage";
 import ContactusPage from "./screens/ContactusPage";
 import AboutUsPage from "./screens/AboutUsPage";
 import {ResetPassword} from './screens/ResetPassword'
+import ClientPreview from "./components/ClientPreview/ClientPreview";
+import UploadForm from "./components/UpdateForm/UpdateForm";
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 function App() {
@@ -18,6 +20,12 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/forgot" element={< ForgotPasswordPage />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/update-form" element={< UploadForm />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/preview-client" element={< ClientPreview />} />
       </Routes>
       <Routes>
         <Route exact path="/about" element={< AboutUsPage />} />
