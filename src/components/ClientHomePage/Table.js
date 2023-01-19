@@ -1,3 +1,4 @@
+
 import {
   Row,
   Col,
@@ -52,6 +53,7 @@ const DataTable = () => {
       company_name: "Test",
       company_address: "MALTA",
     },
+
    
   ];
 

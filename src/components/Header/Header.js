@@ -1,32 +1,37 @@
 import React from 'react'
+import { useLocation } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import profilePic from '../ClientHomePage/Assets/profile_pic.png'
-import { useLocation } from "react-router-dom";
+import logo from './logo.png'
 // import './Header.css'
 
 const Header = () => {
   const { pathname } = useLocation();
+  // console.log(pathname);
+  if (pathname==='/forgot') return null
+  if (pathname==='/email-varification') return null
     if (pathname ==='/resetPassword')  return null
     if (pathname ==='/clientLogin')  return null
     if (pathname ==='/companyLogin')  return null
 
+
+
   return (
     <div>
-        <Navbar bg="light" expand="lg" style={{padding:"15px"}}>
+        <Navbar bg="light" expand="lg" style={{padding:"1px"}}>
       <Container>
-        <img class="profilePic" src={profilePic} alt="Logo" />
-        <Navbar.Brand href="#home">RecruitIQ</Navbar.Brand>
+      <a href='/'><img src={logo} width="60" height="60" alt="logo"/></a>
+        <Navbar.Brand href="/">RecruitIQ</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="#link">Profile</Nav.Link>
-            <Nav.Link href="#link">Contact Us</Nav.Link>
-            <Nav.Link href="#link">About</Nav.Link>
+            <Nav.Link href="/contact">Contact Us</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
             <NavDropdown title="Services" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
@@ -40,7 +45,7 @@ const Header = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        <Button variant="light">Sign In</Button>{' '}
+        <Button variant="light" style={{border:"1px solid black",borderRadius:'15px'}}>Sign In</Button>{' '}
       </Container>
     </Navbar>
     </div>

@@ -2,6 +2,8 @@ import React from 'react'
 import Section1 from './Section1'
 import Card from './Sliding'
 import Section3 from './Section3'
+// import ScrollToTop from '../ScrollToUp/ScrollToUp'
+import partner from './assets/partners.png'
 import './LandingPage.css'
 
 import '../Header/Header.css'
@@ -9,13 +11,14 @@ import '../Header/Header.css'
 const Landing = () => {
   return (
     <div>
-      
+      {/* <ScrollToTop /> */}
       <Section1 />
 
-      <section >
+      <section>
         <h1 className='header1'>Our Partner</h1>
         <div className='second_section'>
         <Card />
+        <img src={partner} alt="partner" />
         </div>
       </section>
 

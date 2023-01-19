@@ -11,8 +11,12 @@ import 'react-circular-progressbar/dist/styles.css';
 export const Client_home_page = () => {
   const value = 0.66;
   return (
-    <div>
+
+   
       
+
+    <div style={{backgroundColor:"#d4ccec"}}>
+
       <div class="mainDiv">
         <div class="progressbarBox">
           <span class="profileButton">

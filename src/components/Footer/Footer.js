@@ -1,12 +1,21 @@
 import React from 'react'
 import { useLocation } from "react-router-dom";
+import logo from './logo.png'
+
 import "./footer.css"
 
 const Footer = () => {
   const { pathname } = useLocation();
+
     if (pathname ==='/resetPassword')  return null
     if (pathname ==='/clientLogin')  return null
     if (pathname ==='/companyLogin')  return null
+
+  // console.log(pathname);
+  if (pathname==='/forgot') return null
+  if (pathname==='/email-varification') return null
+ 
+
   return (
     <footer class="site-footer">
       <div class="container">
@@ -16,34 +25,26 @@ const Footer = () => {
             <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
           </div>
 
-          <div class="col-xs-6 col-md-3">
-            <h6>Categories</h6>
-            <ul class="footer-links">
-              <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-              <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-              <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-              <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-              <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-              <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
-            </ul>
-          </div>
+          
 
           <div class="col-xs-6 col-md-3">
             <h6>Quick Links</h6>
             <ul class="footer-links">
-              <li><a href="http://scanfcode.com/about/">About Us</a></li>
-              <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
-              <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
-              <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
-              <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/contact">Contact Us</a></li>
+              <li><a href="/profile">Profile</a></li>
             </ul>
+          </div>
+          <div class="col-xs-6 col-md-3">
+          <img src={logo} width="200" height="200" alt="logo"/>
           </div>
         </div>
       </div>
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-sm-6 col-xs-12">
-            <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by Nanja Team.
+            <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by Ninja Team.
             </p>
           </div>
 
