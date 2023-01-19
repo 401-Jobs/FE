@@ -14,6 +14,10 @@ const Header = () => {
   if (pathname==='/forgot') return null
   if (pathname==='/email-varification') return null
     if (pathname ==='/resetPassword')  return null
+    if (pathname ==='/clientLogin')  return null
+    if (pathname ==='/companyLogin')  return null
+
+
 
   return (
     <div>

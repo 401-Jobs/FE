@@ -12,6 +12,7 @@ import ClientPreview from "./components/ClientPreview/ClientPreview";
 import UploadForm from "./components/UpdateForm/UpdateForm";
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
+import {LoginPage} from './screens/LoginPage.js'
 function App() {
   return (
     <div>
@@ -43,7 +44,17 @@ function App() {
         <Route exact path="/resetPassword" element={< ResetPassword />} />
       </Routes>
       <Routes>
-        <Route exact path='/' element=<LandingPage /> />
+
+        <Route exact path="/clientLogin" element={< LoginPage />} />
+      </Routes>
+
+      <Routes>
+        <Route exact path="/companyLogin" element={< LoginPage />} />
+      </Routes>
+
+      <Routes>
+        <Route exact path='/' element={<LandingPage />} />
+
       </Routes>
 
       <Footer/>
