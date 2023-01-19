@@ -1,5 +1,5 @@
 import * as React from "react";
-import { DataGrid } from "@mui/x-data-grid";
+// import { DataGrid } from "@mui/x-data-grid";
 import "../ClientHomePage/Table.css";
 
 
@@ -69,7 +69,7 @@ const rows = [
 export default function DataTable() {
   return (
     <div class="outerCSS">
-      <div style={{ height: 550, width: "50%", float: "right" }} class="Table">
+      {/* <div style={{ height: 550, width: "50%", float: "right" }} class="Table">
         <DataGrid
           rows={rows}
           columns={columns}
@@ -77,7 +77,7 @@ export default function DataTable() {
           rowsPerPageOptions={[5]}
         //   checkboxSelection
         />
-      </div>
+      </div> */}
    
     </div>
   );

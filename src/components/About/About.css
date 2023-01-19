@@ -1,0 +1,7 @@
+.first {
+  background-color: #d4ccec;
+}
+.team {
+  display: flex;
+  justify-content: center;
+}
