@@ -11,6 +11,9 @@ import { useLocation } from "react-router-dom";
 const Header = () => {
   const { pathname } = useLocation();
     if (pathname ==='/resetPassword')  return null
+    if (pathname ==='/clientLogin')  return null
+    if (pathname ==='/companyLogin')  return null
+
   return (
     <div>
         <Navbar bg="light" expand="lg" style={{padding:"15px"}}>

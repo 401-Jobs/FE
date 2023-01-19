@@ -5,6 +5,7 @@ import { LandingPage } from './screens/LandingPage'
 import {ResetPassword} from './screens/ResetPassword'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
+import {LoginPage} from './screens/LoginPage.js'
 function App() {
   return (
  
@@ -16,6 +17,14 @@ function App() {
 
       <Routes>
         <Route exact path="/resetPassword" element={< ResetPassword />} />
+      </Routes>
+
+      <Routes>
+        <Route exact path="/clientLogin" element={< LoginPage />} />
+      </Routes>
+
+      <Routes>
+        <Route exact path="/companyLogin" element={< LoginPage />} />
       </Routes>
 
       <Routes>

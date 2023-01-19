@@ -5,6 +5,8 @@ import "./footer.css"
 const Footer = () => {
   const { pathname } = useLocation();
     if (pathname ==='/resetPassword')  return null
+    if (pathname ==='/clientLogin')  return null
+    if (pathname ==='/companyLogin')  return null
   return (
     <footer class="site-footer">
       <div class="container">

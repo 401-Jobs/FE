@@ -1,84 +1,138 @@
-import * as React from "react";
-import { DataGrid } from "@mui/x-data-grid";
-import "../ClientHomePage/Table.css";
+import {
+  Row,
+  Col,
+  Image,
+  ListGroup,
+  Card,
+  Button,
+  ListGroupItem,
+  Form,
+} from "react-bootstrap";
 
+import { Link, useNavigate } from "react-router-dom";
 
-const columns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "CompanyName", headerName: "Comany Name", width: 130 },
-  { field: "position", headerName: "Position", width: 130 },
-  {
-    field: "location",
-    headerName: "Location",
-    type: "text",
-    width: 90,
-  },
-  {
-    field: "Date",
-    headerName: "Interview Date",
-    type: "date",
-    sortable: true,
-    width: 160,
-    // valueGetter: (params) =>
-    //   `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  },
-];
+const DataTable = () => {
+  const companies = [
+    {
+      id: 1,
+      logo: "https://www.shutterstock.com/image-vector/abstract-initial-letter-s-logo-260nw-1862762845.jpg",
+      company_name: "Test",
+      company_address: "MALTA",
+    },
 
-const rows = [
-  { id: 1, CompanyName: "FaceBook", Position: "Jon", Date: 35, location: null },
-  {
-    id: 2,
-    CompanyName: "Google",
-    Position: "Cersei",
-    Date: 42,
-    location: null,
-  },
-  {
-    id: 3,
-    CompanyName: "Instagram",
-    Position: "Jaime",
-    Date: 45,
-    location: null,
-  },
-  { id: 4, CompanyName: "estarta", Position: "Arya", Date: 16, location: null },
-  {
-    id: 5,
-    CompanyName: "askadenia",
-    Position: "Daenerys",
-    Date: null,
-    location: null,
-  },
-  { id: 6, CompanyName: "techyjob", Position: null, Date: 150, location: null },
-  { id: 7, CompanyName: "It", Position: "Ferrara", Date: 44, location: null },
-  {
-    id: 8,
-    CompanyName: "python",
-    Position: "Rossini",
-    Date: 36,
-    location: null,
-  },
-  {
-    id: 9,
-    CompanyName: "cynaptic",
-    Position: "Harvey",
-    Date: 65,
-    location: null,
-  },
-];
+    {
+      id: 1,
+      logo: "https://www.shutterstock.com/image-vector/abstract-initial-letter-s-logo-260nw-1862762845.jpg",
+      company_name: "Test",
+      company_address: "MALTA",
+    },
 
-export default function DataTable() {
-  return (
-    <div class="outerCSS">
-      <div style={{ height: 550, width: "50%", float: "right" }} class="Table">
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-        //   checkboxSelection
-        />
-      </div>
+    {
+      id: 1,
+      logo: "https://www.shutterstock.com/image-vector/abstract-initial-letter-s-logo-260nw-1862762845.jpg",
+      company_name: "Test",
+      company_address: "MALTA",
+    },
+
+    {
+      id: 1,
+      logo: "https://www.shutterstock.com/image-vector/abstract-initial-letter-s-logo-260nw-1862762845.jpg",
+      company_name: "Test",
+      company_address: "MALTA",
+    },
+    {
+      id: 1,
+      logo: "https://www.shutterstock.com/image-vector/abstract-initial-letter-s-logo-260nw-1862762845.jpg",
+      company_name: "Test",
+      company_address: "MALTA",
+    },
+    {
+      id: 1,
+      logo: "https://www.shutterstock.com/image-vector/abstract-initial-letter-s-logo-260nw-1862762845.jpg",
+      company_name: "Test",
+      company_address: "MALTA",
+    },
    
-    </div>
+  ];
+
+  if (companies.length == 0)
+    return "NO INTERVIEWS YOU ARE SO BAD"
+
+  return (
+    <>
+      
+      
+      <ListGroup variant="flush" >
+      <ListGroupItem style={{marginTop:'7%',backgroundColor:'#5CB8E4'}}>
+              <Row>
+                <Col md={2}>
+                 <h4 >Logo</h4>
+                </Col>
+                <Col md={3}>
+                  <h4>Company</h4>
+                </Col>
+
+                <Col md={3}>
+                  <h4>Address</h4>
+                  </Col>
+
+                <Col md={2}>
+                  <h4>Accept</h4>
+                </Col>
+
+                <Col md={2}>
+                    <h4>Reject</h4>
+                </Col>
+              </Row>
+            </ListGroupItem>
+
+
+
+
+        {companies.map((company) => {
+          return (
+            <ListGroupItem key={company.id}>
+              <Row>
+                <Col md={2}>
+                  <Image src={company.logo} alt={company.name} fluid rounded />
+                </Col>
+                <Col md={3}>
+                  <Link to={`/company/${company.id}`}>
+                    <span>{company.company_name}</span>
+                  </Link>
+                </Col>
+
+                <Col md={3}>{company.company_address}</Col>
+
+                <Col md={2}>
+                  <Button
+                    type="button"
+                    variant="light"
+                    // onClick={() => removeFromCart(item.product)}
+                    style={{ marginTop: "15px" }}
+                  >
+                    <i class="fa-sharp fa-solid fa-circle-check"></i>
+                  </Button>
+                </Col>
+
+                <Col md={2}>
+                  <Button
+                    type="button"
+                    variant="light"
+                    // onClick={() => removeFromCart(item.product)}
+                    style={{ marginTop: "15px" }}
+                  >
+                   <i class="fa-sharp fa-solid fa-circle-xmark"></i>
+                  </Button>
+                </Col>
+              </Row>
+            </ListGroupItem>
+          );
+        })}
+      </ListGroup>
+     
+    </>
   );
-}
+};
+
+export default DataTable;
