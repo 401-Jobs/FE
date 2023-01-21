@@ -1,0 +1,9 @@
+.Box{
+    width: 100%;
+    zoom: 0.65;  
+    -moz-transform: scale(0.65);
+    display: flex;
+    justify-content: space-around;
+    gap: 8vw;
+    padding: 3vw;
+}
