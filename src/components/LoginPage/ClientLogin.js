@@ -41,7 +41,7 @@ export const ClientLogin = () => {
                   className="fw-normal my-4 pb-3"
                   style={{ letterSpacing: "1px" }}
                 >
-                  Sign in Into Job Seeker account
+                  Sign in Into Jobseeker account
                 </h5>
 
                 <MDBInput

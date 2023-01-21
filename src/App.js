@@ -52,6 +52,15 @@ function App() {
       <Routes>
           <Route exact path="/CompareCandidates" element={<CompareCandidatesPage />} />
         </Routes>
+      <Routes>
+          <Route exact path="/clientLogin" element={<LoginPage />} />
+        </Routes>
+      <Routes>
+          <Route exact path="/companyLogin" element={<LoginPage />} />
+        </Routes>
+      <Routes>
+          <Route exact path="/" element={<LandingPage />} />
+        </Routes>
         
         <Footer />
       </Router>
