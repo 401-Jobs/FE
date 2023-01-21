@@ -1,0 +1,73 @@
+.sidebar_container {
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    height: 100vh;
+    width: 250px;
+    color: #fff;
+}
+.top_section{
+    display: flex;
+    align-items: center;
+    padding: 20px 15px;
+}
+.logo {
+    font-size: 30px;
+}
+.bars {
+    display: flex;
+    font-size: 25px;
+    margin-left: 30px;
+}
+.big_wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+    gap: 15px;
+}
+.wrapper{
+    display: flex;
+    color: #fff;
+    padding: 10px 15px;
+    gap: 15px;
+    transition: all 0.5s;
+    align-items: center;
+}
+.wrapper:hover{
+    background-color: lightskyblue;
+    color: #000;
+    transition: all 0.5;
+}
+.buttons{
+    background:none;
+    border: none;
+    color: #fff;
+}
+.buttons:hover{
+    color: #000;
+}
+.form_div{
+    display: flex;
+    flex-direction: column;
+}
+.media_div{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.name_div{
+    display: flex;
+    justify-content: center;
+    gap: 75px;
+}
+.city_div {
+    display: flex;
+    justify-content: start;
+    gap: 75px;
+}
+.job_div{
+    display: flex;
+    justify-content: start;
+    gap: 75px;
+
+}

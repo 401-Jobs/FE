@@ -20,6 +20,7 @@ export const data=[
         }],
         summary: 'Full-Stack Web Developer with a background in mechanical engineering. interested and passionate about software development. always looking for new ways for improvement, skills, and knowledge ways.',
         education: [{
+            _id:'1',
             institute:'Hashimate university',
             degree:"bachelor's degree",
             major:"Mechanical Engineering",

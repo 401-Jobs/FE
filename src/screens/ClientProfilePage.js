@@ -1,5 +1,12 @@
-import React from "react";
+import React from 'react'
+import ClientProfile from '../components/ClientProfile/ClientProfile'
 
-export const ClientProfilePage = () => {
-  return <div>ClientProfilePage</div>;
-};
+const ClientProfilePage = () => {
+  return (
+    <div>
+      <ClientProfile />
+    </div>
+  )
+}
+
+export default ClientProfilePage

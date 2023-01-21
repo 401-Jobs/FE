@@ -7,6 +7,7 @@ import z from './assets/z.jpg'
 
 const Sliding = () => {
   return (
+    
     <Carousel className="carousel-container" fade>
       <Carousel.Item >
         <img

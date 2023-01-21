@@ -13,6 +13,7 @@ import UploadForm from "./components/UpdateForm/UpdateForm";
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import {LoginPage} from './screens/LoginPage.js'
+import ClientProfilePage from "./screens/ClientProfilePage";
 function App() {
   return (
     <div>
@@ -21,6 +22,9 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/forgot" element={< ForgotPasswordPage />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/client-profile" element={< ClientProfilePage />} />
       </Routes>
       <Routes>
         <Route exact path="/update-form" element={< UploadForm />} />
