@@ -1,0 +1,119 @@
+/* .skillsList   {
+    background-color: #15172b;
+    border-color: white;
+    border-radius: 20px;
+    border-width: 2px;
+    text-decoration: none;
+    padding: 2vw;
+    padding-left: 0;
+    text-align: left;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 25vh;
+  }
+
+  ul li ,#liLable{
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background-color: #15172b;
+    color: white;
+    font-size: 18px;
+    transition: 0.2s;
+    text-align: start;
+
+
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+  }
+
+  ul::-webkit-scrollbar { 
+    display: none;
+  }
+
+  .skillsList li {
+    margin: 5px;
+    border-width: 5px;
+    border-color: white;
+  }
+
+ 
+  ul li:hover {
+    background: #ddd;
+  }
+
+  .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+  }
+
+  .close:hover {
+    background-color: #f44336;
+    color: white;
+
+    style={{padding:"2px 10px",marginRight:'10px',marginLeft:'10px',backgroundColor:"#ebe9ee",border:"1px solid #7952B3",borderRadius:"10px",textAlign:"center"}}
+  } */
+
+  .skills_container{
+    /* padding: 2px 10px;
+    margin-right:10px;
+    margin-left:10px; */
+    /* min-height: 50px; */
+    /* background-color: #fff; */
+    /* border: 1px solid #7952B3; */
+    /* border-radius: 10px; */
+    
+  }
+  .skillsList {
+    display: flex;
+    flex-wrap: wrap;
+    /* padding: 2px 10px;
+    margin-right:10px;
+    margin-left:10px; */
+    min-height: 45px;
+    background-color: #ebe9ee;
+    border:1px solid #7952B3;
+    border-radius:10px;
+    /* text-align: center; */
+    list-style-type: none;
+  }
+   .skillsList li {
+    margin: 15px 5px;
+    padding: 7px 14px;
+    border: 1px solid #7952B3;
+    border-radius: 15px;
+  
+    /* border-width: 5px; */
+    /* border-color: white; */
+  }
+  .close {
+    /* position: absolute; */
+    right: 0;
+    top: 0;
+    padding: 3px 5px;
+    cursor: pointer;
+  }
+
+  /* .close:hover {
+    background-color: #f44336;
+    color: white;
+  } */
+  /*
+  ul li ,#liLable{
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background-color: #15172b;
+    color: white;
+    font-size: 18px;
+    transition: 0.2s;
+    text-align: start;
+  } */

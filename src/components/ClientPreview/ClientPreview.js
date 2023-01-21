@@ -2,6 +2,7 @@ import React from 'react'
 import AboutMeCard from './AboutMeCard'
 import ContactInfo from './ContactInfo'
 import Websites from './Websites'
+import Languages from './Languages'
 import Summary from './Summary'
 import WorkExperience from './WorkExperience'
 import Education from './Education'
@@ -18,6 +19,7 @@ const ClientPreview = () => {
             <AboutMeCard />
             <ContactInfo />
             <Websites />
+            <Languages />
         </div>
         <div className='secondCol'>
             <Summary />
