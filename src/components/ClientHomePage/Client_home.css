@@ -1,24 +1,4 @@
-/* .calendar{
-    display:flex ;
-    justify-content: end;
-    margin-right: 20px;
-    margin-top: 20px;
-    width: 95%;
-   
-} */
-
-/* .upcoming{
-    font-size:larger;
-    font-weight: 400;
-    margin-left: 69rem;
-    margin-top: 10px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color: dimgrey;
-    padding-right: 21px;
-    
-    
-
-} */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 .image1{
     width: 9rem;
@@ -43,10 +23,11 @@
   } */
 
 .profileComp{
-    font-size: x-large;
+    font-size:large;
     color:darkcyan;
     padding-left: 33px;
     padding-top: 20px;
+    font-weight:bolder;
 }
 
 .progressbarBox{
@@ -62,7 +43,11 @@
 
 .progressbarBox .profileButton h2{
     display: inline-block;
-    padding-right: 28%;
+    
+}
+
+.progressbarBox .profileButton button{
+   margin-left: 100px;
 }
 
 
@@ -114,3 +99,6 @@
     padding-left: 10px;
 }
 
+.Tableandclient{
+    font-family: 'Montserrat', sans-serif;
+}

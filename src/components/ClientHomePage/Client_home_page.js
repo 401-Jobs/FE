@@ -9,13 +9,13 @@ import Table from '../ClientHomePage/Table'
 import 'react-circular-progressbar/dist/styles.css';
 
 export const Client_home_page = () => {
-  const value = 0.66;
+  const value = 0.20;
   return (
 
    
       
 
-    <div style={{backgroundColor:"#d4ccec"}}>
+    <div className="Tableandclient" style={{backgroundColor:"#d4ccec"}}>
 
       <div class="mainDiv">
         <div class="progressbarBox">
@@ -24,7 +24,7 @@ export const Client_home_page = () => {
             <Button variant="primary">Edit Profile</Button>{" "}
           </span>
           <ProgressBar
-            completed={60}
+            completed={100}
             height="25px"
             bgColor="#8758FF"
             margin="30px"
@@ -37,28 +37,28 @@ export const Client_home_page = () => {
           <div class='div1'>
           <div style={{ width: 50, height: 50  }}><CircularProgressbar value={value} maxValue={1} text={`${value * 100}%`} /></div>
           <div style={{paddingLeft:'10px'}}>
-          <h4>Resume Not Uploaded</h4>
+          <h5>Resume Not Uploaded</h5>
           <a href="/">Upload Resume</a></div>
           </div>
           
           <div class='div2'>
           <div style={{ width: 50, height: 50 }}><CircularProgressbar value={value} maxValue={1} text={`${value * 100}%`} /></div>
           <div style={{paddingLeft:'10px'}}>
-          <h4>Image Not Uploaded</h4>
+          <h5>Image Not Uploaded</h5>
           <a href="/">Upload Image</a></div>
           </div>
 
           <div class='div3'>
           <div style={{ width: 50, height: 50 }}><CircularProgressbar value={value} maxValue={1} text={`${value * 100}%`} /></div>
           <div style={{paddingLeft:'10px'}}>
-          <h4>Years Of Experience</h4>
+          <h5>Years Of Experience</h5>
           <a href="/">Add Years Of Experience</a></div>
           </div>
           
           <div class='div4'>
           <div style={{ width: 50, height: 50 }}><CircularProgressbar value={value} maxValue={1} text={`${value * 100}%`} /></div>
           <div style={{paddingLeft:'10px'}}>
-          <h4>Profile Summary</h4>
+          <h5>Profile Summary</h5>
           <a href="/">Add Profile Summary</a></div>
           </div>
           
@@ -66,7 +66,7 @@ export const Client_home_page = () => {
           <div class='div5'>
           <div style={{ width: 50, height: 50 }}><CircularProgressbar value={value} maxValue={1} text={`${value * 100}%`} /></div>
           <div style={{paddingLeft:'10px'}}>
-          <h4>Rate Info</h4>
+          <h5>Rate Info</h5>
           <a href="/">Add Rate Info</a></div>
           </div>
         </div>

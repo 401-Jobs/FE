@@ -1,4 +1,3 @@
-
 import {
   Row,
   Col,
@@ -47,84 +46,79 @@ const DataTable = () => {
       company_name: "Test",
       company_address: "MALTA",
     },
-    {
-      id: 1,
-      logo: "https://www.shutterstock.com/image-vector/abstract-initial-letter-s-logo-260nw-1862762845.jpg",
-      company_name: "Test",
-      company_address: "MALTA",
-    },
-
-   
+    
   ];
 
-  if (companies.length == 0)
-    return "NO INTERVIEWS YOU ARE SO BAD"
+  if (companies.length == 0) return "NO INTERVIEWS YOU ARE SO BAD";
 
   return (
     <>
-      
-      
-      <ListGroup variant="flush" >
-      <ListGroupItem style={{marginTop:'7%',backgroundColor:'#5CB8E4'}}>
-              <Row>
-                <Col md={2}>
-                 <h4 >Logo</h4>
-                </Col>
-                <Col md={3}>
-                  <h4>Company</h4>
-                </Col>
+      <ListGroup variant="flush">
+        <ListGroupItem style={{ marginTop: "7%", backgroundColor: "#8758FF" }}>
+          <Row
+            style={{
+              fontSize: "large",
+              color: "black",
+              fontWeight: "bolder",
+              textAlign:'center',
+              paddingTop:'15px'
+            }}
+          >
+            <Col md={2}>
+              <h5>Logo</h5>
+            </Col>
+            <Col md={3}>
+              <h5>Company</h5>
+            </Col>
 
-                <Col md={3}>
-                  <h4>Address</h4>
-                  </Col>
+            <Col md={3}>
+              <h5>Address</h5>
+            </Col>
 
-                <Col md={2}>
-                  <h4>Accept</h4>
-                </Col>
+            <Col md={2}>
+              <h5>Accept</h5>
+            </Col>
 
-                <Col md={2}>
-                    <h4>Reject</h4>
-                </Col>
-              </Row>
-            </ListGroupItem>
-
-
-
+            <Col md={2}>
+              <h5>Reject</h5>
+            </Col>
+          </Row>
+        </ListGroupItem>
 
         {companies.map((company) => {
           return (
-            <ListGroupItem key={company.id}>
-              <Row>
+            <ListGroupItem key={company.id} style={{  backgroundColor: "#F2F2F2" }} >
+              <Row >
                 <Col md={2}>
                   <Image src={company.logo} alt={company.name} fluid rounded />
                 </Col>
-                <Col md={3}>
+                <Col md={3} style={{textAlign:'center',paddingTop:'20px'}}>
                   <Link to={`/company/${company.id}`}>
                     <span>{company.company_name}</span>
                   </Link>
                 </Col>
 
-                <Col md={3}>{company.company_address}</Col>
+                <Col md={3} style={{textAlign:'center',paddingTop:'20px'}}>{company.company_address}</Col>
 
-                <Col md={2}>
+                <Col md={2} style={{textAlign:'center'}}>
                   <Button
                     type="button"
                     variant="light"
-                    // onClick={() => removeFromCart(item.product)}
                     style={{ marginTop: "15px" }}
                   >
-                    <i class="fa-sharp fa-solid fa-circle-check"></i>
+                 
+                    <i class="fa-solid fa-check"></i>
                   </Button>
                 </Col>
 
-                <Col md={2}>
+                <Col md={2} style={{textAlign:'center'}}>
                   <Button
                     type="button"
                     variant="light"
-                    // onClick={() => removeFromCart(item.product)}
                     style={{ marginTop: "15px" }}
                   >
-                   <i class="fa-sharp fa-solid fa-circle-xmark"></i>
+      
+                    <i class="fa-solid fa-xmark"></i>
                   </Button>
                 </Col>
               </Row>
@@ -132,7 +126,6 @@ const DataTable = () => {
           );
         })}
       </ListGroup>
-     
     </>
   );
 };
