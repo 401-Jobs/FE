@@ -1,0 +1,26 @@
+.interviewTable{
+    min-width: 500px;
+    background-color: none;
+}
+.accept_btn{
+    padding: 3px 10px;
+    border: 1px solid black;
+    background-color: none;
+    border-radius: 5px;
+}
+.accept_btn:hover{
+    background-color: rgb(104, 218, 104);
+    color:#fff;
+    transition: all 0.5;
+}
+.reject_btn{
+    padding: 3px 10px;
+    border: 1px solid black;
+    background-color: none;
+    border-radius: 5px;
+    
+}
+.reject_btn:hover{
+    background-color: rgb(192, 31, 31);
+    
+}

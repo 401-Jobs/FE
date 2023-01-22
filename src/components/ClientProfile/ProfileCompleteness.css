@@ -1,0 +1,20 @@
+.profileCompletenessContainer{
+    min-height: 720px;
+    min-width: 500px;
+    background-color: none;
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 20px;
+    align-items: center;
+    margin: 30px 0;
+    padding: 10px 0 30px;
+}
+.profileCompletenessContainer .all_fields p {
+    font-size: large;
+    padding: 7px 10px;
+    background-color: #ebe9ee;
+    border: 1px solid #281870;
+    border-radius:15px;
+    /* text-decoration-line: line-through; */
+}
