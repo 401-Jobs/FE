@@ -12,9 +12,8 @@ import { useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 const ClientProfile = () => {
   const { login, token } = useContext(AuthContext);
-  console.log("INSIDE PROFILE PAGE");
   const navigate = useNavigate();
-  console.log(token);
+
   if (!token) {
     navigate("/");
   }
