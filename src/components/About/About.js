@@ -11,7 +11,7 @@ const About = () => {
             <div class='col-lg-6'>
               <h1 class='display-4'>RecruitlQ</h1>
               <p class='lead text-muted mb-0'>
-                Create a minimal about us page using Bootstrap 4.
+              Revolutionizing Recruitment: Unleash Your Potential with RecruitIQ
               </p>
             </div>
             <div class='col-lg-6 d-none d-lg-block'>
@@ -32,8 +32,7 @@ const About = () => {
               <i class='fa fa-bar-chart fa-2x mb-3 text-primary'></i>
               <h2 class='font-weight-light'>Company</h2>
               <p class='font-italic text-muted mb-4'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Our vision at RecruitIQ is to revolutionize the recruitment industry by providing innovative solutions that empower companies to easily find and hire the best talent for their organization.
               </p>
               <a href='#' class='btn btn-light px-5 rounded-pill shadow-sm'>
                 Learn More
@@ -59,8 +58,7 @@ const About = () => {
               <i class='fa fa-leaf fa-2x mb-3 text-primary'></i>
               <h2 class='font-weight-light'>Jobseeker</h2>
               <p class='font-italic text-muted mb-4'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              The role of job seekers in RecruitIQ is to create and maintain an up-to-date profile, and to apply for job opportunities that align with their skills, experience and career goals. Additionally, job seekers can use RecruitIQ's tools and resources to improve their job search strategies and increase their chances of being selected for an interview.
               </p>
               <a href='#' class='btn btn-light px-5 rounded-pill shadow-sm'>
                 Learn More
