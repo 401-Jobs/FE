@@ -1,4 +1,3 @@
-import { ClientHomePage } from "./screens/ClientHomePage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { LandingPage } from "./screens/LandingPage";
@@ -15,8 +14,22 @@ import Footer from './components/Footer/Footer'
 import {LoginPage} from './screens/LoginPage.js'
 import ClientProfilePage from "./screens/ClientProfilePage";
 import {CompareCandidatesPage} from './screens/CompareCandidatesPage' 
+
 import { SignUpPage } from "./screens/SignUpPage";
+
+import React , {useContext, useEffect} from 'react';
+import  {JoobSeekerContext} from './components/Context/joobseeker'
+
+
+
+
+
 function App() {
+  const {jobseekerInterviews} = useContext(JoobSeekerContext);
+  useEffect(()=>{
+    jobseekerInterviews()
+
+  },[])
   return (
     <div>
       <ScrollToTop />
@@ -42,9 +55,6 @@ function App() {
       </Routes>
       <Routes>
         <Route exact path="/contact" element={< ContactusPage />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/client" element={< ClientHomePage />} />
       </Routes>
       <Routes>
         <Route exact path="/resetPassword" element={< ResetPassword />} />
