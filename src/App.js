@@ -15,6 +15,8 @@ import Footer from './components/Footer/Footer'
 import {LoginPage} from './screens/LoginPage.js'
 import ClientProfilePage from "./screens/ClientProfilePage";
 import {CompareCandidatesPage} from './screens/CompareCandidatesPage' 
+import CompanyDetails from "./components/company/Infromations/CompanyDetails";
+import DashboardCompany from "./components/company/Dashboard/DashboardCompany";
 
 function App() {
   return (
@@ -57,6 +59,12 @@ function App() {
         </Routes>
       <Routes>
           <Route exact path="/companyLogin" element={<LoginPage />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/companyDetails" element={<CompanyDetails />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/dashboardCompany" element={<DashboardCompany />} />
         </Routes>
       <Routes>
           <Route exact path="/" element={<LandingPage />} />
