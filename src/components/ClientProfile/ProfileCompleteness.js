@@ -1,3 +1,4 @@
+import { hover } from '@testing-library/user-event/dist/hover'
 import React from 'react'
 import './ProfileCompleteness.css'
 
@@ -22,9 +23,9 @@ const ProfileCompleteness = () => {
             </div>
       </div>
       <div style={{width:'400px'}} className='all_fields'>
-        <p style={{textDecorationLine:'line-through',textDecorationColor:'green'}}>Personal Information</p>
+        <p style={{textDecorationLine:'line-through',backgroundColor:'#49be25'}}>Personal Information</p>
         <p>Contact</p>
-        <p style={{textDecorationLine:'line-through',textDecorationColor:'green'}}>Education</p>
+        <p style={{textDecorationLine:'line-through',backgroundColor:'#49be25'}}>Education</p>
         <p>Experience</p>
         <p>Skills</p>
         <p>Summary</p>
@@ -34,10 +35,9 @@ const ProfileCompleteness = () => {
       <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'400px',padding:'20px 15px',border:'1px solid #281870',borderRadius:'10px'}}>
         <div style={{display:'flex',alignItems:'center',gap:'15px'}}>
         <i class="fa-solid fa-eye"></i>
-        <h5>View as Employer</h5>
+        <h5 style={{marginBottom:'0'}}>View as Employer</h5>
         </div>
-        <button style={{padding:'5px 35px',border:'1px solid #281870',borderRadius:'10px'}}>View</button>
-        {/* <button></button> */}
+        <button className='view_btn'>View</button>
       </div>
     </div>
   )

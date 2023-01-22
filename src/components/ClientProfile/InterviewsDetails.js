@@ -10,7 +10,7 @@ const InterviewsDetails = () => {
   const handleShow = () => setShow(true);
   return (
     <>
-      <button style={{padding:'5px 15px',border:'1px solid #281870',borderRadius:'10px',cursor: "pointer"}} variant="primary" onClick={handleShow}>
+      <button className='details_btn' variant="primary" onClick={handleShow}>
         Details
       </button>
 
