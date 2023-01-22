@@ -18,17 +18,12 @@ import {CompareCandidatesPage} from './screens/CompareCandidatesPage'
 import { SignUpPage } from "./screens/SignUpPage";
 
 import React , {useContext, useEffect} from 'react';
-import { JoobSeekerContext } from "./context/joobseeker";
 
 
 
 
 function App() {
-  const {jobseekerInterviews} = useContext(JoobSeekerContext);
-  useEffect(()=>{
-    jobseekerInterviews()
 
-  },[])
   return (
     <div>
       <ScrollToTop />

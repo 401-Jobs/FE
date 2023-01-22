@@ -53,7 +53,7 @@ function MyVerticallyCenteredModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <SkillsForm setSkill={setSkill}/>
+          <SkillsForm setSkill={setSkill} onHide={props.onHide}/>
           <div className='skills_container'>
       <ul id="myUL" className="skillsList"></ul>
       </div>
