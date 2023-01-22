@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../../context/auth';
 import { JoobSeekerContext } from '../../../context/joobseeker';
 const WebsitesForm = () => {
-  const { userDetails, updateJobseekerContact } = useContext(JoobSeekerContext);
+  const { userDetails, updateJobseekerLinks } = useContext(JoobSeekerContext);
   const { token } = useContext(AuthContext);
   let {linkedin,github,porto}=userDetails
   return (

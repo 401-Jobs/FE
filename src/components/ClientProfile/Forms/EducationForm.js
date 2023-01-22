@@ -3,16 +3,40 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../../context/auth';
 import { JoobSeekerContext } from '../../../context/joobseeker';
-const EducationForm = () => {
-  const { userEducation, updateJobseekerContact } = useContext(JoobSeekerContext);
+const EducationForm = (props) => {
+  const { userEducation, updateJobseekerEducation } = useContext(JoobSeekerContext);
   const { token } = useContext(AuthContext);
-  let {institute,degree,major,start,end}=userEducation[0]
+  let {institute,degree,major,start,end,id}=userEducation[0]
 
 
-  let handelSubmit=(e)=>{
+  let handelSubmit=async(e)=>{
+    try{
     e.preventDefault()
+    let obj={
+      "userEducation":{
+        "id":id,
+        "institute":e.target.institute.value,
+        "degree":e.target.degree.value,
+        "major":e.target.major.value,
+        "start":e.target.start.value,
+        "end":e.target.end.value
+
+
+      }
+    }
+    
+
+    console.log(obj)
+   await updateJobseekerEducation(obj,token)}
+
+   catch{
+    console.log("error");
+   }
+    props.onHide()
+
 
   }
+  console.log(degree);
   return (
     <Form onSubmit={handelSubmit}>
         <div className='form_div'>
@@ -42,9 +66,9 @@ const EducationForm = () => {
         </div>
       
       </div>
-      {/* <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit">
         ADD
-      </Button> */}
+      </Button>
     </Form>
   )
 }

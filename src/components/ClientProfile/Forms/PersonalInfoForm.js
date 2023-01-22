@@ -1,20 +1,43 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import Button from "react-bootstrap/Button";
+import { propTypes } from "react-bootstrap/esm/Image";
 import Form from "react-bootstrap/Form";
 import { AuthContext } from "../../../context/auth";
 import { JoobSeekerContext } from "../../../context/joobseeker";
 
-const PersonalInfoForm = () => {
-  const { userInfo, updateJobseekerContact } = useContext(JoobSeekerContext);
+const PersonalInfoForm = (props) => {
+  const { userInfo, updateJobseekerPF} = useContext(JoobSeekerContext);
   const { token } = useContext(AuthContext);
 
   let { firstName, country, lastName, jobtitle, yearsExperience, age } =
     userInfo;
   console.log();
 
-  const FormHandler = (e) => {
+  const FormHandler = async (e) => {
     e.preventDefault();
+    try{
+    let info={
+      "userInfo":{
+        "firstName":e.target.firstName.value,
+        "country":e.target.country.value,
+        "lastName":e.target.lastName.value,
+        "jobtitle":e.target.jobtitle.value,
+        "yearsExperience":e.target.yearsOfExperience.value,
+        "age":e.target.age.value
+
+
+      }
+    }
+    console.log(info);
+    await updateJobseekerPF(info,token)
+  }
+  catch{
+    console.log("error");
+  }
+    props.onHide()
+    
+
   };
 
   return (
@@ -50,21 +73,13 @@ const PersonalInfoForm = () => {
               defaultValue={country}
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>City</Form.Label>
-            <Form.Control
-              name="city"
-              type="text"
-              placeholder="Enter city name"
-              defaultValue={lastName}
-            />
-          </Form.Group>
+        
         </div>
         <div className="name_div">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Job Title</Form.Label>
             <Form.Control
-              name="jobTitle"
+              name="jobtitle"
               type="text"
               placeholder="Enter job title"
               defaultValue={jobtitle}
@@ -87,7 +102,7 @@ const PersonalInfoForm = () => {
               name="age"
               type="text"
               placeholder="Enter your age"
-              defaultValue={yearsExperience}
+              defaultValue={age}
             />
           </Form.Group>
         </div>

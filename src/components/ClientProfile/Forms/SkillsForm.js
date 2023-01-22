@@ -4,15 +4,32 @@ import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../../context/auth';
 import { JoobSeekerContext } from '../../../context/joobseeker';
 const SkillsForm = (props) => {
-  const { userDetails, updateJobseekerContact } = useContext(JoobSeekerContext);
+  const { skills, updateJobseekerSkills } = useContext(JoobSeekerContext);
   const { token } = useContext(AuthContext);
-  let {skills}=userDetails
   const skillHandler=(e)=>{
       props.setSkill(e.target.value)
   }
+  let handelSubmit=(e)=>{
+    e.preventDefault()
+    try{
+    let obj={
+      "userDetails":{
+        "skills":e.target.skills.value, 
+      }
+
+    }
+    updateJobseekerSkills(obj,token)
+  }
+  catch{
+    console.log("error");
+  }
+    props.onHide()
+  }
+
+  console.log(skills);
   return (
     <div>
-<Form>
+<Form onSubmit={handelSubmit}>
         <div className='form_div'>
         <div className='name_div'>
       <Form.Group className="mb-3" controlId="formBasicEmail">
