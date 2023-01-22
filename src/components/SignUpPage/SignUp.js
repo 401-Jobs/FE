@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Spinner from "react-bootstrap/Spinner";
+
 import validation from "./Validation";
 import {
   MDBBtn,
@@ -9,6 +11,10 @@ import {
   MDBCardBody,
   MDBInput,
 } from "mdb-react-ui-kit";
+import { useLocation } from "react-router";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth";
+
 export const SignUp = () => {
   const [values, setValues] = useState({
     username: "",
@@ -16,19 +22,46 @@ export const SignUp = () => {
     password: "",
     confirmPassword: "",
   });
+
+  const { pathname } = useLocation();
+  const { Register } = useContext(AuthContext);
+
   const [errors, setErrors] = useState({});
+  const [isLoading, setisLoading] = useState(false);
+  const [isClicked, setisClicked] = useState(false);
+
   const handleInput = (e) => {
     setValues({ ...values, [e.target.name]: [e.target.value] });
+    console.log(values);
   };
 
-  function handleValidation(e) {
+  async function handleValidation(e) {
     e.preventDefault();
     setErrors(validation(values));
-    console.log(errors)
+    if (Object.keys(errors).length != 0) {
+      return;
+    }
+
+    let userInfo = {
+      email: values.email[0],
+      username: values.username[0],
+      password: values.password[0],
+      is_company: pathname != "/ClientSignUp",
+    };
+    try {
+      console.log(userInfo);
+      setisClicked(true);
+      setisLoading(true);
+      await Register(userInfo);
+      setisLoading(false);
+    } catch (error) {
+      setisLoading(false);
+    }
   }
+
   return (
     <>
-      <MDBContainer fluid className="p-4" >
+      <MDBContainer fluid className="p-4">
         <MDBRow>
           <MDBCol
             md="6"
@@ -87,14 +120,25 @@ export const SignUp = () => {
                 {errors.confirmPassword && (
                   <p style={{ color: "red" }}>{errors.confirmPassword}</p>
                 )}
-                <MDBBtn
-                type = 'submit'
-                  className="w-100 mb-4"
-                  size="md"
-                  onClick={handleValidation}
-                >
-                  sign up
-                </MDBBtn>
+
+                {isLoading ? (
+                  <div style={{ textAlign: "center", alignContent: "center" }}>
+                    <Spinner animation="border" role="status">
+                      <span className="visually-hidden ">Loading...</span>
+                    </Spinner>
+                  </div>
+                ) : !isClicked ? (
+                  <MDBBtn
+                    type="submit"
+                    className="w-100 mb-4"
+                    size="md"
+                    onClick={handleValidation}
+                  >
+                    sign up
+                  </MDBBtn>
+                ) : (
+                  "A verification message was sent to your email"
+                )}
 
                 <div className="text-center"></div>
               </MDBCardBody>

@@ -6,15 +6,20 @@ export const AuthContext = createContext();
 export function AuthWrapper({ children }) {
   const [globalState, SetGlobalState] = useState({
     token: localStorage.getItem("token"),
-
+    //token: null,
     Register,
     login,
     logout,
+    EmailResetPassword,
+    ResetPassword,
   });
 
   async function Register(userInfo) {
     const url = process.env.REACT_APP_BACKEND_URL + "/auth/register/";
     const res = await axios.post(url, userInfo);
+    SetGlobalState({
+      ...globalState,
+    });
   }
 
   async function login(userInfo) {
@@ -23,10 +28,10 @@ export function AuthWrapper({ children }) {
     console.log(res.data);
     SetGlobalState({
       ...globalState,
-      token: res.data.token,
+      token: res.data.access,
     });
 
-    localStorage.setItem("token", res.data);
+    localStorage.setItem("token", res.data.access);
   }
 
   async function logout() {

@@ -9,20 +9,20 @@ import AboutUsPage from "./screens/AboutUsPage";
 import { ResetPassword } from "./screens/ResetPassword";
 import ClientPreview from "./components/ClientPreview/ClientPreview";
 import UploadForm from "./components/UpdateForm/UpdateForm";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import { LoginPage } from "./screens/LoginPage.js";
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import {LoginPage} from './screens/LoginPage.js'
 import ClientProfilePage from "./screens/ClientProfilePage";
 
 import CompanyDetails from "./components/company/Infromations/CompanyDetails";
 import DashboardCompany from "./components/company/Dashboard/DashboardCompany";
 import { CompareCandidatesPage } from "./screens/CompareCandidatesPage";
 
+
 import { SignUpPage } from "./screens/SignUpPage";
 
 import React , {useContext, useEffect} from 'react';
-import  {JoobSeekerContext} from './components/Context/joobseeker'
-
+import { JoobSeekerContext } from "./context/joobseeker";
 
 
 
@@ -36,7 +36,6 @@ function App() {
   return (
     <div>
       <ScrollToTop />
-
 <Router>
       <Header />
       <Routes>
@@ -66,16 +65,24 @@ function App() {
       <Routes>
           <Route exact path="/CompareCandidates" element={<CompareCandidatesPage />} />
         </Routes>
-        <Routes>
-          <Route path="/about" element={<AboutUsPage />} />
+      <Routes>
+          <Route exact path="/clientLogin" element={<LoginPage />} />
         </Routes>
-        <Routes>
-          <Route
-            path="/email-varification"
-            element={<EmailVerificationPage />}
-          />
+      <Routes>
+          <Route exact path="/companyLogin" element={<LoginPage />} />
         </Routes>
+      <Routes>
+          <Route exact path="/" element={<LandingPage />} />
+        </Routes>
+
         <Routes>
+          <Route exact path="/CompanySignUp" element={<SignUpPage/>} />
+        </Routes>
+
+        <Routes>
+
+          <Route exact path="/ClientSignUp" element={<SignUpPage/>} />
+
           <Route exact path="/companyDetails" element={<CompanyDetails />} />
         </Routes>
         <Routes>
@@ -85,6 +92,7 @@ function App() {
           <Route exact path="/" element={<LandingPage />} />
           <Route path="/contact" element={<ContactusPage />} />
         </Routes>
+        
         <Footer />
       </Router>
     </div>
