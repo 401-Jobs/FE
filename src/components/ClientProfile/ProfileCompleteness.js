@@ -23,9 +23,9 @@ const ProfileCompleteness = () => {
             </div>
       </div>
       <div style={{width:'400px'}} className='all_fields'>
-        <p style={{textDecorationLine:'line-through',backgroundColor:'#49be25'}}>Personal Information</p>
+        <p style={{textDecorationLine:'line-through'}}>Personal Information</p>
         <p>Contact</p>
-        <p style={{textDecorationLine:'line-through',backgroundColor:'#49be25'}}>Education</p>
+        <p style={{textDecorationLine:'line-through'}}>Education</p>
         <p>Experience</p>
         <p>Skills</p>
         <p>Summary</p>
