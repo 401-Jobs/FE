@@ -2,8 +2,19 @@ import React from "react";
 import jobseeker from "./assets/jobseeker.png";
 import employer from "./assets/employer.png";
 import "./Section1.css";
+import { useNavigate } from "react-router";
 
 const Section1 = () => {
+  const navigate = useNavigate();
+
+  const seekerSignUP = () => {
+    navigate("/ClientSignUp");
+  };
+
+  const companySignUP = () => {
+    navigate("/CompanySignUp");
+  };
+
   return (
     <section className="first_section">
       <div className="section1">
@@ -12,7 +23,9 @@ const Section1 = () => {
           <p style={{ maxWidth: "200px", color: "white" }}>
             If you are a jobseeker sign up here...
           </p>
-          <button className="button accept-btn">Sign up</button>
+          <button className="button accept-btn" onClick={seekerSignUP}>
+            Sign up
+          </button>
         </div>
         <div>
           <img src={jobseeker} alt="img" width={300} />
@@ -25,7 +38,9 @@ const Section1 = () => {
           <p style={{ maxWidth: "200px", color: "white" }}>
             If you are an employer sign up here...
           </p>
-          <button className="button accept-btn">Sign up</button>
+          <button className="button accept-btn" onClick={companySignUP}>
+            Sign up
+          </button>
         </div>
         <div>
           <img src={employer} alt="img" width={300} />

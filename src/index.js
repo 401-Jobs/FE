@@ -5,17 +5,16 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { AuthWrapper } from "./context/auth";
 
-
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import {JoobSeekerWrapper} from "./components/Context/joobseeker"
+import { JoobSeekerWrapper } from "./context/joobseeker";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <JoobSeekerWrapper>
   <React.StrictMode>
-    {/* <AuthWrapper> */}
-    <App />
-    {/* </AuthWrapper> */}
+    <AuthWrapper>
+      <JoobSeekerWrapper>
+        <App />
+      </JoobSeekerWrapper>
+    </AuthWrapper>
   </React.StrictMode>
-  </JoobSeekerWrapper>
 );

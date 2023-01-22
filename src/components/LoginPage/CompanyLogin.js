@@ -12,7 +12,29 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 import company from "./Assets/company.jpg";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export const CompanyLogin = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassowrd] = useState("");
+
+  const navigate = useNavigate();
+
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const passwordHandler = (e) => {
+    setPassowrd(e.target.value);
+  };
+
+  const LoginHandler = (e) => {
+    e.preventDefault();
+    // TODO: COMPANY LOGIN
+    navigate("/session-timed-out");
+  };
+
   return (
     <>
       <MDBContainer className="my-5">
@@ -41,15 +63,17 @@ export const CompanyLogin = () => {
                   className="fw-normal my-4 pb-3"
                   style={{ letterSpacing: "1px" }}
                 >
-                  Sign into company accouunt
+                  Sign in Into Jobseeker account
                 </h5>
 
                 <MDBInput
                   wrapperClass="mb-4"
                   label="Email address"
-                  id="formControlLg"
+                  // id="formControlLg"
                   type="email"
                   size="lg"
+                  name="email"
+                  onChange={emailHandler}
                 />
                 <MDBInput
                   wrapperClass="mb-4"
@@ -57,14 +81,21 @@ export const CompanyLogin = () => {
                   id="formControlLg"
                   type="password"
                   size="lg"
+                  name="password"
+                  onChange={passwordHandler}
                 />
 
-                <MDBBtn className="mb-4 px-5" color="dark" size="lg">
+                <MDBBtn
+                  onClick={LoginHandler}
+                  className="mb-4 px-5"
+                  color="dark"
+                  size="lg"
+                >
                   Login
                 </MDBBtn>
                 <a
                   className="small text-muted"
-                  href="#!"
+                  href="/forgot"
                   style={{ textAlign: "center" }}
                 >
                   Forgot password?
@@ -74,7 +105,7 @@ export const CompanyLogin = () => {
                   style={{ color: "#393f81", textAlign: "center" }}
                 >
                   Don't have an account?{" "}
-                  <a href="#!" style={{ color: "#393f81" }}>
+                  <a href="/ClientSignUp" style={{ color: "#393f81" }}>
                     Register here
                   </a>
                 </p>
