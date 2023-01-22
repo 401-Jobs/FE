@@ -13,14 +13,17 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import {LoginPage} from './screens/LoginPage.js'
 import ClientProfilePage from "./screens/ClientProfilePage";
-import {CompareCandidatesPage} from './screens/CompareCandidatesPage' 
 import ClientPreviews from "./components/ClientPreviews/ClientPreviews";
+
+import CompanyDetails from "./components/company/Infromations/CompanyDetails";
+import DashboardCompany from "./components/company/Dashboard/DashboardCompany";
+import { CompareCandidatesPage } from "./screens/CompareCandidatesPage";
+
 
 import { SignUpPage } from "./screens/SignUpPage";
 
 import React , {useContext, useEffect} from 'react';
-import  {JoobSeekerContext} from './components/Context/joobseeker'
-
+import { JoobSeekerContext } from "./context/joobseeker";
 
 
 
@@ -81,7 +84,17 @@ function App() {
         </Routes>
 
         <Routes>
+
           <Route exact path="/ClientSignUp" element={<SignUpPage/>} />
+
+          <Route exact path="/companyDetails" element={<CompanyDetails />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/dashboardCompany" element={<DashboardCompany />} />
+        </Routes>
+      <Routes>
+          <Route exact path="/" element={<LandingPage />} />
+          <Route path="/contact" element={<ContactusPage />} />
         </Routes>
         
         <Footer />

@@ -12,7 +12,55 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 import Telecommuting from "./Assets/Telecommuting.png";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth";
+import Spinner from "react-bootstrap/Spinner";
+import { useEffect } from "react";
+
 export const ClientLogin = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassowrd] = useState("");
+
+  const [errors, setErrors] = useState("");
+  const [isLoading, setisLoading] = useState(false);
+
+  const navigate = useNavigate();
+  const { login, token } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (token) navigate("/client-profile");
+  }, [token]);
+
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const passwordHandler = (e) => {
+    setPassowrd(e.target.value);
+  };
+
+  const LoginHandler = async (e) => {
+    e.preventDefault();
+
+    let userInfo = {
+      email: email,
+      password: password,
+    };
+    try {
+      console.log(token);
+      setisLoading(true);
+
+      await login(userInfo);
+      setisLoading(false);
+
+      console.log(token);
+    } catch (error) {
+      setisLoading(false);
+    }
+  };
+
   return (
     <>
       <MDBContainer className="my-5">
@@ -34,7 +82,7 @@ export const ClientLogin = () => {
                     // icon="fa fa-id-card"
                     style={{ color: "#ff6219" }}
                   />
-                  <span className="h1 fw-bold mb-0">ReqruitIQ</span>
+                  <span className="h1 fw-bold mb-0">{"ReqruitIQ"}</span>
                 </div>
 
                 <h5
@@ -47,9 +95,11 @@ export const ClientLogin = () => {
                 <MDBInput
                   wrapperClass="mb-4"
                   label="Email address"
-                  id="formControlLg"
+                  // id="formControlLg"
                   type="email"
                   size="lg"
+                  name="email"
+                  onChange={emailHandler}
                 />
                 <MDBInput
                   wrapperClass="mb-4"
@@ -57,14 +107,29 @@ export const ClientLogin = () => {
                   id="formControlLg"
                   type="password"
                   size="lg"
+                  name="password"
+                  onChange={passwordHandler}
                 />
+                {isLoading ? (
+                  <div style={{ textAlign: "center", alignContent: "center" }}>
+                    <Spinner animation="border" role="status">
+                      <span className="visually-hidden ">Loading...</span>
+                    </Spinner>
+                  </div>
+                ) : (
+                  <MDBBtn
+                    onClick={LoginHandler}
+                    className="mb-4 px-5"
+                    color="dark"
+                    size="lg"
+                  >
+                    Login
+                  </MDBBtn>
+                )}
 
-                <MDBBtn className="mb-4 px-5" color="dark" size="lg">
-                  Login
-                </MDBBtn>
                 <a
                   className="small text-muted"
-                  href="#!"
+                  href="/forgot"
                   style={{ textAlign: "center" }}
                 >
                   Forgot password?
@@ -74,7 +139,7 @@ export const ClientLogin = () => {
                   style={{ color: "#393f81", textAlign: "center" }}
                 >
                   Don't have an account?{" "}
-                  <a href="#!" style={{ color: "#393f81" }}>
+                  <a href="/ClientSignUp" style={{ color: "#393f81" }}>
                     Register here
                   </a>
                 </p>
