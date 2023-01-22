@@ -28,10 +28,26 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
+             
               <Nav.Link href="#link">Profile</Nav.Link>
 
               {/* <NavDropdown title="Services" id="basic-nav-dropdown">
+              
+        <Navbar bg="light" expand="lg" style={{padding:"1px"}}>
+      <Container>
+      <a href='/'><img src={logo} width="60" height="60" alt="logo"/></a>
+        <Navbar.Brand href="/">RecruitIQ</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="#link">Profile</Nav.Link>
+           {/* <div className='aa'>
+            <Nav.Link href="/contact">Contact Us</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
+            </div> */}
+            <NavDropdown title="Services" id="basic-nav-dropdown">
+
               <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Build your CV 
@@ -69,8 +85,19 @@ const Header = () => {
               employer
             </Nav.Link>
           </Nav>
+
         </Container>
       </Navbar>
+
+        </Navbar.Collapse>
+        
+        <Nav.Link  style={{marginRight:'20px'}}href="/contact">Contact Us</Nav.Link>
+        <Nav.Link style={{marginRight:'20px'}} href="/about">About</Nav.Link>
+        
+        <Button variant="light" style={{border:"1px solid black",borderRadius:'15px'}}>Sign In</Button>{' '}
+      </Container>
+    </Navbar>
+
     </div>
   );
 };
