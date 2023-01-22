@@ -7,6 +7,7 @@
     border: 1px solid black;
     background-color: none;
     border-radius: 5px;
+    transition: all 0.5s;
 }
 .accept_btn:hover{
     background-color: rgb(104, 218, 104);
@@ -18,9 +19,22 @@
     border: 1px solid black;
     background-color: none;
     border-radius: 5px;
+    transition: all 0.5s;
     
 }
 .reject_btn:hover{
     background-color: rgb(192, 31, 31);
+    transition: all 0.5s;
     
+}
+.details_btn{
+    padding:5px 15px;
+    border: 1px solid #281870;
+    border-radius: 10px;
+    background-color: #ac9ce1;
+    transition: all 0.5s;
+}
+.details_btn:hover{
+    background-color: lightskyblue;
+    transition: all 0.5s;
 }

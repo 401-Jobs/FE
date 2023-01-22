@@ -5,7 +5,7 @@ import InterviewsDetails from './InterviewsDetails'
 const InterviewTable = () => {
   return (
     <div className='interviewTable'>
-      <div class='container' style={{ margin: '30px 0' }}>
+      <div class='container' style={{ margin: '30px 0'}}>
         <div class='row d-flex justify-content-center align-items-center h-100'>
           <div class='col-md-12 col-xl-10'>
             <div class='card shadow'>
