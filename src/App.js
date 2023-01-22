@@ -14,8 +14,12 @@ import Footer from './components/Footer/Footer'
 import {LoginPage} from './screens/LoginPage.js'
 import ClientProfilePage from "./screens/ClientProfilePage";
 import {CompareCandidatesPage} from './screens/CompareCandidatesPage' 
+
+import { SignUpPage } from "./screens/SignUpPage";
+
 import React , {useContext, useEffect} from 'react';
 import  {JoobSeekerContext} from './components/Context/joobseeker'
+
 
 
 
@@ -66,6 +70,14 @@ function App() {
         </Routes>
       <Routes>
           <Route exact path="/" element={<LandingPage />} />
+        </Routes>
+
+        <Routes>
+          <Route exact path="/CompanySignUp" element={<SignUpPage/>} />
+        </Routes>
+
+        <Routes>
+          <Route exact path="/ClientSignUp" element={<SignUpPage/>} />
         </Routes>
         
         <Footer />
