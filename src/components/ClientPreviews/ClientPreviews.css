@@ -1,0 +1,36 @@
+.main_container{
+    background-color: aqua;
+    min-height: 900px;
+    display: flex;
+    
+}
+.left_section{
+    display: flex;
+    flex-direction: column;
+    background-color: blue;
+    min-height: 800px;
+}
+.right_section{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(38, 255, 0);
+    min-height: 800px;
+}
+.right_up_section{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(187, 0, 255);
+    min-height: 100px;
+}
+.right_middle_section{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(217, 255, 0);
+    min-height: 300px;
+}
+.right_down_section{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 0, 128);
+    min-height: 300px;
+}

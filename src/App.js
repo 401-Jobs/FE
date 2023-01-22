@@ -7,13 +7,14 @@ import EmailVerificationPage from "./screens/EmailVerificationPage";
 import ContactusPage from "./screens/ContactusPage";
 import AboutUsPage from "./screens/AboutUsPage";
 import { ResetPassword } from "./screens/ResetPassword";
-import ClientPreview from "./components/ClientPreview/ClientPreview";
+import ClientPreview from "./components/ClientPreview/ClientPreview"; //remove this line
 import UploadForm from "./components/UpdateForm/UpdateForm";
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import {LoginPage} from './screens/LoginPage.js'
 import ClientProfilePage from "./screens/ClientProfilePage";
 import {CompareCandidatesPage} from './screens/CompareCandidatesPage' 
+import ClientPreviews from "./components/ClientPreviews/ClientPreviews";
 
 import { SignUpPage } from "./screens/SignUpPage";
 
@@ -37,6 +38,9 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/forgot" element={< ForgotPasswordPage />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/preview" element={< ClientPreviews />} />
       </Routes>
       <Routes>
         <Route exact path="/client-profile" element={< ClientProfilePage />} />
