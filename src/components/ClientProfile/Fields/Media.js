@@ -29,7 +29,7 @@ const Media = () => {
     const [modalShow, setModalShow] = React.useState(false);
   return (
     <div>
-        <button className='buttons' onClick={() => setModalShow(true)}>Medie</button>
+        <button className='buttons' onClick={() => setModalShow(true)}>Media</button>
         <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
