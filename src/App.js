@@ -15,8 +15,18 @@ import Footer from './components/Footer/Footer'
 import {LoginPage} from './screens/LoginPage.js'
 import ClientProfilePage from "./screens/ClientProfilePage";
 import {CompareCandidatesPage} from './screens/CompareCandidatesPage' 
+import React , {useContext, useEffect} from 'react';
+import  {JoobSeekerContext} from './components/Context/joobseeker'
+
+
+
 
 function App() {
+  const {jobseekerInterviews} = useContext(JoobSeekerContext);
+  useEffect(()=>{
+    jobseekerInterviews()
+
+  },[])
   return (
     <div>
       <ScrollToTop />
