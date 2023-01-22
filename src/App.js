@@ -1,4 +1,3 @@
-import { ClientHomePage } from "./screens/ClientHomePage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { LandingPage } from "./screens/LandingPage";
@@ -16,28 +15,53 @@ import { LoginPage } from "./screens/LoginPage.js";
 import ClientProfilePage from "./screens/ClientProfilePage";
 import { CompareCandidatesPage } from "./screens/CompareCandidatesPage";
 
+import { SignUpPage } from "./screens/SignUpPage";
+
+import React , {useContext, useEffect} from 'react';
+import  {JoobSeekerContext} from './components/Context/joobseeker'
+
+
+
+
+
 function App() {
+  const {jobseekerInterviews} = useContext(JoobSeekerContext);
+  useEffect(()=>{
+    jobseekerInterviews()
+
+  },[])
   return (
     <div>
       <ScrollToTop />
-      <Router>
-        <Header />
 
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-        </Routes>
-
-        <Routes>
-          <Route path="/forgot" element={<ForgotPasswordPage />} />
-        </Routes>
-        <Routes>
-          <Route path="/client-profile" element={<ClientProfilePage />} />
-        </Routes>
-        <Routes>
-          <Route path="/update-form" element={<UploadForm />} />
-        </Routes>
-        <Routes>
-          <Route path="/preview-client" element={<ClientPreview />} />
+<Router>
+      <Header />
+      <Routes>
+        <Route exact path="/forgot" element={< ForgotPasswordPage />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/client-profile" element={< ClientProfilePage />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/update-form" element={< UploadForm />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/preview-client" element={< ClientPreview />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/about" element={< AboutUsPage />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/email-varification" element={< EmailVerificationPage />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/contact" element={< ContactusPage />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/resetPassword" element={< ResetPassword />} />
+      </Routes>
+      <Routes>
+          <Route exact path="/CompareCandidates" element={<CompareCandidatesPage />} />
         </Routes>
         <Routes>
           <Route path="/about" element={<AboutUsPage />} />
@@ -51,25 +75,6 @@ function App() {
         <Routes>
           <Route path="/contact" element={<ContactusPage />} />
         </Routes>
-        <Routes>
-          <Route path="/client" element={<ClientHomePage />} />
-        </Routes>
-        <Routes>
-          <Route path="/resetPassword" element={<ResetPassword />} />
-        </Routes>
-        <Routes>
-          <Route
-            path="/CompareCandidates"
-            element={<CompareCandidatesPage />}
-          />
-        </Routes>
-        <Routes>
-          <Route path="/clientLogin" element={<LoginPage />} />
-        </Routes>
-        <Routes>
-          <Route path="/companyLogin" element={<LoginPage />} />
-        </Routes>
-
         <Footer />
       </Router>
     </div>
