@@ -14,7 +14,8 @@ import { JoobSeekerContext } from "../../context/joobseeker";
 const Header = () => {
   const { pathname } = useLocation();
   const { logout, token } = useContext(AuthContext);
-  const { userMedia, jobseekerData } = useContext(JoobSeekerContext);
+
+  const { userMedia, jobseekerData,userInfo } = useContext(JoobSeekerContext);
   console.log(userMedia);
 
   const getData = async (token) => {
@@ -51,7 +52,7 @@ const Header = () => {
             className="flex-grow-0.5 justify-content-evenly nav"
             style={{ gap: "1vw", marginRight: "2vw" }}
           >
-            {token && userMedia["image"] ? (
+            {token && userInfo["id"] ? (
               <>
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
@@ -71,9 +72,6 @@ const Header = () => {
                         Profile
                       </NavDropdown.Item>
 
-                      <NavDropdown.Item href="/preview-client">
-                        Preview
-                      </NavDropdown.Item>
 
                       <NavDropdown.Divider />
                       <NavDropdown.Item href="/" onClick={logoutHandler}>
