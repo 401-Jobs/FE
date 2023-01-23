@@ -67,13 +67,12 @@ export function JoobSeekerWrapper({ children }) {
         userEducation: res.data["userEducation"],
         userWork: res.data["userWork"],
         userMedia: res.data["userMedia"],
+
         summary:res.data["userDetails"]["summary"],
         skills:res.data["userDetails"]["skills"],
         linkedin:res.data["userDetails"]["linkedin"],
         github:res.data["userDetails"]["github"],
         porto:res.data["userDetails"]["porto"],
-
-
 
       });
     } catch {
@@ -97,7 +96,6 @@ export function JoobSeekerWrapper({ children }) {
     console.log(res.data);
   }
   async function jobseekerViews(token) {
-    
     const config = {
       Headers: {
         Authorization: `Bearer ${token}`,
@@ -114,7 +112,6 @@ export function JoobSeekerWrapper({ children }) {
     console.log(res.data);
   }
   async function jobseekerAll(token) {
-    
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -130,8 +127,7 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function updateJobseekerPF(pf,token) {
-  
+  async function updateJobseekerPF(pf, token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -162,12 +158,11 @@ export function JoobSeekerWrapper({ children }) {
     );
     setGlobal({
       ...global,
-      userContact : res.data["userContact"],
+      userContact: res.data["userContact"],
     });
     console.log(res.data);
   }
-  async function createJobseekerEducation(pf,token) {
-    
+  async function createJobseekerEducation(pf, token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -178,31 +173,41 @@ export function JoobSeekerWrapper({ children }) {
       pf,
       config
     );
+    console.log(...global.userEducation);
     setGlobal({
       ...global,
-      createjobseekerEducation: res.data,
+      userEducation: [...global.userEducation, pf["userEducation"]],
     });
     console.log(res.data);
   }
-  async function updateJobseekerEducation(pf,token) {
+  async function updateJobseekerEducation(pf, token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
+    console.log("INSIDE THE UPDATE CONTEXT");
+
+    console.log(...global.userEducation);
+
+    console.log("BEFORE UPDATING");
     let res = await axios.put(
       "https://reqiq.herokuapp.com/jobseeker-update-education/",
       pf,
       config
     );
+
+    let newuserEducation = global.userEducation.filter(
+      (obj) => obj["id"] != res.data["userEducation"]["id"]
+    );
+
     setGlobal({
       ...global,
-      userEducation: [res.data["userEducation"]],
+      userEducation: [...newuserEducation, res.data["userEducation"]],
     });
-    console.log(res.data);
   }
-  async function createJobseekerWorkXP(pf,token) {
 
+  async function createJobseekerWorkXP(pf, token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -219,7 +224,8 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function updateJobseekerWorkXP(pf,token) {
+
+  async function updateJobseekerWorkXP(pf, token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -236,8 +242,8 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function updateJobseekerMedia(pf,token) {
- 
+
+  async function updateJobseekerMedia(pf, token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -254,8 +260,8 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function updateJobseekerSummry(pf,token) {
 
+  async function updateJobseekerSummry(pf, token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -272,8 +278,8 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function updateJobseekerLinks(pf,token) {
 
+  async function updateJobseekerLinks(pf, token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -295,8 +301,7 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function updateJobseekerSkills(pf,token) {
-
+  async function updateJobseekerSkills(pf, token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -314,8 +319,7 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function updateJobseekerInterview(pf,token) {
-
+  async function updateJobseekerInterview(pf, token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
