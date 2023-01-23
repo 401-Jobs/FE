@@ -11,6 +11,11 @@ import {
   MDBIcon,
   MDBInput,
 } from "mdb-react-ui-kit";
+
+
+
+
+import './Login.css'
 import Telecommuting from "./Assets/Telecommuting.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +23,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
 import Spinner from "react-bootstrap/Spinner";
 import { useEffect } from "react";
+import TelecommutingCuate from "./Assets/TelecommutingCuate.png";
 
 export const ClientLogin = () => {
   const [email, setEmail] = useState("");
@@ -68,7 +74,7 @@ export const ClientLogin = () => {
           <MDBRow className="g-0">
             <MDBCol md="6">
               <MDBCardImage
-                src={Telecommuting}
+                src={TelecommutingCuate}
                 alt="login form"
                 className="rounded-start w-100"
               />
@@ -127,10 +133,14 @@ export const ClientLogin = () => {
                   </MDBBtn>
                 )}
 
+
+                <MDBBtn className="mb-4 px-5 bt" color="dark" size="lg">
+                  Login
+                </MDBBtn>
                 <a
                   className="small text-muted"
                   href="/forgot"
-                  style={{ textAlign: "center" }}
+                  style={{ textAlign: "center"}}
                 >
                   Forgot password?
                 </a>
@@ -139,7 +149,9 @@ export const ClientLogin = () => {
                   style={{ color: "#393f81", textAlign: "center" }}
                 >
                   Don't have an account?{" "}
-                  <a href="/ClientSignUp" style={{ color: "#393f81" }}>
+
+                  <a href="/ClientSignUp" style={{ color: "#A31ACB" }}>
+
                     Register here
                   </a>
                 </p>

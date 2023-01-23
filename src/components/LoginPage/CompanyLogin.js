@@ -11,6 +11,9 @@ import {
   MDBIcon,
   MDBInput,
 } from "mdb-react-ui-kit";
+
+import './Login.css'
+import Telecommuting from "./Assets/Telecommuting.png";
 import company from "./Assets/company.jpg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -42,7 +45,7 @@ export const CompanyLogin = () => {
           <MDBRow className="g-0">
             <MDBCol md="6">
               <MDBCardImage
-                src={company}
+                src={Telecommuting}
                 alt="login form"
                 className="rounded-start w-100"
               />
@@ -85,6 +88,7 @@ export const CompanyLogin = () => {
                   onChange={passwordHandler}
                 />
 
+
                 <MDBBtn
                   onClick={LoginHandler}
                   className="mb-4 px-5"
@@ -105,7 +109,9 @@ export const CompanyLogin = () => {
                   style={{ color: "#393f81", textAlign: "center" }}
                 >
                   Don't have an account?{" "}
-                  <a href="/ClientSignUp" style={{ color: "#393f81" }}>
+
+                  <a href="/ClientSignUp" style={{ color: "#FF7B54" }}>
+
                     Register here
                   </a>
                 </p>

@@ -8,8 +8,8 @@ const About = () => {
       <div class='first'>
         <div class='container py-5'>
           <div class='row h-100 align-items-center py-5'>
-            <div class='col-lg-6'>
-              <h1 class='display-4'>RecruitlQ</h1>
+            <div class='col-lg-6 Reqruite'>
+              <h1 class='display-4 '>RecruitlQ</h1>
               <p class='lead text-muted mb-0'>
               Revolutionizing Recruitment: Unleash Your Potential with RecruitIQ
               </p>
@@ -34,7 +34,7 @@ const About = () => {
               <p class='font-italic text-muted mb-4'>
               Our vision at RecruitIQ is to revolutionize the recruitment industry by providing innovative solutions that empower companies to easily find and hire the best talent for their organization.
               </p>
-              <a href='#' class='btn btn-light px-5 rounded-pill shadow-sm'>
+              <a  href='#' class='btn btn-light px-5 rounded-pill shadow-sm learnmore'>
                 Learn More
               </a>
             </div>
@@ -60,7 +60,7 @@ const About = () => {
               <p class='font-italic text-muted mb-4'>
               The role of job seekers in RecruitIQ is to create and maintain an up-to-date profile, and to apply for job opportunities that align with their skills, experience and career goals. Additionally, job seekers can use RecruitIQ's tools and resources to improve their job search strategies and increase their chances of being selected for an interview.
               </p>
-              <a href='#' class='btn btn-light px-5 rounded-pill shadow-sm'>
+              <a href='#' class='btn btn-light px-5 rounded-pill shadow-sm learnmore'>
                 Learn More
               </a>
             </div>

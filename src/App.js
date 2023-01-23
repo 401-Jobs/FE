@@ -9,9 +9,9 @@ import AboutUsPage from "./screens/AboutUsPage";
 import { ResetPassword } from "./screens/ResetPassword";
 import ClientPreview from "./components/ClientPreview/ClientPreview";
 import UploadForm from "./components/UpdateForm/UpdateForm";
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
-import {LoginPage} from './screens/LoginPage.js'
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import { LoginPage } from "./screens/LoginPage.js";
 import ClientProfilePage from "./screens/ClientProfilePage";
 import Candidates from "./components/Candidates/Candidates";
 import CompanyDetails from "./components/company/Infromations/CompanyDetails";
@@ -23,16 +23,16 @@ import { SignUpPage } from "./screens/SignUpPage";
 
 import React , {useContext, useEffect} from 'react';
 
-
-
+import { JoobSeekerContext } from "./components/Context/joobseeker";
 
 function App() {
-
+  const { jobseekerInterviews } = useContext(JoobSeekerContext);
+  useEffect(() => {
+    jobseekerInterviews();
+  }, []);
   return (
     <div>
       <ScrollToTop />
-
-
       <Router>
         <Header />
 
@@ -83,12 +83,14 @@ function App() {
                   <Route exact path="/companyDetails" element={<CompanyDetails />} />
         </Routes>
         <Routes>
+
           <Route exact path="/dashboardCompany" element={<DashboardCompany />} />
         </Routes>
         <Routes>
           <Route exact path="/candidates" element={<Candidates />} />
         </Routes>
       <Routes>
+
 
         <Footer />
       </Router>

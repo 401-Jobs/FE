@@ -20,8 +20,10 @@ const Section3 = () => {
             }}
           >
             <h2>Jobseeker</h2>
-            <img src={sign} alt="x" width={200} />
-            <h5>Sign up &gt; Sign in</h5>
+
+            <img src={sign} alt='x' width={200} />
+            <h5> 1- Sign up &gt; Sign in</h5>
+
           </section>
           <section
             style={{
@@ -31,8 +33,10 @@ const Section3 = () => {
             }}
           >
             <h2>Company</h2>
-            <img src={sign} alt="y" width={200} />
-            <h5>Sign up &gt; Sign in</h5>
+
+            <img src={sign} alt='y' width={200}/>
+            <h5>1-Sign up &gt; Sign in</h5>
+
           </section>
         </div>
       </section>
@@ -45,8 +49,10 @@ const Section3 = () => {
               textAlign: "center",
             }}
           >
-            <img src={application} alt="x" width={200} />
-            <h5>Fill your profile</h5>
+
+            <img src={application} alt='x' width={200} />
+            <h5>2- Fill your profile</h5>
+
           </section>
           <section
             style={{
@@ -55,8 +61,10 @@ const Section3 = () => {
               textAlign: "center",
             }}
           >
-            <img src={compare} alt="y" width={200} />
-            <h5>Compare profile with other</h5>
+
+            <img src={compare} alt='y' width={200} />
+            <h5>3-Compare profile with other</h5>
+
           </section>
           <div className="v2"></div>
           <section
@@ -66,8 +74,10 @@ const Section3 = () => {
               textAlign: "center",
             }}
           >
-            <img src={application} alt="y" width={200} />
-            <h5>Fill your profile</h5>
+
+            <img src={application} alt='y' width={200} />
+            <h5>2-Fill your profile</h5>
+
           </section>
           <section
             style={{
@@ -76,8 +86,10 @@ const Section3 = () => {
               textAlign: "center",
             }}
           >
-            <img src={search} alt="y" width={200} />
-            <h5>Search for candidates</h5>
+
+            <img src={search} alt='y' width={200} />
+            <h5>3-Search for candidates</h5>
+
           </section>
         </div>
       </section>
@@ -90,8 +102,10 @@ const Section3 = () => {
               textAlign: "center",
             }}
           >
-            <img src={wait} alt="x" width={200} />
-            <h5>Waiting for interview</h5>
+
+            <img src={wait} alt='x' width={200} />
+            <h5>4-Waiting for interview</h5>
+
           </section>
           <section
             style={{
@@ -100,11 +114,14 @@ const Section3 = () => {
               textAlign: "center",
             }}
           >
-            <img src={arrange} alt="y" width={200} />
-            <h5>Arrange interview</h5>
+
+            <img src={arrange} alt='y' width={200} />
+            <h5>4-Arrange interview</h5>
+
           </section>
         </div>
       </section>
+
     </>
   );
 };

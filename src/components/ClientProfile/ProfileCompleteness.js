@@ -39,6 +39,19 @@ const ProfileCompleteness = () => {
         >
           {progress}%
         </div>
+
+          <div className='progress rounded-pill' style={{width:"400px",margin:'0 auto',height: "25px",fontSize:'17px'}}>
+            <div
+              role='progressbar'
+              aria-valuenow='55'
+              aria-valuemin='0'
+              aria-valuemax='100'
+              style={{width:`${progress}%`,background:'#EBDC3E'}}
+              className='progress-bar'
+            >
+              {progress}%
+            </div>
+
       </div>
       <div style={{ width: "400px" }} className="all_fields">
         <p style={{ textDecorationLine: "line-through" }}>

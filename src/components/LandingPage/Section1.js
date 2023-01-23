@@ -23,7 +23,7 @@ const Section1 = () => {
           <p style={{ maxWidth: "200px", color: "white" }}>
             If you are a jobseeker sign up here...
           </p>
-          <button className="button accept-btn" onClick={seekerSignUP}>
+          <button className="button accept-btn" style={{background:'#ffc107'}} onClick={seekerSignUP}>
             Sign up
           </button>
         </div>
@@ -38,7 +38,7 @@ const Section1 = () => {
           <p style={{ maxWidth: "200px", color: "white" }}>
             If you are an employer sign up here...
           </p>
-          <button className="button accept-btn" onClick={companySignUP}>
+          <button className="button accept-btn" style={{background:'rgb(248 56 0)'}} onClick={companySignUP}>
             Sign up
           </button>
         </div>
