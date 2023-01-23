@@ -31,54 +31,56 @@ function App() {
   return (
     <div>
       <ScrollToTop />
-<Router>
-      <Header />
-      <Routes>
-        <Route exact path="/forgot" element={< ForgotPasswordPage />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/client-profile" element={< ClientProfilePage />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/update-form" element={< UploadForm />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/preview-client" element={< ClientPreview />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/about" element={< AboutUsPage />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/email-varification" element={< EmailVerificationPage />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/contact" element={< ContactusPage />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/resetPassword" element={< ResetPassword />} />
-      </Routes>
-      <Routes>
-          <Route exact path="/CompareCandidates" element={<CompareCandidatesPage />} />
-        </Routes>
-      <Routes>
-          <Route exact path="/clientLogin" element={<LoginPage />} />
-        </Routes>
-      <Routes>
-          <Route exact path="/companyLogin" element={<LoginPage />} />
-        </Routes>
-      <Routes>
+
+
+      <Router>
+        <Header />
+
+        <Routes>
           <Route exact path="/" element={<LandingPage />} />
+
+          <Route exact path="/CompanySignUp" element={<SignUpPage />} />
+
+          <Route exact path="/ClientSignUp" element={<SignUpPage />} />
+
+          <Route
+            exact
+            path="/email-varification"
+            element={<EmailVerificationPage />}
+          />
+
+          <Route path="/clientLogin" element={<LoginPage />} />
+
+          <Route path="/companyLogin" element={<LoginPage />} />
+
+          <Route exact path="/forgot" element={<ForgotPasswordPage />} />
+
+          <Route exact path="/resetPassword" element={<ResetPassword />} />
+
+          {/* /*************************JOB SEEKER ****************************************/}
+
+          <Route path="/client-profile" element={<ClientProfilePage />} />
+
+          <Route exact path="/preview-client" element={<ClientPreview />} />
+
+          <Route
+            exact
+            path="/CompareCandidates"
+            element={<CompareCandidatesPage />}
+          />
+
+          {/* /************************* END JOB SEEKER ****************************************/}
+
+          <Route path="/contact" element={<ContactusPage />} />
+
+          <Route path="/about" element={<AboutUsPage />} />
+
+          {/* 
+          <Route exact path="/update-form" element={<UploadForm />} />
+        */}
         </Routes>
-
-        <Routes>
-          <Route exact path="/CompanySignUp" element={<SignUpPage/>} />
-        </Routes>
-
-        <Routes>
-
-          <Route exact path="/ClientSignUp" element={<SignUpPage/>} />
-
-          <Route exact path="/companyDetails" element={<CompanyDetails />} />
+        
+                  <Route exact path="/companyDetails" element={<CompanyDetails />} />
         </Routes>
         <Routes>
           <Route exact path="/dashboardCompany" element={<DashboardCompany />} />
@@ -87,10 +89,7 @@ function App() {
           <Route exact path="/candidates" element={<Candidates />} />
         </Routes>
       <Routes>
-          <Route exact path="/" element={<LandingPage />} />
-          <Route path="/contact" element={<ContactusPage />} />
-        </Routes>
-        
+
         <Footer />
       </Router>
     </div>

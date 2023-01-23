@@ -58,7 +58,7 @@ export function AuthWrapper({ children }) {
   async function ResetPassword(userInfo) {
     const url =
       process.env.REACT_APP_BACKEND_URL + "/auth/password-reset-complete/";
-    const res = await axios.post(url, userInfo);
+    const res = await axios.patch(url, userInfo);
     console.log(res.data);
     SetGlobalState({
       ...globalState,

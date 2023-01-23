@@ -10,11 +10,9 @@ import { store } from "./redux/store";
 import { JoobSeekerWrapper } from "./context/joobseeker";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <AuthWrapper>
-      <JoobSeekerWrapper>
-        <App />
-      </JoobSeekerWrapper>
-    </AuthWrapper>
-  </React.StrictMode>
+  <AuthWrapper>
+    <JoobSeekerWrapper>
+      <App />
+    </JoobSeekerWrapper>
+  </AuthWrapper>
 );
