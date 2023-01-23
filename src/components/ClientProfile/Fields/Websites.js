@@ -16,11 +16,11 @@ function MyVerticallyCenteredModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <WebsitesForm />
+          <WebsitesForm onHide={props.onHide} />
         </Modal.Body>
         <Modal.Footer>
           {/* <Button onClick={props.onHide}>Close</Button> */}
-          <Button onClick={props.onHide}>ADD</Button>
+          {/* <Button onClick={props.onHide}>ADD</Button> */}
         </Modal.Footer>
       </Modal>
     );
