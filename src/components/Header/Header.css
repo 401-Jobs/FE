@@ -1,0 +1,29 @@
+/* .links:hover {
+    background-color:#7952B3;
+    box-shadow: 0px 15px 20px #281870;
+    color: #fff;
+    transform: translateY(-5px); 
+    transition-duration: 0.5s;
+  } */
+
+
+
+.links{
+    padding:5px 15px;
+    border: 1px solid #281870;
+    border-radius: 10px;
+    background-color: #ac9ce1;
+    transition: all 0.5s;
+    color: white;
+}
+.links:hover{
+    background-color: lightskyblue;
+    transition: all 0.5s;
+    transform: translateY(5px); 
+}
+
+
+.test {
+    right: 60%;
+    left: auto;
+}

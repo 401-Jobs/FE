@@ -9,8 +9,56 @@ import {
   MDBRow,
   MDBCol,
 } from "mdb-react-ui-kit";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth";
+import { useState } from "react";
+import Spinner from "react-bootstrap/Spinner";
 
 export const Reset = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const param1 = queryParams.get("token");
+  const param2 = queryParams.get("udb64");
+
+  const [isLoading, setisLoading] = useState(false);
+
+  const { ResetPassword } = useContext(AuthContext);
+
+  const [pass, setPass] = useState("");
+  const [conf, setConf] = useState("");
+
+  const navigate = useNavigate();
+
+  const [message, setMessage] = useState("");
+
+  const Handler = async (e) => {
+    if (pass != conf) {
+      return;
+    }
+    console.log(pass);
+    console.log(conf);
+    console.log(param1);
+    console.log(param2);
+
+    let obj = {
+      password: pass,
+      token: param1,
+      uidb64: param2,
+    };
+
+    try {
+      setisLoading(true);
+      await ResetPassword(obj);
+      setMessage(obj.message);
+      setisLoading(false);
+      navigate("/");
+    } catch (error) {
+      setMessage(error.response.statusText);
+      setisLoading(false);
+    }
+  };
+
   return (
     <MDBContainer fluid className="my-5">
       <MDBRow className="g-0 align-items-center">
@@ -31,17 +79,38 @@ export const Reset = () => {
                 label="Enter new password"
                 id="form3"
                 type="password"
+                onChange={(e) => {
+                  setPass(e.target.value);
+                }}
               />
               <MDBInput
                 wrapperClass="mb-4"
                 label="Confirm new password"
                 id="form4"
                 type="password"
+                onChange={(e) => {
+                  setConf(e.target.value);
+                }}
               />
+
 
               <MDBBtn style={{backgroundColor:'blueviolet'}} className="w-70 mb-4 mt-3" size="md">
                 Reset
               </MDBBtn>
+
+              {isLoading ? (
+                <div style={{ textAlign: "center", alignContent: "center" }}>
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden ">Loading...</span>
+                  </Spinner>
+                </div>
+              ) : !message ? (
+                <MDBBtn className="w-100 mb-4 mt-3" size="md" onClick={Handler}>
+                  Reset Password
+                </MDBBtn>
+              ) : (
+                message
+              )}
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
