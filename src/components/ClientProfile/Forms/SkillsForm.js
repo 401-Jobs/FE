@@ -26,7 +26,7 @@ const SkillsForm = (props) => {
     props.onHide()
   }
 
-  console.log(skills);
+  // console.log(skills);
   return (
     <div>
 <Form onSubmit={handelSubmit}>
@@ -40,9 +40,10 @@ const SkillsForm = (props) => {
         
       </div>
       
-      {/* <Button variant="primary" type="submit">
+      <Button variant="primary" onClick={props.submitHandler}>
         ADD
-      </Button> */}
+      </Button>
+      <Button   type="submit" >Save</Button>
     </Form>
     </div>
     

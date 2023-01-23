@@ -12,7 +12,7 @@ const PersonalInfoForm = (props) => {
 
   let { firstName, country, lastName, jobtitle, yearsExperience, age } =
     userInfo;
-  console.log();
+
 
   const FormHandler = async (e) => {
     e.preventDefault();

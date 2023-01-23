@@ -4,14 +4,38 @@ import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../../context/auth';
 import { JoobSeekerContext } from '../../../context/joobseeker';
 
-const MediaForm = () => {
-  const { userMedia, updateJobseekerContact } = useContext(JoobSeekerContext);
+const MediaForm = (props) => {
+  const { userMedia, updateJobseekerMedia } = useContext(JoobSeekerContext);
   const { token } = useContext(AuthContext);
-  let{video,image}=userMedia
-  console.log(userMedia)
+
+  
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    console.log(e.target.video.files[0])
+    console.log(e.target.image.files[0])
+    try{
+        const data = new FormData();
+        data.append('video', e.target.video.files[0]);
+        data.append('image', e.target.image.files[0]);
+    let info={
+      
+
+        "video":e.target.video.files[0],
+        "image":e.target.image.files[0],
+
+    }
+    await updateJobseekerMedia(data,token)
+  }
+  catch{
+    console.log("error");
+  }
+    props.onHide()
+    
+
+  };
 
   return (
-    <Form>
+    <Form onSubmit={submitHandler}>
         <div className='media_div'>
       <div className='name_div'>
       <Form.Group controlId="formFile" className="mb-3">
@@ -26,9 +50,9 @@ const MediaForm = () => {
       </Form.Group>
       </div>
       </div>
-      {/* <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit">
         ADD
-      </Button> */}
+      </Button>
     </Form>
   )
 }
