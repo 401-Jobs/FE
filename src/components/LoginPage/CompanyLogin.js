@@ -11,7 +11,8 @@ import {
   MDBIcon,
   MDBInput,
 } from "mdb-react-ui-kit";
-import company from "./Assets/company.jpg";
+import './Login.css'
+import Telecommuting from "./Assets/Telecommuting.png";
 export const CompanyLogin = () => {
   return (
     <>
@@ -20,7 +21,7 @@ export const CompanyLogin = () => {
           <MDBRow className="g-0">
             <MDBCol md="6">
               <MDBCardImage
-                src={company}
+                src={Telecommuting}
                 alt="login form"
                 className="rounded-start w-100"
               />
@@ -59,7 +60,7 @@ export const CompanyLogin = () => {
                   size="lg"
                 />
 
-                <MDBBtn className="mb-4 px-5" color="dark" size="lg">
+                <MDBBtn className="mb-4 px-5 bt" color="dark" size="lg">
                   Login
                 </MDBBtn>
                 <a
@@ -74,7 +75,7 @@ export const CompanyLogin = () => {
                   style={{ color: "#393f81", textAlign: "center" }}
                 >
                   Don't have an account?{" "}
-                  <a href="#!" style={{ color: "#393f81" }}>
+                  <a href="#!" style={{ color: "#FF7B54" }}>
                     Register here
                   </a>
                 </p>

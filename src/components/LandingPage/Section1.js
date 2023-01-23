@@ -12,7 +12,7 @@ const Section1 = () => {
             <p style={{ maxWidth: '200px', color: 'white' }}>
               If you are a jobseeker sign up here...
             </p>
-            <button class='button accept-btn'>Sign up</button>
+            <button class='button accept-btn' style={{background:'#ffc107'}}>Sign up</button>
           </div>
           <div>
             <img src={jobseeker} alt='img'  width={300} />
@@ -25,7 +25,7 @@ const Section1 = () => {
             <p style={{ maxWidth: '200px', color: 'white' }}>
               If you are an employer sign up here...
             </p>
-            <button class='button accept-btn'>Sign up</button>
+            <button class='button accept-btn' style={{background:'rgb(248 56 0)'}}>Sign up</button>
           </div>
           <div>
             <img src={employer} alt='img' width={300} />

@@ -45,7 +45,7 @@ const Header = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        <Button variant="light" style={{border:"1px solid black",borderRadius:'15px'}}>Sign In</Button>{' '}
+        <Button variant="light" style={{border:"2px solid darkred",borderRadius:'15px',color:'darkred', textTransform:'unset'}}>Sign In</Button>{' '}
       </Container>
     </Navbar>
     </div>

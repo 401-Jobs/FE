@@ -10,9 +10,9 @@ const InterviewsDetails = () => {
   const handleShow = () => setShow(true);
   return (
     <>
-      <button className='details_btn' variant="primary" onClick={handleShow}>
-        Details
-      </button>
+      {/* <button className='details_btn' onClick={handleShow} > */}
+      <i onClick={handleShow} class="fa fa-ellipsis-h details" aria-hidden="true" style={{marginLeft:'20px'}}></i>
+      {/* </button> */}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -31,8 +31,8 @@ const InterviewsDetails = () => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <button className='accept_btn'><i class="fa-solid fa-check"></i>Accept</button>
-          <button className='reject_btn'><i class="fa-solid fa-xmark" style={{paddingRight:'5px'}}></i>Reject</button>
+          <button className='accept_btn'><i class="fa-solid fa-check"></i></button>
+          <button className='reject_btn'><i class="fa-solid fa-xmark" style={{paddingRight:'5px',gap:'10px'}}></i></button>
         </Modal.Footer>
       </Modal>
     </>

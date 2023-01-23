@@ -1,3 +1,17 @@
 body {
     background-color: hsl(0, 0%, 96%);
   }
+
+.paragraph{
+  color: gray !important;
+  font-weight:600;
+}
+
+.paragraph span{
+  color: #D78BFF !important
+}
+
+.button111{
+  margin-left: 40%;
+  background-color: #D78BFF;
+}

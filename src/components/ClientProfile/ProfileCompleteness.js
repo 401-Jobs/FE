@@ -16,7 +16,7 @@ const ProfileCompleteness = () => {
               aria-valuenow='55'
               aria-valuemin='0'
               aria-valuemax='100'
-              style={{width:`${progress}%`}}
+              style={{width:`${progress}%`,background:'#EBDC3E'}}
               className='progress-bar'
             >
               {progress}%
