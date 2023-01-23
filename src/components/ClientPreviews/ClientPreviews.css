@@ -1,0 +1,79 @@
+.main_container{
+    background-color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin:100px 0; */
+    padding: 30px 0
+    
+}
+.left_section{
+    display: flex;
+    flex-direction: column;
+    background-color: #d4ccec;
+    min-height: 100vh;
+    max-width: 350px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+}
+.right_section{
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f3f3;
+    min-height: 850px;
+    max-width: 500px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+}
+.right_up_section{
+    display: flex;
+    flex-direction: column;
+    background-color: none;
+    /* min-height: 100px; */
+}
+.right_middle_section{
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f3f3;
+    /* min-height: 300px; */
+}
+.right_down_section{
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f3f3;
+    /* min-height: 300px; */
+}
+
+.infor{
+    display: flex;
+    flex-direction: column;
+    /* margin:10px 0; */
+}
+.nameAge{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.jobYears{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.CountCity{
+    display: flex;
+    flex-direction: row;
+    justify-content:start;
+}
+.Box{
+    width: 100%;
+    zoom: 0.70;  
+    -moz-transform: scale(0.65);
+    display: flex;
+    justify-content: space-around;
+    gap: 8vw;
+    padding: 3vw;
+    background-color: #fff;
+}

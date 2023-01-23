@@ -21,12 +21,13 @@
 }
 .view_btn{
     padding:5px 35px;
-    border: 1px solid #281870;
+    border: 1px solid #b327d6;
     border-radius: 10px;
-    background-color: #ac9ce1;
+    background-color: rgb(180, 85, 224);
     transition: all 0.5s;
+    font-weight: 600;
 }
 .view_btn:hover{
-    background-color: lightskyblue;
+    background-color: rgb(104, 47, 104);
     transition: all 0.5s;
 }

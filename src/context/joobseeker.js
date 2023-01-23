@@ -13,6 +13,11 @@ export function JoobSeekerWrapper({ children }) {
     userWork: [{}],
     userMedia: {},
     userDetails: {},
+    summary:{},
+    skills:{},
+    linkedin:{},
+    github:{},
+    porto:{},
     /********************* */
     jobseekerinterviews: {},
     jobseekerviews: {},
@@ -62,9 +67,13 @@ export function JoobSeekerWrapper({ children }) {
         userEducation: res.data["userEducation"],
         userWork: res.data["userWork"],
         userMedia: res.data["userMedia"],
-        summary: res.data["userDetails"]["summary"],
-        skills: res.data["userDetails"]["skills"],
-        websites: res.data["userDetails"]["websites"],
+
+        summary:res.data["userDetails"]["summary"],
+        skills:res.data["userDetails"]["skills"],
+        linkedin:res.data["userDetails"]["linkedin"],
+        github:res.data["userDetails"]["github"],
+        porto:res.data["userDetails"]["porto"],
+
       });
     } catch {
       console.log("hello");
@@ -247,7 +256,7 @@ export function JoobSeekerWrapper({ children }) {
     );
     setGlobal({
       ...global,
-      updatejobseekerMedia: res.data,
+      userMedia: res.data["massage"],
     });
     console.log(res.data);
   }
@@ -283,7 +292,12 @@ export function JoobSeekerWrapper({ children }) {
     );
     setGlobal({
       ...global,
-      websites: res.data["websites"],
+      linkedin: res.data["websites"]["linkedin"],
+      github: res.data["websites"]["github"],
+      porto: res.data["websites"]["porto"],
+
+     
+
     });
     console.log(res.data);
   }

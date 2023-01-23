@@ -72,7 +72,7 @@ export const Reset = () => {
             }}
           >
             <MDBCardBody className="p-5 shadow-5 text-center">
-              <h2 className="fw-bold mb-5">Reset Your Password</h2>
+              <h2 style={{color:'grey'}} className="fw-bold mb-5">Reset Your Password</h2>
 
               <MDBInput
                 wrapperClass="mb-4"
@@ -92,6 +92,12 @@ export const Reset = () => {
                   setConf(e.target.value);
                 }}
               />
+
+
+              {/* <MDBBtn style={{backgroundColor:'blueviolet'}} className="w-70 mb-4 mt-3" size="md">
+                Reset
+              </MDBBtn> */}
+
               {isLoading ? (
                 <div style={{ textAlign: "center", alignContent: "center" }}>
                   <Spinner animation="border" role="status">
@@ -99,8 +105,8 @@ export const Reset = () => {
                   </Spinner>
                 </div>
               ) : !message ? (
-                <MDBBtn className="w-100 mb-4 mt-3" size="md" onClick={Handler}>
-                  Reset Password
+                <MDBBtn className="w-70 mb-4 mt-3" size="md" style={{backgroundColor:'blueviolet',textTransform:'unset'}} onClick={Handler}>
+                  Reset
                 </MDBBtn>
               ) : (
                 message

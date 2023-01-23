@@ -12,3 +12,23 @@
   font-weight: 400;
   color: hsl(52, 0%, 98%);
 }
+
+.details_botn{
+    /* padding:5px 15px; */
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(32, 112, 178) !important;
+    transition: all 0.5s;
+    font-weight:700;
+    margin-top: 30px;
+    justify-items: center;
+    margin-left: 30%;
+    width: 40%;
+    
+    
+}
+.details_botn:hover{
+    background-color: darkblue !important;
+    transition: all 0.5s;
+}
+

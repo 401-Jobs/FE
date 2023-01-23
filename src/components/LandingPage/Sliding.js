@@ -11,11 +11,11 @@ const Sliding = () => {
     <Carousel className="carousel-container" fade>
       <Carousel.Item >
         <img
-          className="d-block w-100 carousel-img"
+          className="d-block w-100 carousel-img "
           src={x}
           alt="First slide"
         />
-        <Carousel.Caption> 
+        <Carousel.Caption className="overlay"> 
           <h3>Google</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>

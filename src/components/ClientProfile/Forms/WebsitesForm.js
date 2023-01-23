@@ -3,12 +3,34 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../../context/auth';
 import { JoobSeekerContext } from '../../../context/joobseeker';
-const WebsitesForm = () => {
-  const { userDetails, updateJobseekerLinks } = useContext(JoobSeekerContext);
+const WebsitesForm = (props) => {
+  const { linkedin,github,porto, updateJobseekerLinks } = useContext(JoobSeekerContext);
   const { token } = useContext(AuthContext);
-  let {linkedin,github,porto}=userDetails
+  let  handelSubmit=async(e)=>{
+    e.preventDefault()
+    try{
+    let obj={
+      "websites":{
+        "linkedin":e.target.linkedin.value,
+        "github":e.target.github.value, 
+        "porto":e.target.porto.value, 
+
+      }
+      }
+
+    
+   await updateJobseekerLinks(obj,token)
+  }
+  catch{
+    console.log("error");
+  }
+    props.onHide()
+  }
+
+  
+
   return (
-    <Form>
+    <Form onSubmit={handelSubmit}>
     <div className='form_div'>
     <div style={{width:"80%", margin:"auto"}}>
   <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -20,9 +42,9 @@ const WebsitesForm = () => {
   </Form.Group>
     </div>
   </div>
-  {/* <Button variant="primary" type="submit">
+  <Button variant="primary" type="submit">
     ADD
-  </Button> */}
+  </Button>
 </Form>
   )
 }
