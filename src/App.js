@@ -7,13 +7,16 @@ import EmailVerificationPage from "./screens/EmailVerificationPage";
 import ContactusPage from "./screens/ContactusPage";
 import AboutUsPage from "./screens/AboutUsPage";
 import { ResetPassword } from "./screens/ResetPassword";
-import ClientPreview from "./components/ClientPreview/ClientPreview";
 import UploadForm from "./components/UpdateForm/UpdateForm";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { LoginPage } from "./screens/LoginPage.js";
 import ClientProfilePage from "./screens/ClientProfilePage";
+
+import ClientPreviews from "./components/ClientPreviews/ClientPreviews";
+
 import Candidates from "./components/Candidates/Candidates";
+
 import CompanyDetails from "./components/company/Infromations/CompanyDetails";
 import DashboardCompany from "./components/company/Dashboard/DashboardCompany";
 import { CompareCandidatesPage } from "./screens/CompareCandidatesPage";
@@ -55,12 +58,12 @@ function App() {
 
           <Route path="/client-profile" element={<ClientProfilePage />} />
 
-          <Route exact path="/preview-client" element={<ClientPreview />} />
+          <Route exact path="/preview" element={<ClientPreviews />} />
 
           <Route
             exact
             path="/CompareCandidates"
-            element={<CompareCandidatesPage />}
+            element={<ClientPreviews />}
           />
 
           {/************************* END JOB SEEKER ****************************************/}

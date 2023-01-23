@@ -1,35 +1,32 @@
 import React from 'react'
-import { data } from './clientData'
+import {client_prev_data} from './client_prev_data.js'
 import Card from 'react-bootstrap/Card'
 
-const WorkExperience = () => {
+const Edu = () => {
   return (
     <div>
-      <h5>Work Experience</h5>
-      <Card style={{ width: '40rem',border:"1px solid #7952B3" }}>
+        <p style={{fontSize:'x-large'}}>Education</p>
         <div>
-          {data[0]['experience'].map((item) => {
+          {client_prev_data[0]['education'].map((item) => {
             return (
               <Card.Body>
-                <Card.Title>{item.title}</Card.Title>
+                <p style={{fontSize:'large'}}>{item.institute}</p>
                 <Card.Text>
                   <div
                     style={{ display: 'flex', justifyContent: 'space-between' }}
                   >
-                    <p>{item.company}</p>
+                    <p>{item.degree} in {item.major}</p>
                     <p>
                       {item.start} - {item.end}
                     </p>
                   </div>
-                  <p>{item.description}</p>
                 </Card.Text>
               </Card.Body>
             )
           })}
         </div>
-      </Card>
     </div>
   )
 }
 
-export default WorkExperience
+export default Edu

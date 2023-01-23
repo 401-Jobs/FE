@@ -1,4 +1,4 @@
-export const data=[
+export const client_prev_data=[
     {
         personalInfo: [{
             name:'Mohammad Alfayoume',
@@ -6,7 +6,7 @@ export const data=[
             country:'Jordan',
             city: 'Amman',
             yearsOfExperience:1,
-            picture:require('./assets/moh.jpg'),
+            picture:require('./moh.jpg'),
             jobTitle:'Software and Quality Engineer'
         }],
         contact: [{
@@ -26,6 +26,13 @@ export const data=[
             major:"Mechanical Engineering",
             start:2017,
             end:2022,
+        },{
+            _id:'2',
+            institute:'Jordan of university',
+            degree:"master degree",
+            major:"Electrical Engineering",
+            start:2019,
+            end:2022,
         }],
         experience: [{
             title:'PV System Designer',
@@ -41,8 +48,6 @@ export const data=[
             description: 'I designed on-grid PV system for Mosque and used several software to design the PV system projects.'
         }],
         // video:require('./assets/personal_brand_mohammad_alfayoume.mp4'),
-
-        languages: ['Arabic','English'],
         skills: ['React','Node js','Bootstrap','Express','MongoDB','Mongoose','Docker','Django','Next js','Git','Github','JS','HTML','CSS']
     }
 ]
