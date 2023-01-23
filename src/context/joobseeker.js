@@ -13,6 +13,11 @@ export function JoobSeekerWrapper({ children }) {
     userWork: [{}],
     userMedia: {},
     userDetails: {},
+    summary:{},
+    skills:{},
+    linkedin:{},
+    github:{},
+    porto:{},
     /********************* */
     jobseekerinterviews: {},
     jobseekerviews: {},
@@ -37,7 +42,9 @@ export function JoobSeekerWrapper({ children }) {
     createJobseekerWorkXP,
     updateJobseekerWorkXP,
     updateJobseekerMedia,
-    updateJobseekerDetails,
+    updateJobseekerSummry,
+    updateJobseekerLinks,
+    updateJobseekerSkills,
     updateJobseekerInterview,
   });
 
@@ -60,16 +67,23 @@ export function JoobSeekerWrapper({ children }) {
         userEducation: res.data["userEducation"],
         userWork: res.data["userWork"],
         userMedia: res.data["userMedia"],
-        userDetails: res.data["userDetails"],
+        summary:res.data["userDetails"]["summary"],
+        skills:res.data["userDetails"]["skills"],
+        linkedin:res.data["userDetails"]["linkedin"],
+        github:res.data["userDetails"]["github"],
+        porto:res.data["userDetails"]["porto"],
+
+
+
       });
     } catch {
       console.log("hello");
     }
   }
-  async function jobseekerInterviews() {
+  async function jobseekerInterviews(token) {
     const config = {
       headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDgzNjQzLCJpYXQiOjE2NzQzOTcyNDMsImp0aSI6Ijg3YjFiMDlkNTRkODRmZTc5ODM3Njg2NDdjMDZiM2U5IiwidXNlcl9pZCI6NH0.x8NNyLoZNVkS1-L3k8kAtoYt17qDe6g-PznG80JExgE`,
+        Authorization: `Bearer ${token}`,
       },
     };
     let res = await axios.get(
@@ -82,9 +96,8 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function jobseekerViews() {
-    let token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDgzNjQzLCJpYXQiOjE2NzQzOTcyNDMsImp0aSI6Ijg3YjFiMDlkNTRkODRmZTc5ODM3Njg2NDdjMDZiM2U5IiwidXNlcl9pZCI6NH0.x8NNyLoZNVkS1-L3k8kAtoYt17qDe6g-PznG80JExgE";
+  async function jobseekerViews(token) {
+    
     const config = {
       Headers: {
         Authorization: `Bearer ${token}`,
@@ -100,9 +113,8 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function jobseekerAll() {
-    let token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDgzNjQzLCJpYXQiOjE2NzQzOTcyNDMsImp0aSI6Ijg3YjFiMDlkNTRkODRmZTc5ODM3Njg2NDdjMDZiM2U5IiwidXNlcl9pZCI6NH0.x8NNyLoZNVkS1-L3k8kAtoYt17qDe6g-PznG80JExgE";
+  async function jobseekerAll(token) {
+    
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -118,9 +130,8 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function updateJobseekerPF(pf) {
-    let token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDgzNjQzLCJpYXQiOjE2NzQzOTcyNDMsImp0aSI6Ijg3YjFiMDlkNTRkODRmZTc5ODM3Njg2NDdjMDZiM2U5IiwidXNlcl9pZCI6NH0.x8NNyLoZNVkS1-L3k8kAtoYt17qDe6g-PznG80JExgE";
+  async function updateJobseekerPF(pf,token) {
+  
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -133,7 +144,7 @@ export function JoobSeekerWrapper({ children }) {
     );
     setGlobal({
       ...global,
-      updatejobseekerPF: res.data,
+      userInfo: res.data["userInfo"],
     });
     console.log(res.data);
   }
@@ -151,13 +162,12 @@ export function JoobSeekerWrapper({ children }) {
     );
     setGlobal({
       ...global,
-      jobseekerContact: res.data,
+      userContact : res.data["userContact"],
     });
     console.log(res.data);
   }
-  async function createJobseekerEducation(pf) {
-    let token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDgzNjQzLCJpYXQiOjE2NzQzOTcyNDMsImp0aSI6Ijg3YjFiMDlkNTRkODRmZTc5ODM3Njg2NDdjMDZiM2U5IiwidXNlcl9pZCI6NH0.x8NNyLoZNVkS1-L3k8kAtoYt17qDe6g-PznG80JExgE";
+  async function createJobseekerEducation(pf,token) {
+    
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -174,9 +184,7 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function updateJobseekerEducation(pf) {
-    let token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDgzNjQzLCJpYXQiOjE2NzQzOTcyNDMsImp0aSI6Ijg3YjFiMDlkNTRkODRmZTc5ODM3Njg2NDdjMDZiM2U5IiwidXNlcl9pZCI6NH0.x8NNyLoZNVkS1-L3k8kAtoYt17qDe6g-PznG80JExgE";
+  async function updateJobseekerEducation(pf,token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -189,13 +197,12 @@ export function JoobSeekerWrapper({ children }) {
     );
     setGlobal({
       ...global,
-      updatejobseekerEducation: res.data,
+      userEducation: [res.data["userEducation"]],
     });
     console.log(res.data);
   }
-  async function createJobseekerWorkXP(pf) {
-    let token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDgzNjQzLCJpYXQiOjE2NzQzOTcyNDMsImp0aSI6Ijg3YjFiMDlkNTRkODRmZTc5ODM3Njg2NDdjMDZiM2U5IiwidXNlcl9pZCI6NH0.x8NNyLoZNVkS1-L3k8kAtoYt17qDe6g-PznG80JExgE";
+  async function createJobseekerWorkXP(pf,token) {
+
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -212,9 +219,7 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function updateJobseekerWorkXP(pf) {
-    let token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDgzNjQzLCJpYXQiOjE2NzQzOTcyNDMsImp0aSI6Ijg3YjFiMDlkNTRkODRmZTc5ODM3Njg2NDdjMDZiM2U5IiwidXNlcl9pZCI6NH0.x8NNyLoZNVkS1-L3k8kAtoYt17qDe6g-PznG80JExgE";
+  async function updateJobseekerWorkXP(pf,token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -231,9 +236,8 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
-  async function updateJobseekerMedia(pf) {
-    let token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDgzNjQzLCJpYXQiOjE2NzQzOTcyNDMsImp0aSI6Ijg3YjFiMDlkNTRkODRmZTc5ODM3Njg2NDdjMDZiM2U5IiwidXNlcl9pZCI6NH0.x8NNyLoZNVkS1-L3k8kAtoYt17qDe6g-PznG80JExgE";
+  async function updateJobseekerMedia(pf,token) {
+ 
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -246,32 +250,72 @@ export function JoobSeekerWrapper({ children }) {
     );
     setGlobal({
       ...global,
-      updatejobseekerMedia: res.data,
+      userMedia: res.data["massage"],
     });
     console.log(res.data);
   }
-  async function updateJobseekerDetails(pf) {
-    let token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDgzNjQzLCJpYXQiOjE2NzQzOTcyNDMsImp0aSI6Ijg3YjFiMDlkNTRkODRmZTc5ODM3Njg2NDdjMDZiM2U5IiwidXNlcl9pZCI6NH0.x8NNyLoZNVkS1-L3k8kAtoYt17qDe6g-PznG80JExgE";
+  async function updateJobseekerSummry(pf,token) {
+
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
     let res = await axios.put(
-      "https://reqiq.herokuapp.com/jobseeker-update-details/",
+      "https://reqiq.herokuapp.com/jobseeker-update-summary/",
       pf,
       config
     );
     setGlobal({
       ...global,
-      updatejobseekerDetails: res.data,
+      summary: res.data["summary"],
     });
     console.log(res.data);
   }
-  async function updateJobseekerInterview(pf) {
-    let token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDgzNjQzLCJpYXQiOjE2NzQzOTcyNDMsImp0aSI6Ijg3YjFiMDlkNTRkODRmZTc5ODM3Njg2NDdjMDZiM2U5IiwidXNlcl9pZCI6NH0.x8NNyLoZNVkS1-L3k8kAtoYt17qDe6g-PznG80JExgE";
+  async function updateJobseekerLinks(pf,token) {
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.put(
+      "https://reqiq.herokuapp.com/jobseeker-update-links/",
+      pf,
+      config
+    );
+    setGlobal({
+      ...global,
+      linkedin: res.data["websites"]["linkedin"],
+      github: res.data["websites"]["github"],
+      porto: res.data["websites"]["porto"],
+
+     
+
+    });
+    console.log(res.data);
+  }
+  async function updateJobseekerSkills(pf,token) {
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.put(
+      "https://reqiq.herokuapp.com/jobseeker-update-links/",
+      pf,
+      config
+    );
+
+    setGlobal({
+      ...global,
+      skills: res.data["skills"],
+    });
+    console.log(res.data);
+  }
+  async function updateJobseekerInterview(pf,token) {
+
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,

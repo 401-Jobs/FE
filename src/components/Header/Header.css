@@ -21,3 +21,9 @@
     transition: all 0.5s;
     transform: translateY(5px); 
 }
+
+
+.test {
+    right: 60%;
+    left: auto;
+}

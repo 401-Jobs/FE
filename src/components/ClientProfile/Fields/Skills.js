@@ -6,6 +6,9 @@ import '../Skills.css'
 function MyVerticallyCenteredModal(props) {
   const [keywords,setKeywords]=useState([])
   const [skill,setSkill]=useState('')
+  const [skills,setSkills]=useState('')
+
+
 
   function createKeyword(key) {
     // Create LI
@@ -39,6 +42,10 @@ function MyVerticallyCenteredModal(props) {
 
   const submitHandler=()=>{
     createKeyword(skill)
+    setSkills(skills+skill+",")
+    console.log(skills)
+    
+    
   }
     return (
       <Modal
@@ -53,7 +60,7 @@ function MyVerticallyCenteredModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <SkillsForm setSkill={setSkill}/>
+          <SkillsForm setSkill={setSkill} onHide={props.onHide} submitHandler={submitHandler}/>
           <div className='skills_container'>
       <ul id="myUL" className="skillsList"></ul>
       </div>
@@ -61,8 +68,8 @@ function MyVerticallyCenteredModal(props) {
         <Modal.Footer>
         
           {/* <Button onClick={props.onHide}>Close</Button> */}
-          <Button onClick={submitHandler}>ADD</Button>
-          <Button onClick={props.onHide}>Save</Button>
+          
+          
         </Modal.Footer>
       </Modal>
     );

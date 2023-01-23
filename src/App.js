@@ -8,90 +8,89 @@ import ContactusPage from "./screens/ContactusPage";
 import AboutUsPage from "./screens/AboutUsPage";
 import { ResetPassword } from "./screens/ResetPassword";
 import UploadForm from "./components/UpdateForm/UpdateForm";
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
-import {LoginPage} from './screens/LoginPage.js'
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import { LoginPage } from "./screens/LoginPage.js";
 import ClientProfilePage from "./screens/ClientProfilePage";
+
 import ClientPreviews from "./components/ClientPreviews/ClientPreviews";
+
+import Candidates from "./components/Candidates/Candidates";
 
 import CompanyDetails from "./components/company/Infromations/CompanyDetails";
 import DashboardCompany from "./components/company/Dashboard/DashboardCompany";
 import { CompareCandidatesPage } from "./screens/CompareCandidatesPage";
 
-
 import { SignUpPage } from "./screens/SignUpPage";
 
-import React , {useContext, useEffect} from 'react';
-import { JoobSeekerContext } from "./context/joobseeker";
-
-
-
+import React, { useContext, useEffect } from "react";
 
 function App() {
-  const {jobseekerInterviews} = useContext(JoobSeekerContext);
-  useEffect(()=>{
-    jobseekerInterviews()
-
-  },[])
   return (
     <div>
       <ScrollToTop />
-<Router>
-      <Header />
-      <Routes>
-        <Route exact path="/forgot" element={< ForgotPasswordPage />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/preview" element={< ClientPreviews />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/client-profile" element={< ClientProfilePage />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/update-form" element={< UploadForm />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/about" element={< AboutUsPage />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/email-varification" element={< EmailVerificationPage />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/contact" element={< ContactusPage />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/resetPassword" element={< ResetPassword />} />
-      </Routes>
-      <Routes>
-          <Route exact path="/CompareCandidates" element={<ClientPreviews />} />
-        </Routes>
-      <Routes>
-          <Route exact path="/clientLogin" element={<LoginPage />} />
-        </Routes>
-      <Routes>
-          <Route exact path="/companyLogin" element={<LoginPage />} />
-        </Routes>
-      <Routes>
+
+      <Router>
+        <Header />
+
+        <Routes>
           <Route exact path="/" element={<LandingPage />} />
-        </Routes>
 
-        <Routes>
-          <Route exact path="/CompanySignUp" element={<SignUpPage/>} />
-        </Routes>
+          <Route exact path="/CompanySignUp" element={<SignUpPage />} />
 
-        <Routes>
+          <Route exact path="/ClientSignUp" element={<SignUpPage />} />
 
-          <Route exact path="/ClientSignUp" element={<SignUpPage/>} />
+          <Route
+            exact
+            path="/email-varification"
+            element={<EmailVerificationPage />}
+          />
+
+          <Route path="/clientLogin" element={<LoginPage />} />
+
+          <Route path="/companyLogin" element={<LoginPage />} />
+
+          <Route exact path="/forgot" element={<ForgotPasswordPage />} />
+
+          <Route exact path="/resetPassword" element={<ResetPassword />} />
+
+          {/* /*************************JOB SEEKER ****************************************/}
+
+          <Route path="/client-profile" element={<ClientProfilePage />} />
+
+          <Route exact path="/preview" element={<ClientPreviews />} />
+
+          <Route
+            exact
+            path="/CompareCandidates"
+            element={<ClientPreviews />}
+          />
+
+          {/************************* END JOB SEEKER ****************************************/}
+
+          <Route path="/contact" element={<ContactusPage />} />
+
+          <Route path="/about" element={<AboutUsPage />} />
+
+          {/* 
+          <Route exact path="/update-form" element={<UploadForm />} />
+        */}
+
+          {/* /************************* END JOB SEEKER ****************************************/}
 
           <Route exact path="/companyDetails" element={<CompanyDetails />} />
+
+          <Route
+            exact
+            path="/dashboardCompany"
+            element={<DashboardCompany />}
+          />
+
+          <Route exact path="/candidates" element={<Candidates />} />
+
+          {/* /************************* END JOB SEEKER ****************************************/}
         </Routes>
-        <Routes>
-          <Route exact path="/dashboardCompany" element={<DashboardCompany />} />
-        </Routes>
-      <Routes>
-          <Route path="/contact" element={<ContactusPage />} />
-        </Routes>
-        
+
         <Footer />
       </Router>
     </div>
@@ -99,3 +98,17 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

@@ -46,6 +46,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  font-weight: 700;
 }
 
 .button-56:after {
@@ -55,12 +56,12 @@
   display: block;
   height: 48px;
   left: 0;
-  width: 100%;
+  /* width: 100%; */
   position: absolute;
-  top: -2px;
-  transform: translate(8px, 8px);
-  transition: transform 0.2s ease-out;
-  z-index: -1;
+  /* top: -2px; */
+  /* transform: translate(8px, 8px); */
+  /* transition: transform 0.2s ease-out; */
+  /* z-index: -1; */
 }
 
 .button-56:hover:after {
@@ -74,6 +75,7 @@
 
 .button-56:hover {
   outline: 0;
+  background-color: lightgreen;
 }
 
 @media (min-width: 768px) {

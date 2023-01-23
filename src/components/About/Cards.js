@@ -22,17 +22,17 @@ const Cards = () => {
               <ul class='social mb-0 list-inline mt-3'>
                 <li class='list-inline-item'>
                   <a href={card.facebook} class='social-link'>
-                    <i class='fa fa-facebook-f'></i>
+                    <i class='fa fa-facebook-f' style={{color:'grey'}}></i>
                   </a>
                 </li>
                 <li class='list-inline-item'>
                   <a href={card.github} class='social-link'>
-                    <i class='fa fa-github'></i>
+                    <i class='fa fa-github' style={{color:'grey'}}></i>
                   </a>
                 </li>
                 <li class='list-inline-item'>
                   <a href={card.linkedIn} class='social-link'>
-                    <i class='fa fa-linkedin'></i>
+                    <i class='fa fa-linkedin' style={{color:'grey'}}></i>
                   </a>
                 </li>
               </ul>

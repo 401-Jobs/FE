@@ -11,9 +11,13 @@ import {
   MDBCardBody,
   MDBInput,
 } from "mdb-react-ui-kit";
+
+import './SignUp.css'
+
 import { useLocation } from "react-router";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
+
 
 export const SignUp = () => {
   const [values, setValues] = useState({
@@ -65,11 +69,11 @@ export const SignUp = () => {
         <MDBRow>
           <MDBCol
             md="6"
-            className="text-center text-md-start d-flex flex-column justify-content-center"
+            className="text-center text-md-start d-flex flex-column justify-content-center paragraph "
           >
-            <h1 className="my-5 display-3 fw-bold ls-tight px-3">
-              a powerful tool <br />
-              <span className="text-primary">
+            <h1 className="my-5 display-5 fw-bold ls-tight px-3 ">
+              A powerful tool <br/>
+              <span className="text-primary display-4 ">
                 for identifying top talent and streamlining the hiring process.
               </span>
             </h1>
@@ -121,6 +125,7 @@ export const SignUp = () => {
                   <p style={{ color: "red" }}>{errors.confirmPassword}</p>
                 )}
 
+
                 {isLoading ? (
                   <div style={{ textAlign: "center", alignContent: "center" }}>
                     <Spinner animation="border" role="status">
@@ -130,7 +135,7 @@ export const SignUp = () => {
                 ) : !isClicked ? (
                   <MDBBtn
                     type="submit"
-                    className="w-100 mb-4"
+                    className="w-70 mb-4 button111"
                     size="md"
                     onClick={handleValidation}
                   >

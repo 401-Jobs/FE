@@ -1,6 +1,7 @@
 .interviewTable{
     min-width: 500px;
     background-color: none;
+    
 }
 .accept_btn{
     padding: 3px 10px;
@@ -27,14 +28,23 @@
     transition: all 0.5s;
     
 }
-.details_btn{
+/* .details_btn{
     padding:5px 15px;
     border: 1px solid #281870;
     border-radius: 10px;
     background-color: #ac9ce1;
     transition: all 0.5s;
-}
-.details_btn:hover{
+} */
+/* .details_btn:hover{
     background-color: lightskyblue;
+    transition: all 0.5s;
+} */
+
+.details{
+    color:gray;
+}
+
+.details:hover{
+    background-color:lightsteelblue;
     transition: all 0.5s;
 }

@@ -20,7 +20,7 @@ const InterviewTable = () => {
               </div>
               <div
                 class='card-body'
-                style={{ position: 'relative', height: '400px' ,overflowY:'scroll'}}
+                style={{ position: 'relative', height: '400px' ,overflowY:'auto'}}
               >
                 <table class='table mb-0'>
                   <thead>
