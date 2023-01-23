@@ -94,9 +94,9 @@ export const Reset = () => {
               />
 
 
-              <MDBBtn style={{backgroundColor:'blueviolet'}} className="w-70 mb-4 mt-3" size="md">
+              {/* <MDBBtn style={{backgroundColor:'blueviolet'}} className="w-70 mb-4 mt-3" size="md">
                 Reset
-              </MDBBtn>
+              </MDBBtn> */}
 
               {isLoading ? (
                 <div style={{ textAlign: "center", alignContent: "center" }}>
@@ -105,8 +105,8 @@ export const Reset = () => {
                   </Spinner>
                 </div>
               ) : !message ? (
-                <MDBBtn className="w-100 mb-4 mt-3" size="md" onClick={Handler}>
-                  Reset Password
+                <MDBBtn className="w-70 mb-4 mt-3" size="md" style={{backgroundColor:'blueviolet',textTransform:'unset'}} onClick={Handler}>
+                  Reset
                 </MDBBtn>
               ) : (
                 message

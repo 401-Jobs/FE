@@ -91,7 +91,7 @@ export const CompanyLogin = () => {
 
                 <MDBBtn
                   onClick={LoginHandler}
-                  className="mb-4 px-5"
+                  className="mb-4 px-5 bt"
                   color="dark"
                   size="lg"
                 >
