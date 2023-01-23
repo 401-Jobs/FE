@@ -9,29 +9,23 @@ import AboutUsPage from "./screens/AboutUsPage";
 import { ResetPassword } from "./screens/ResetPassword";
 import ClientPreview from "./components/ClientPreview/ClientPreview";
 import UploadForm from "./components/UpdateForm/UpdateForm";
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
-import {LoginPage} from './screens/LoginPage.js'
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import { LoginPage } from "./screens/LoginPage.js";
 import ClientProfilePage from "./screens/ClientProfilePage";
 import Candidates from "./components/Candidates/Candidates";
 import CompanyDetails from "./components/company/Infromations/CompanyDetails";
 import DashboardCompany from "./components/company/Dashboard/DashboardCompany";
 import { CompareCandidatesPage } from "./screens/CompareCandidatesPage";
 
-
 import { SignUpPage } from "./screens/SignUpPage";
 
-import React , {useContext, useEffect} from 'react';
-
-
-
+import React, { useContext, useEffect } from "react";
 
 function App() {
-
   return (
     <div>
       <ScrollToTop />
-
 
       <Router>
         <Header />
@@ -69,7 +63,7 @@ function App() {
             element={<CompareCandidatesPage />}
           />
 
-          {/* /************************* END JOB SEEKER ****************************************/}
+          {/************************* END JOB SEEKER ****************************************/}
 
           <Route path="/contact" element={<ContactusPage />} />
 
@@ -78,17 +72,21 @@ function App() {
           {/* 
           <Route exact path="/update-form" element={<UploadForm />} />
         */}
-        </Routes>
-        
-                  <Route exact path="/companyDetails" element={<CompanyDetails />} />
-        </Routes>
-        <Routes>
-          <Route exact path="/dashboardCompany" element={<DashboardCompany />} />
-        </Routes>
-        <Routes>
+
+          {/* /************************* END JOB SEEKER ****************************************/}
+
+          <Route exact path="/companyDetails" element={<CompanyDetails />} />
+
+          <Route
+            exact
+            path="/dashboardCompany"
+            element={<DashboardCompany />}
+          />
+
           <Route exact path="/candidates" element={<Candidates />} />
+
+          {/* /************************* END JOB SEEKER ****************************************/}
         </Routes>
-      <Routes>
 
         <Footer />
       </Router>
