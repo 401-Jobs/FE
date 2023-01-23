@@ -9,7 +9,7 @@ const ProfileCompleteness = () => {
   const navigate = useNavigate();
 
   const RedirectViewEmployer = () => {
-    navigate("/preview-client", { replace: false, preventScrollReset: false });
+    navigate("/preview", { replace: false, preventScrollReset: false });
   };
 
   return (

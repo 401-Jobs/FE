@@ -24,6 +24,8 @@ import { AuthContext } from "../../context/auth";
 import Spinner from "react-bootstrap/Spinner";
 import { useEffect } from "react";
 import TelecommutingCuate from "./Assets/TelecommutingCuate.png";
+import { JoobSeekerContext } from "../../context/joobseeker";
+
 
 export const ClientLogin = () => {
   const [email, setEmail] = useState("");
@@ -35,9 +37,11 @@ export const ClientLogin = () => {
   const navigate = useNavigate();
   const { login, token } = useContext(AuthContext);
 
+  const { userInfo } = useContext(JoobSeekerContext);
+
   useEffect(() => {
-    if (token) navigate("/client-profile");
-  }, [token]);
+    if (token && userInfo['id']) navigate("/client-profile");
+  }, [token,userInfo]);
 
   const emailHandler = (e) => {
     setEmail(e.target.value);

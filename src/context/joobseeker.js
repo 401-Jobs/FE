@@ -256,7 +256,6 @@ export function JoobSeekerWrapper({ children }) {
     );
     setGlobal({
       ...global,
-      userMedia: res.data["massage"],
     });
     console.log(res.data);
   }

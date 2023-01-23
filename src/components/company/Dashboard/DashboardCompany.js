@@ -235,9 +235,7 @@ return(
 						</a>
 						
 					
-						<a href="#" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-library"></span><span class="mtext">Jop Postings</span>
-						</a>
+						
 					
 					<li>
 						<a href="calendar.html" class="dropdown-toggle no-arrow">
@@ -255,9 +253,7 @@ return(
 						</a>
 			
 					
-						<a href="#" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-analytics-21"></span><span class="mtext">Settings</span>
-						</a>
+						
 				</ul>
 			</div>
 		</div>
@@ -295,7 +291,7 @@ return(
 							
                              
 								
-								<div class="weight-600 font-14 bottomtext">JOB POSTINGS</div>
+								
 							
 						</div>
 					</div>
@@ -309,7 +305,7 @@ return(
 							</div>
 							
 								
-								<div class="weight-600 font-14 bottomtext2">Interviews</div>
+								
 							
 						</div>
 					</div>
