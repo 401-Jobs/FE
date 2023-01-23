@@ -13,7 +13,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { LoginPage } from "./screens/LoginPage.js";
 import ClientProfilePage from "./screens/ClientProfilePage";
-
+import Candidates from "./components/Candidates/Candidates";
 import CompanyDetails from "./components/company/Infromations/CompanyDetails";
 import DashboardCompany from "./components/company/Dashboard/DashboardCompany";
 import { CompareCandidatesPage } from "./screens/CompareCandidatesPage";
@@ -80,6 +80,9 @@ function App() {
         </Routes>
         <Routes>
           <Route exact path="/dashboardCompany" element={<DashboardCompany />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/candidates" element={<Candidates />} />
         </Routes>
       <Routes>
           <Route exact path="/" element={<LandingPage />} />
