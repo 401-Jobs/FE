@@ -125,7 +125,7 @@ export const ClientLogin = () => {
                 ) : (
                   <MDBBtn
                     onClick={LoginHandler}
-                    className="mb-4 px-5"
+                    className="mb-4 px-5 bt"
                     color="dark"
                     size="lg"
                   >
@@ -134,9 +134,9 @@ export const ClientLogin = () => {
                 )}
 
 
-                <MDBBtn className="mb-4 px-5 bt" color="dark" size="lg">
+                {/* <MDBBtn className="mb-4 px-5 bt" color="dark" size="lg">
                   Login
-                </MDBBtn>
+                </MDBBtn> */}
                 <a
                   className="small text-muted"
                   href="/forgot"

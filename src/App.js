@@ -18,21 +18,15 @@ import CompanyDetails from "./components/company/Infromations/CompanyDetails";
 import DashboardCompany from "./components/company/Dashboard/DashboardCompany";
 import { CompareCandidatesPage } from "./screens/CompareCandidatesPage";
 
-
 import { SignUpPage } from "./screens/SignUpPage";
 
-import React , {useContext, useEffect} from 'react';
-
-import { JoobSeekerContext } from "./components/Context/joobseeker";
+import React, { useContext, useEffect } from "react";
 
 function App() {
-  const { jobseekerInterviews } = useContext(JoobSeekerContext);
-  useEffect(() => {
-    jobseekerInterviews();
-  }, []);
   return (
     <div>
       <ScrollToTop />
+
       <Router>
         <Header />
 
@@ -69,7 +63,7 @@ function App() {
             element={<CompareCandidatesPage />}
           />
 
-          {/* /************************* END JOB SEEKER ****************************************/}
+          {/************************* END JOB SEEKER ****************************************/}
 
           <Route path="/contact" element={<ContactusPage />} />
 
@@ -78,19 +72,21 @@ function App() {
           {/* 
           <Route exact path="/update-form" element={<UploadForm />} />
         */}
-        </Routes>
-        
-                  <Route exact path="/companyDetails" element={<CompanyDetails />} />
-        </Routes>
-        <Routes>
 
-          <Route exact path="/dashboardCompany" element={<DashboardCompany />} />
-        </Routes>
-        <Routes>
+          {/* /************************* END JOB SEEKER ****************************************/}
+
+          <Route exact path="/companyDetails" element={<CompanyDetails />} />
+
+          <Route
+            exact
+            path="/dashboardCompany"
+            element={<DashboardCompany />}
+          />
+
           <Route exact path="/candidates" element={<Candidates />} />
-        </Routes>
-      <Routes>
 
+          {/* /************************* END JOB SEEKER ****************************************/}
+        </Routes>
 
         <Footer />
       </Router>
@@ -99,3 +95,17 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
