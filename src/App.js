@@ -7,7 +7,6 @@ import EmailVerificationPage from "./screens/EmailVerificationPage";
 import ContactusPage from "./screens/ContactusPage";
 import AboutUsPage from "./screens/AboutUsPage";
 import { ResetPassword } from "./screens/ResetPassword";
-import ClientPreview from "./components/ClientPreview/ClientPreview"; //remove this line
 import UploadForm from "./components/UpdateForm/UpdateForm";
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
@@ -52,9 +51,6 @@ function App() {
         <Route exact path="/update-form" element={< UploadForm />} />
       </Routes>
       <Routes>
-        <Route exact path="/preview-client" element={< ClientPreview />} />
-      </Routes>
-      <Routes>
         <Route exact path="/about" element={< AboutUsPage />} />
       </Routes>
       <Routes>
@@ -67,7 +63,7 @@ function App() {
         <Route exact path="/resetPassword" element={< ResetPassword />} />
       </Routes>
       <Routes>
-          <Route exact path="/CompareCandidates" element={<CompareCandidatesPage />} />
+          <Route exact path="/CompareCandidates" element={<ClientPreviews />} />
         </Routes>
       <Routes>
           <Route exact path="/clientLogin" element={<LoginPage />} />
@@ -93,7 +89,6 @@ function App() {
           <Route exact path="/dashboardCompany" element={<DashboardCompany />} />
         </Routes>
       <Routes>
-          <Route exact path="/" element={<LandingPage />} />
           <Route path="/contact" element={<ContactusPage />} />
         </Routes>
         
