@@ -27,7 +27,7 @@ const RandomProfile = () => {
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-        <i class="fa-solid fa-shuffle"></i>
+        <i className="fa-solid fa-shuffle"></i>
         <h5 style={{ marginBottom: "0" }}>
           Compare profile with random candidate profile
         </h5>

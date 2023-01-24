@@ -43,15 +43,15 @@ function Tabs(props) {
   };
 
   const CreateTabsItems = (props) => {
-    let tabs = userEducation.map((edu) => {
+    let tabs = userEducation.map((edu, idx) => {
       return (
         <>
           <MDBTabsItem>
             <MDBTabsLink
-              onClick={() => handleBasicClick(edu["degree"])}
-              active={basicActive === edu["degree"]}
+              onClick={() => handleBasicClick(`Edu ${idx + 1}`)}
+              active={basicActive === `Edu ${idx + 1}`}
             >
-              {edu["degree"]}
+              {`Edu ${idx + 1}`}
             </MDBTabsLink>
           </MDBTabsItem>
         </>
@@ -61,10 +61,10 @@ function Tabs(props) {
   };
   //       <EducationForm onHide={props.onHide} data={edu} />
   const createTabsContent = (props) => {
-    let content = userEducation.map((edu) => {
+    let content = userEducation.map((edu, idx) => {
       return (
         <>
-          <MDBTabsPane show={basicActive === edu["degree"]}>
+          <MDBTabsPane show={basicActive === `Edu ${idx + 1}`}>
             <EducationForm
               onHide={props.props.onHide}
               updateMode={props.updateMode}
