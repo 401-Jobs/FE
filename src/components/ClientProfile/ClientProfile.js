@@ -38,11 +38,7 @@ const ClientProfile = () => {
     await jobseekerData(token);
   };
 
-  useEffect(() => {
-    setisLoading(true);
-    GetAllData();
-    setisLoading(false);
-  }, [
+  useEffect(() => {}, [
     userInfo,
     userContact,
     userEducation,
@@ -55,6 +51,12 @@ const ClientProfile = () => {
     github,
     porto,
   ]);
+
+  useEffect(() => {
+    setisLoading(true);
+    GetAllData();
+    setisLoading(false);
+  }, []);
 
   if (isLoading)
     return (
