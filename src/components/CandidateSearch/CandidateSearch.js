@@ -3,8 +3,6 @@ import search_icon from './search.png'
 import './CandidateSearch.css'
 import Filter from './Filter'
 import CandidateCards from './CandidateCards'
-import { data } from './data'
-// import { JoobSeekerContext } from '../../context/joobseeker'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/auth'
 import axios from 'axios'
@@ -12,19 +10,14 @@ import Row from 'react-bootstrap/Row';
 
 const CandidateSearch = () => {
     const[userInfo,setuserInfo]=useState({})
-    // const {jobseekerall,jobseekerAll}=useContext(JoobSeekerContext)
     const { token } = useContext(AuthContext);
-    // const getAllJobSeekers=async()=>{
-    //   await jobseekerAll(token)
-    // }
-    // console.log(jobseekerAll(token))
+    
     const [candidates,setCandidates]=useState([])
-    // set skills functionality
     const [skill,setSkill]=useState('')
     const [skills,setSkills]=useState([])
 
 
-    let getAllJobSeekers=async()=>{
+    let getAllJobSeekers=async(e)=>{
       const config = {
         headers: {
           Authorization:`Bearer ${token}`,
@@ -34,6 +27,7 @@ const CandidateSearch = () => {
         "https://reqiq.herokuapp.com/jobseeker-all/",
         config
       );
+      console.log(res.data);
        let info=res.data['userInfo'];
        let educate=res.data['userEducation']
        let contact=res.data['userContact']
@@ -122,10 +116,11 @@ const CandidateSearch = () => {
     const submitSearchHandler=(e)=>{
         e.preventDefault()
         let candidate=e.target.q.value
-        let target= data.filter(item=>{
-            if (item.jobTitle.toLowerCase()=== candidate.toLowerCase()) return item
+        let target= userInfo.filter(item=>{
+            if (item.title!== null && item.title.toLowerCase()=== candidate.toLowerCase()) return item
         })
-        setCandidates(target)
+        
+        setuserInfo(target)
  
     }
 // filter functionality
@@ -138,24 +133,23 @@ const submitFilterHandler=(e)=>{
     let minAge=e.target.minAge.value
     let maxAge=e.target.maxAge.value
     let findIntersection=(checkArr)=>{
-        let common = checkArr.filter(x => skills.indexOf(x) !== -1)
+      // console.log(checkArr.split(','));
+        let common = checkArr.split(',').filter(x => skills.indexOf(x) !== -1)
         if (common.length>0) return true
         else return false
     }
     
-    let res=data.filter(item=>{
-        if (jobTitle==item.jobTitle || (parseInt(minExp)<=parseInt(item.yearsOfExp) && parseInt(item.yearsOfExp)<=parseInt(maxExp)) || (parseInt(minAge)<=parseInt(item.age) && parseInt(item.age)<=parseInt(maxAge)) || findIntersection(item.skills)===true) return item
+    let res=userInfo.filter(item=>{
+        if (item.title===null || item.yearsExperience===null || item.age===null) return false
+        if (jobTitle==item.title || (parseInt(minExp)<=parseInt(item.yearsExperience) && parseInt(item.yearsExperience)<=parseInt(maxExp)) || (parseInt(minAge)<=parseInt(item.age) && parseInt(item.age)<=parseInt(maxAge)) || findIntersection(item.skills)===true) return item
     })
-    setCandidates(res)
+    setuserInfo(res)
 }
 
     useEffect(()=>{
-        // if (userInfo.length==0) setCandidates(data)
         getAllJobSeekers()
-        // console.log(jobseekerall);
     },[])
-    // console.log(jobseekerall)
-    // console.log(candidates)
+    
   return (
     <div>
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center', paddingTop:'25px'}}>
@@ -169,11 +163,10 @@ const submitFilterHandler=(e)=>{
             <Filter submitFilterHandler={submitFilterHandler} skillHandler={skillHandler} submitHandler={submitHandler}/>
         </div>
         <div>
-        
+        <Row xs={1} md={4} className="g-4">
         {userInfo.length>0 && userInfo.map((person,index)=>{
-        // {console.log('dd',person.owner)}
         return(
-          <Row xs={1} md={4} className="g-4">
+          
         <CandidateCards 
         key={person.index}
         firstName={person.firstName}
@@ -187,11 +180,11 @@ const submitFilterHandler=(e)=>{
         age={person.age}
         id={person.owner}
         />
-        </Row>
+        
         )
         
       })}
-          
+         </Row> 
             
         </div>
     </div>
