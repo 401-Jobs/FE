@@ -13,7 +13,8 @@ import {
   MDBIcon,
   MDBInput,
   MDBRow,
-  MDBTypography,
+  MDBTypography
+
 } from "mdb-react-ui-kit";
 
 const CompanyDetails = () => {
@@ -24,11 +25,21 @@ const CompanyDetails = () => {
           <MDBCol>
             <MDBCard className="my-4 shadow-3">
               <MDBRow className="g-0">
+
+
                 <MDBCol md="3" className="d-xl-block bg-image">
                   {/* <MDBCardImage  alt='Sample photo' fluid />  */}
                 </MDBCol>
                 <MDBCol md="6">
                   <MDBCardBody className="p-md-5 text-black text-center">
+
+
+                  <Form.Group controlId="formFile" className="mb-3">
+        <Form.Label>logo</Form.Label>
+        <Form.Control type="file" />
+
+
+      </Form.Group>
                     <MDBTypography tag="h4" className="mb-5 text-uppercase ">
                       Welcome to your Company Page
                     </MDBTypography>
