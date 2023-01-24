@@ -6,9 +6,6 @@ import Form from "react-bootstrap/Form";
 import { MDBSelect } from "mdb-react-ui-kit";
 import Country from "./assets/Country";
 import "./CompanyDetails.css";
-
-
-
 import {
   MDBBtn,
   MDBCard,
