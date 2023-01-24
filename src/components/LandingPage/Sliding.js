@@ -9,7 +9,7 @@ import facebook from "./assets/facebook.jpg";
 import unity from "./assets/unity1.jpg";
 import curasol from './assets/testIMG_cleanup.png'
 import logo from '../Header/logo.png'
-import mainIMG from './assets/LASTIMAGE.png'
+import mainIMG from './assets/ourpartnar.jpg'
 const Sliding = () => {
   return (
     // <Carousel className="carousel-container" fade>
