@@ -1,3 +1,4 @@
+
 import React,{useState,useEffect} from 'react'
 import Col from 'react-bootstrap/Col';
 import { useNavigate } from 'react-router-dom';
@@ -7,17 +8,17 @@ import Card from 'react-bootstrap/Card';
 import '../Candidates/Candidates.css'
 import Row from 'react-bootstrap/Row';
 import { Grid } from 'react-bootstrap';
+
 const CandidateCards = (props) => {
-  const navegate= useNavigate()
-  const clickHandler=()=>{
-    console.log(props.id)
-    navegate('/perview/'+props.id)
-  }
-    
-    
+  const navegate = useNavigate();
+  const clickHandler = () => {
+    console.log(props.id);
+    navegate("/preview/" + props.id);
+  };
+
   return (
-    
     <>
+
     
     <CardGroup>
   
@@ -55,4 +56,5 @@ const CandidateCards = (props) => {
   )
 }
 
-export default CandidateCards
+
+export default CandidateCards;

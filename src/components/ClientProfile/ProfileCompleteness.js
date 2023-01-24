@@ -20,8 +20,6 @@ const ProfileCompleteness = () => {
     porto,
   } = useContext(JoobSeekerContext);
 
-  console.log(userMedia);
-
   const CalculateProgress = () => {
     let obj = {
       isPf: false,
@@ -62,11 +60,9 @@ const ProfileCompleteness = () => {
         progress += 1;
       }
     }
-    console.log(Object.keys(objProgress).length);
+
     setProgress(parseInt((progress / Object.keys(objProgress).length) * 100));
   }, [userInfo]);
-
-  console.log(Obj);
 
   const navigate = useNavigate();
 
@@ -87,7 +83,7 @@ const ProfileCompleteness = () => {
       </div>
       <div
         role="progressbar"
-        aria-valuenow="55"
+        aria-valuenow={`0`}
         aria-valuemin="0"
         aria-valuemax="100"
         style={{ width: `${progress}%` }}
@@ -107,7 +103,7 @@ const ProfileCompleteness = () => {
       >
         <div
           role="progressbar"
-          aria-valuenow="55"
+          aria-valuenow={`0`}
           aria-valuemin="0"
           aria-valuemax="100"
           style={{ width: `${progress}%`, background: "#EBDC3E" }}

@@ -9,17 +9,20 @@
 
 
 .links{
-    padding:5px 15px;
-    border: 1px solid #281870;
-    border-radius: 10px;
-    background-color: #ac9ce1;
+    /* padding:5px 15px; */
+    /* border: 1px solid #e9e398; */
+    /* border-radius: 10px; */
+    /* background-color: #ac9ce1; */
     transition: all 0.5s;
     color: white;
+    font-weight: 700;
+   
 }
 .links:hover{
-    background-color: lightskyblue;
+    background-color: rgb(218, 188, 19);
     transition: all 0.5s;
     transform: translateY(5px); 
+
 }
 
 
@@ -28,4 +31,7 @@
     left: auto;
     width: 1px; */
     
+}
+.links{
+    margin-left: 20px;
 }
