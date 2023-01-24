@@ -12,17 +12,32 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 
-import './Login.css'
+import "./Login.css";
 import Telecommuting from "./Assets/Telecommuting.png";
-import company from "./Assets/company.jpg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth";
+import Spinner from "react-bootstrap/Spinner";
+import { useEffect } from "react";
+import TelecommutingCuate from "./Assets/TelecommutingCuate.png";
+import { JoobSeekerContext } from "../../context/joobseeker";
 
 export const CompanyLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassowrd] = useState("");
 
+  const [errors, setErrors] = useState("");
+  const [isLoading, setisLoading] = useState(false);
+
   const navigate = useNavigate();
+  const { login, token } = useContext(AuthContext);
+
+  const { userInfo } = useContext(JoobSeekerContext);
+
+  // useEffect(() => {
+  //   if (token && companyInfo["id"]) navigate("/client-profile");
+  // }, [token, userInfo]);
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
@@ -32,10 +47,27 @@ export const CompanyLogin = () => {
     setPassowrd(e.target.value);
   };
 
-  const LoginHandler = (e) => {
+  const LoginHandler = async (e) => {
     e.preventDefault();
-    // TODO: COMPANY LOGIN
-    navigate("/session-timed-out");
+
+    let userInfo = {
+      email: email,
+      password: password,
+    };
+    try {
+      console.log(token);
+      setisLoading(true);
+      console.log(userInfo);
+
+      await login(userInfo);
+      setisLoading(false);
+
+      navigate("/CompanyHomePage");
+
+      console.log(token);
+    } catch (error) {
+      setisLoading(false);
+    }
   };
 
   return (
@@ -59,7 +91,7 @@ export const CompanyLogin = () => {
                     // icon="fa fa-id-card"
                     style={{ color: "#ff6219" }}
                   />
-                  <span className="h1 fw-bold mb-0">ReqruitIQ</span>
+                  <span className="h1 fw-bold mb-0">{"ReqruitIQ"}</span>
                 </div>
 
                 <h5
@@ -87,16 +119,26 @@ export const CompanyLogin = () => {
                   name="password"
                   onChange={passwordHandler}
                 />
+                {isLoading ? (
+                  <div style={{ textAlign: "center", alignContent: "center" }}>
+                    <Spinner animation="border" role="status">
+                      <span className="visually-hidden ">Loading...</span>
+                    </Spinner>
+                  </div>
+                ) : (
+                  <MDBBtn
+                    onClick={LoginHandler}
+                    className="mb-4 px-5 bt"
+                    color="dark"
+                    size="lg"
+                  >
+                    Login
+                  </MDBBtn>
+                )}
 
-
-                <MDBBtn
-                  onClick={LoginHandler}
-                  className="mb-4 px-5 bt"
-                  color="dark"
-                  size="lg"
-                >
+                {/* <MDBBtn className="mb-4 px-5 bt" color="dark" size="lg">
                   Login
-                </MDBBtn>
+                </MDBBtn> */}
                 <a
                   className="small text-muted"
                   href="/forgot"
@@ -109,9 +151,7 @@ export const CompanyLogin = () => {
                   style={{ color: "#393f81", textAlign: "center" }}
                 >
                   Don't have an account?{" "}
-
-                  <a href="/ClientSignUp" style={{ color: "#FF7B54" }}>
-
+                  <a href="/ClientSignUp" style={{ color: "#A31ACB" }}>
                     Register here
                   </a>
                 </p>

@@ -2,12 +2,12 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 import {client_prev_data} from './client_prev_data.js'
 
-const WorkExp = () => {
+const WorkExp = (props) => {
   return (
     <div>
         <p style={{fontSize:'x-large'}}>Work Experience</p>
         <div>
-          {client_prev_data[0]['experience'].map((item) => {
+          {props.userWork.map((item) => {
             return (
               <Card.Body>
                 <p style={{fontSize:'large'}}>{item.title}</p>
