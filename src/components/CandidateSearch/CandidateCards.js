@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react'
 import Row from 'react-bootstrap/Row';
 import { useNavigate } from 'react-router-dom';
 import { data } from './data';
-// import moh from './moh.jpg'
 
 const CandidateCards = (props) => {
   const navegate= useNavigate()
@@ -15,7 +14,8 @@ const CandidateCards = (props) => {
   return (
     
     <>
-  <section class="mx-auto my-5" style={{width:'80%',margin:'0 auto'}}>
+      
+  <section class="mx-auto my-5">
       
     <div class="card testimonial-card mt-2 mb-3" style={{maxWidth:'23rem'}}>
       <div class="card-up aqua-gradient"></div>
@@ -35,6 +35,7 @@ const CandidateCards = (props) => {
     </div>
     
   </section>
+
 </>
 
   )

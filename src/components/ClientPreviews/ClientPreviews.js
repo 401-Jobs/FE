@@ -1,18 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import ImageName from "./ImageName";
-import "./ClientPreviews.css";
-import Info from "./Info";
-import Skills from "./Skills";
-import Media from "./Media";
-import Summary from "./Summary";
-import WorkExp from "./WorkExp";
-import Edu from "./Edu";
-import { JoobSeekerContext } from "../../context/joobseeker";
-import { AuthContext } from "../../context/auth";
-import axios from "axios";
-import Button from "react-bootstrap/Button";
-import ArrangeInterview from "./ArrangeInterview";
+import React, { useContext, useEffect, useState } from 'react'
+import { useLocation, useParams } from "react-router-dom";
+import ImageName from './ImageName'
+import './ClientPreviews.css'
+import Info from './Info'
+import Skills from './Skills'
+import Media from './Media'
+import Summary from './Summary'
+import WorkExp from './WorkExp'
+import Edu from './Edu'
+import { JoobSeekerContext } from '../../context/joobseeker';
+import { AuthContext } from '../../context/auth';
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import ArrangeInterview from './ArrangeInterview';
 // import './style.css'
 
 const ClientPreviews = () => {
@@ -21,6 +21,9 @@ const ClientPreviews = () => {
   let [randomUserMedia, setRandomUserMedia] = useState([]);
   let [randomUserEducation, setRandomUserEducation] = useState([]);
   let [randomUserWork, setRandomUserWork] = useState([]);
+
+
+
 
   const {
     userInfo,
@@ -100,6 +103,31 @@ const ClientPreviews = () => {
           <div className="right_section">
             <div className="right_up_section">
               <Summary summary={summary} />
+        </div>
+        <hr/>
+        <div className='right_middle_section'>
+            <WorkExp userWork={userWork} />
+        </div>
+        <hr/>
+        <div className='right_down_section'>
+            <Edu userEducation={userEducation} />
+        </div>
+        </div>
+    </div>
+    {/* end first cv */}
+    <div className='main_container'>
+        
+        <div className='right_section'>
+        <div className='right_up_section'>
+            <Summary summary={randomUserDetails["summary"]} />
+        </div>
+        <hr/>
+        <div className='right_middle_section'>
+            <WorkExp userWork={randomUserWork} />
+        </div>
+        <hr/>
+            <div className='right_down_section'>
+                <Edu userEducation={randomUserEducation} />
             </div>
             <hr />
             <div className="right_middle_section">
