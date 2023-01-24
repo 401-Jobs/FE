@@ -1,89 +1,92 @@
-import React from "react";
+import React from 'react'
+import { AuthContext } from '../../context/auth'
+import { useContext } from 'react'
+import axios from 'axios'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 const RecentlyViewed = () => {
+  const [allViews, setAllViews] = useState([])
+  const { token } = useContext(AuthContext)
+  // console.log(token)
+  const jobseekerViews = async () => {
+    const config = {
+      Headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    let res = await axios.get(
+      'https://reqiq.herokuapp.com/jobseeker-views/',
+      config
+    )
+    // console.log(res.data);
+    setAllViews([...allViews, setAllViews(res.data)])
+    console.log(allViews)
+  }
+
+  useEffect(() => {
+    jobseekerViews()
+  }, [])
+
   return (
-    <div className="interviewTable">
-      <div className="container" style={{ margin: "30px 0" }}>
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-md-12 col-xl-10">
-            <div className="card shadow">
-              <div className="card-header p-3">
-                <h5 className="mb-0 d-flex">
+    <div className='interviewTable'>
+      <div class='container' style={{ margin: '30px 0' }}>
+        <div class='row d-flex justify-content-center align-items-center h-100'>
+          <div class='col-md-12 col-xl-10'>
+            <div class='card shadow'>
+              <div class='card-header p-3'>
+                <h5 class='mb-0 d-flex'>
                   <i
-                    style={{ paddingRight: "5px" }}
-                    className="fa-solid fa-tower-broadcast"
+                    style={{ paddingRight: '5px' }}
+                    class='fa-solid fa-tower-broadcast'
                   ></i>
                   Recently Viewd
                 </h5>
               </div>
               <div
-                className="card-body"
+                class='card-body'
                 style={{
-                  position: "relative",
-                  height: "200px",
-                  overflowY: "scroll",
+                  position: 'relative',
+                  height: '200px',
+                  overflowY: 'scroll',
                 }}
               >
                 <table className="table mb-0">
                   <thead>
                     <tr>
                       <th
-                        style={{ top: "0", zIndex: "2", position: "stickly" }}
-                        scope="col"
+                        style={{ top: '0', zIndex: '2', position: 'stickly' }}
+                        scope='col'
                       >
                         Company
                       </th>
                       <th
-                        style={{ top: "0", zIndex: "2", position: "stickly" }}
-                        scope="col"
+                        style={{ top: '0', zIndex: '2', position: 'stickly' }}
+                        scope='col'
                       >
                         Status
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="fw-normal">
-                      <th>
-                        <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp"
-                          className="shadow-1-strong rounded-circle"
-                          alt="avatar 1"
-                          style={{ width: "55px", height: "auto" }}
-                        />
-                        <span className="ms-2">Amazon</span>
-                      </th>
-                      <td className="align-middle">
-                        <i className="fa-solid fa-eye"></i>
-                      </td>
-                    </tr>
-                    <tr className="fw-normal">
-                      <th>
-                        <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp"
-                          className="shadow-1-strong rounded-circle"
-                          alt="avatar 1"
-                          style={{ width: "55px", height: "auto" }}
-                        />
-                        <span className="ms-2">Amazon</span>
-                      </th>
-                      <td className="align-middle">
-                        <i className="fa-solid fa-eye"></i>
-                      </td>
-                    </tr>
-                    <tr className="fw-normal">
-                      <th>
-                        <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp"
-                          className="shadow-1-strong rounded-circle"
-                          alt="avatar 1"
-                          style={{ width: "55px", height: "auto" }}
-                        />
-                        <span className="ms-2">Amazon</span>
-                      </th>
-                      <td className="align-middle">
-                        <i className="fa-solid fa-eye"></i>
-                      </td>
-                    </tr>
+                    {allViews.length>0 && allViews.map((item) => {
+                      return (
+                        <tr class='fw-normal'>
+                          <th>
+                            <img
+                              src={`${process.env.REACT_APP_BACKEND_URL}${item['logo']}`}
+                              class='shadow-1-strong rounded-circle'
+                              alt='avatar 1'
+                              style={{ width: '55px', height: 'auto' }}
+                            />
+                            <span class='ms-2'>{item['company_name']}</span>
+                          </th>
+                          <td class='align-middle'>
+                            <i class='fa-solid fa-eye'></i>
+                          </td>
+                        </tr>
+                      )
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -95,4 +98,4 @@ const RecentlyViewed = () => {
   );
 };
 
-export default RecentlyViewed;
+export default RecentlyViewed
