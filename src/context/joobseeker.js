@@ -18,6 +18,7 @@ export function JoobSeekerWrapper({ children }) {
     linkedin: {},
     github: {},
     porto: {},
+    companyInfo: {},
     /********************* */
     jobseekerinterviews: {},
     jobseekerviews: {},
@@ -31,6 +32,7 @@ export function JoobSeekerWrapper({ children }) {
     updatejobseekerMedia: {},
     updatejobseekerDetails: {},
     updatejobseekerInterview: {},
+    GetCompany,
     jobseekerData,
     jobseekerInterviews,
     jobseekerViews,
@@ -110,6 +112,7 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
+
   async function jobseekerAll(token) {
     const config = {
       headers: {
@@ -120,13 +123,14 @@ export function JoobSeekerWrapper({ children }) {
       "https://reqiq.herokuapp.com/jobseeker-all/",
       config
     );
-    
+
     setGlobal({
       ...global,
       jobseekerall: res.data,
     });
     console.log(res.data);
   }
+
   async function updateJobseekerPF(pf, token) {
     const config = {
       headers: {
@@ -332,6 +336,25 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
+
+  async function GetCompany(token) {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.get(
+      "https://reqiq.herokuapp.com/get-company-info/",
+      config
+    );
+
+    setGlobal({
+      ...global,
+      companyInfo: res.data,
+    });
+    console.log(res.data);
+  }
+
   return (
     <JoobSeekerContext.Provider value={global}>
       {children}

@@ -19,7 +19,20 @@ const ClientProfile = () => {
   }
 
   const [isLoading, setisLoading] = useState(false);
-  const { jobseekerData } = useContext(JoobSeekerContext);
+  const {
+    jobseekerData,
+    userInfo,
+    userContact,
+    userEducation,
+    userWork,
+    userMedia,
+    userDetails,
+    summary,
+    skills,
+    linkedin,
+    github,
+    porto,
+  } = useContext(JoobSeekerContext);
 
   const GetAllData = async () => {
     await jobseekerData(token);
@@ -29,7 +42,19 @@ const ClientProfile = () => {
     setisLoading(true);
     GetAllData();
     setisLoading(false);
-  }, []);
+  }, [
+    userInfo,
+    userContact,
+    userEducation,
+    userWork,
+    userMedia,
+    userDetails,
+    summary,
+    skills,
+    linkedin,
+    github,
+    porto,
+  ]);
 
   if (isLoading)
     return (

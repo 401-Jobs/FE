@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import { MDBSelect } from "mdb-react-ui-kit";
 import Country from "./assets/Country";
@@ -13,11 +13,41 @@ import {
   MDBIcon,
   MDBInput,
   MDBRow,
-  MDBTypography
-
+  MDBTypography,
 } from "mdb-react-ui-kit";
+import { data } from "autoprefixer";
+import { AuthContext } from "../../../context/auth";
+import axios from "axios";
+import { JoobSeekerContext } from "../../../context/joobseeker";
 
 const CompanyDetails = () => {
+  const [data, setData] = useState({});
+  const { token } = useContext(AuthContext);
+  const { userMedia, jobseekerData, userInfo, GetCompany, companyInfo } =
+    useContext(JoobSeekerContext);
+
+  // const getData = async () => {
+  //   console.log(token);
+  //   const headers = {
+  //     "Content-Type": "application/json",
+  //     Authorization: `Bearer ${token}`,
+  //   };
+
+  //   let url = "https://reqiq.herokuapp.com/get-company-info/";
+  //   let data = await axios.get(url, {
+  //     headers: headers,
+  //   });
+
+  //   console.log(data);
+
+  //   return data;
+  // };
+
+  useEffect(() => {
+    GetCompany(token);
+    // setData(companyInfo);
+  }, []);
+  console.log(data);
   return (
     <>
       <MDBContainer className="py-5" style={{ maxWidth: "1200px" }}>
@@ -25,21 +55,15 @@ const CompanyDetails = () => {
           <MDBCol>
             <MDBCard className="my-4 shadow-3">
               <MDBRow className="g-0">
-
-
                 <MDBCol md="3" className="d-xl-block bg-image">
                   {/* <MDBCardImage  alt='Sample photo' fluid />  */}
                 </MDBCol>
                 <MDBCol md="6">
                   <MDBCardBody className="p-md-5 text-black text-center">
-
-
-                  <Form.Group controlId="formFile" className="mb-3">
-        <Form.Label>logo</Form.Label>
-        <Form.Control type="file" />
-
-
-      </Form.Group>
+                    <Form.Group controlId="formFile" className="mb-3">
+                      <Form.Label>logo</Form.Label>
+                      <Form.Control type="file" />
+                    </Form.Group>
                     <MDBTypography tag="h4" className="mb-5 text-uppercase ">
                       Welcome to your Company Page
                     </MDBTypography>
