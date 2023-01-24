@@ -12,39 +12,35 @@ import { AuthContext } from "../../context/auth";
 import { JoobSeekerContext } from "../../context/joobseeker";
 import { useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
+import axios from "axios";
 
 const Header = () => {
   const { pathname } = useLocation();
   const { logout, token } = useContext(AuthContext);
   const [isLoading, setisLoading] = useState(false);
 
-  const { userMedia, jobseekerData, userInfo } = useContext(JoobSeekerContext);
-  console.log(userMedia);
-
+  const { userMedia, jobseekerData, userInfo, GetCompany, companyInfo } =
+    useContext(JoobSeekerContext);
   const getData = async (token) => {
     await jobseekerData(token);
   };
 
-  const init = () => {
-    if (token) {
-      setisLoading(true);
-      getData(token);
-      setisLoading(false);
-    }
+  const getcompData = async (token) => {
+    await GetCompany(token);
   };
 
   useEffect(() => {
-    init();
-  }, []);
-
-  useEffect(() => {
     if (token) {
       setisLoading(true);
       getData(token);
+      getcompData(token);
       setisLoading(false);
     }
   }, [token]);
 
+  // useEffect(() => {}, [companyInfo]);
+
+  console.log(companyInfo);
   if (isLoading)
     return (
       <div
@@ -86,79 +82,199 @@ const Header = () => {
             <Navbar.Brand href="/">RecruitIQ</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
           </Nav>
-          <Nav
-            className="flex-grow-0.5 justify-content-evenly nav"
-            style={{ gap: "1vw", marginRight: "2vw" }}
-          >
-            {token && userInfo["id"] ? (
-              <>
-                <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav className="me-auto">
-                    <img
-                      src={
-                        userMedia["image"]
-                          ? `${process.env.REACT_APP_BACKEND_URL}${userMedia["image"]}`
-                          : img
-                      }
-                      width={"46px"}
-                      height={"46px"}
-                      style={{ borderRadius: "46px" }}
-                    />
-                    <NavDropdown
-                      title=""
-                      id="basic-nav-dropdown"
-                      className="test "
+
+          {token && userInfo && userInfo["id"] && (
+            <Nav
+              className="flex-grow-0.5 justify-content-evenly nav"
+              style={{ gap: "1vw", marginRight: "2vw" }}
+            >
+              {userInfo["id"] ? (
+                <>
+                  <Navbar.Collapse
+                    id="basic-navbar-nav"
+                    style={{ marginRight: "8vw" }}
+                  >
+                    <Nav className="me-auto">
+                      <img
+                        src={`${process.env.REACT_APP_BACKEND_URL}${userMedia["image"]}`}
+                        width={"46px"}
+                        height={"46px"}
+                        style={{ borderRadius: "46px" }}
+                      />
+                      <NavDropdown
+                        title=""
+                        id="basic-nav-dropdown"
+                        className="test "
+                      >
+                        <NavDropdown.Item>
+                          {userInfo && userInfo["firstName"]
+                            ? userInfo["firstName"] + " " + userInfo["lastName"]
+                            : ""}
+                        </NavDropdown.Item>
+                        <NavDropdown.Item href="/">
+                          <hr></hr>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item href="/">Home</NavDropdown.Item>
+                        <NavDropdown.Item href="/client-profile">
+                          Profile
+                        </NavDropdown.Item>
+
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="/" onClick={logoutHandler}>
+                          Logout
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </Nav>
+                  </Navbar.Collapse>
+                </>
+              ) : (
+                <>
+                  <Nav.Link href="/contact">Contact Us</Nav.Link>
+                  <Nav.Link href="/about">About</Nav.Link>
+
+                  <Nav.Link
+                    variant="light"
+                    style={{ border: "1px solid black", borderRadius: "15px" }}
+                    href="/clientLogin"
+                    className="links"
+                  >
+                    Seeker
+                  </Nav.Link>
+
+                  <Nav.Link
+                    variant="light"
+                    style={{ border: "1px solid black", borderRadius: "15px" }}
+                    href="/companyLogin"
+                    className="links"
+                  >
+                    employer
+                  </Nav.Link>
+                </>
+              )}
+            </Nav>
+          )}
+
+          {token &&
+            companyInfo["companyInfo"] &&
+            companyInfo["companyInfo"]["id"] && (
+              <Nav
+                className="flex-grow-0.5 justify-content-evenly nav"
+                style={{ gap: "1vw", marginRight: "2vw" }}
+              >
+                {(token && userInfo && userInfo["id"]) ||
+                (token &&
+                  companyInfo["companyInfo"] &&
+                  companyInfo["companyInfo"]["id"]) ? (
+                  <>
+                    <Navbar.Collapse
+                      id="basic-navbar-nav"
+                      style={{ marginRight: "8vw" }}
                     >
-                      <NavDropdown.Item href="/">Home</NavDropdown.Item>
-                      <NavDropdown.Item href="/client-profile">
-                        Profile
-                      </NavDropdown.Item>
+                      <Nav className="me-auto">
+                        <img
+                          src={
+                            companyInfo && companyInfo["companyInfo"]["id"]
+                              ? `${process.env.REACT_APP_BACKEND_URL}${companyInfo["companyInfo"]["logo"]}`
+                              : { img }
+                          }
+                          width={"46px"}
+                          height={"46px"}
+                          style={{ borderRadius: "46px" }}
+                        />
+                        <NavDropdown
+                          title=""
+                          id="basic-nav-dropdown"
+                          className="test "
+                        >
+                          <NavDropdown.Item>
+                            {userInfo && userInfo["firstName"]
+                              ? userInfo["firstName"] +
+                                " " +
+                                userInfo["lastName"]
+                              : ""}
+                          </NavDropdown.Item>
+                          <NavDropdown.Item href="/">
+                            <hr></hr>
+                          </NavDropdown.Item>
 
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item href="/" onClick={logoutHandler}>
-                        Logout
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                  </Nav>
-                </Navbar.Collapse>
-              </>
-            ) : (
-              <>
-                <Nav.Link href="/contact">Contact Us</Nav.Link>
-                <Nav.Link href="/about">About</Nav.Link>
+                          <NavDropdown.Item href="/CompanyHomePage">
+                            Dashboard
+                          </NavDropdown.Item>
 
-                <Nav.Link
-                  variant="light"
-                  style={{ border: "1px solid black", borderRadius: "15px" }}
-                  href="/clientLogin"
-                  className="links"
-                >
-                  Seeker
-                </Nav.Link>
+                          <NavDropdown.Item href="/companyDetails">
+                            Profile
+                          </NavDropdown.Item>
 
-                <Nav.Link
-                  variant="light"
-                  style={{ border: "1px solid black", borderRadius: "15px" }}
-                  href="/companyLogin"
-                  className="links"
-                >
-                  employer
-                </Nav.Link>
-              </>
+                          <NavDropdown.Divider />
+                          <NavDropdown.Item href="/" onClick={logoutHandler}>
+                            Logout
+                          </NavDropdown.Item>
+                        </NavDropdown>
+                      </Nav>
+                    </Navbar.Collapse>
+                  </>
+                ) : (
+                  <>
+                    <Nav.Link href="/contact">Contact Us</Nav.Link>
+                    <Nav.Link href="/about">About</Nav.Link>
+
+                    <Nav.Link
+                      variant="light"
+                      style={{
+                        border: "1px solid black",
+                        borderRadius: "15px",
+                      }}
+                      href="/clientLogin"
+                      className="links"
+                    >
+                      Seeker
+                    </Nav.Link>
+
+                    <Nav.Link
+                      variant="light"
+                      style={{
+                        border: "1px solid black",
+                        borderRadius: "15px",
+                      }}
+                      href="/companyLogin"
+                      className="links"
+                    >
+                      employer
+                    </Nav.Link>
+                  </>
+                )}
+              </Nav>
             )}
-          </Nav>
-          {/* <Nav.Link style={{ marginRight: "20px" }} href="/contact">
-            Contact Us
-          </Nav.Link>
-          <Nav.Link style={{ marginRight: "20px" }} href="/about">
-            About
-          </Nav.Link>
-          <Button
-            variant="light"
-            style={{ border: "1px solid black", borderRadius: "15px" }}
-          >
-            Sign In
-          </Button>{" "} */}
+          {!token && (
+            <Nav>
+              <Nav.Link href="/contact">Contact Us</Nav.Link>
+              <Nav.Link href="/about">About</Nav.Link>
+
+              <Nav.Link
+                variant="light"
+                style={{
+                  border: "1px solid black",
+                  borderRadius: "15px",
+                }}
+                href="/clientLogin"
+                className="links"
+              >
+                Seeker
+              </Nav.Link>
+
+              <Nav.Link
+                variant="light"
+                style={{
+                  border: "1px solid black",
+                  borderRadius: "15px",
+                }}
+                href="/companyLogin"
+                className="links"
+              >
+                employer
+              </Nav.Link>
+            </Nav>
+          )}
         </Container>
       </Navbar>
     </div>

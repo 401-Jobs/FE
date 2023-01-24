@@ -1,3 +1,4 @@
+import React from "react";
 
 import {
   MDBBtn,
@@ -10,8 +11,8 @@ import {
   MDBIcon,
   MDBInput,
 } from "mdb-react-ui-kit";
-import React from "react";
-import './Login.css'
+
+import "./Login.css";
 import Telecommuting from "./Assets/Telecommuting.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -19,8 +20,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
 import Spinner from "react-bootstrap/Spinner";
 import { useEffect } from "react";
+import TelecommutingCuate from "./Assets/TelecommutingCuate.png";
 import { JoobSeekerContext } from "../../context/joobseeker";
-
 
 export const CompanyLogin = () => {
   const [email, setEmail] = useState("");
@@ -34,9 +35,9 @@ export const CompanyLogin = () => {
 
   const { userInfo } = useContext(JoobSeekerContext);
 
-  useEffect(() => {
-    if (token && userInfo['id']) navigate("/companyDetails");
-  }, [token, userInfo]);
+  // useEffect(() => {
+  //   if (token && companyInfo["id"]) navigate("/client-profile");
+  // }, [token, userInfo]);
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
@@ -56,9 +57,12 @@ export const CompanyLogin = () => {
     try {
       console.log(token);
       setisLoading(true);
+      console.log(userInfo);
 
       await login(userInfo);
       setisLoading(false);
+
+      navigate("/CompanyHomePage");
 
       console.log(token);
     } catch (error) {
@@ -94,7 +98,7 @@ export const CompanyLogin = () => {
                   className="fw-normal my-4 pb-3"
                   style={{ letterSpacing: "1px" }}
                 >
-                  Sign in Into company account
+                  Sign in Into Jobseeker account
                 </h5>
 
                 <MDBInput
@@ -132,10 +136,9 @@ export const CompanyLogin = () => {
                   </MDBBtn>
                 )}
 
-
                 {/* <MDBBtn className="mb-4 px-5 bt" color="dark" size="lg">
-                                  Login
-                                </MDBBtn> */}
+                  Login
+                </MDBBtn> */}
                 <a
                   className="small text-muted"
                   href="/forgot"
@@ -148,9 +151,7 @@ export const CompanyLogin = () => {
                   style={{ color: "#393f81", textAlign: "center" }}
                 >
                   Don't have an account?{" "}
-
-                  <a href="/ClientSignUp" style={{ color: "#FF7B54" }}>
-
+                  <a href="/ClientSignUp" style={{ color: "#A31ACB" }}>
                     Register here
                   </a>
                 </p>

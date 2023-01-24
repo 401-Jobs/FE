@@ -64,7 +64,7 @@ const ProfileCompleteness = () => {
     }
     console.log(Object.keys(objProgress).length);
     setProgress(parseInt((progress / Object.keys(objProgress).length) * 100));
-  }, []);
+  }, [userInfo]);
 
   console.log(Obj);
 
