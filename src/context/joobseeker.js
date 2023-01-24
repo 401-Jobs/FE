@@ -48,6 +48,7 @@ export function JoobSeekerWrapper({ children }) {
     updateJobseekerLinks,
     updateJobseekerSkills,
     updateJobseekerInterview,
+    setCanddidate,
   });
 
   async function jobseekerData(token) {
@@ -353,6 +354,24 @@ export function JoobSeekerWrapper({ children }) {
       companyInfo: res.data,
     });
     console.log(res.data);
+  }
+
+  function setCanddidate(data) {
+    console.log(data);
+    if (data["userContact"]) {
+      setGlobal({
+        ...global,
+        userInfo: data["userContact"],
+        userEducation: data["userEducation"],
+        userWork: data["userWork"],
+        userMedia: data["userMedia"],
+        summary: data["userDetails"]["summary"],
+        skills: data["userDetails"]["skills"],
+        linkedin: data["userDetails"]["linkedin"],
+        github: data["userDetails"]["github"],
+        porto: data["userDetails"]["porto"],
+      });
+    }
   }
 
   return (
