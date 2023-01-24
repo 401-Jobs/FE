@@ -37,62 +37,38 @@ function App() {
 
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
-
           <Route exact path="/CompanySignUp" element={<SignUpPage />} />
-
           <Route exact path="/ClientSignUp" element={<SignUpPage />} />
-
           <Route
             exact
             path="/email-varification"
             element={<EmailVerificationPage />}
           />
-
           <Route path="/clientLogin" element={<LoginPage />} />
-
           <Route path="/companyLogin" element={<LoginPage />} />
-
           <Route exact path="/forgot" element={<ForgotPasswordPage />} />
-
           <Route exact path="/resetPassword" element={<ResetPassword />} />
-
           {/* /*************************JOB SEEKER ****************************************/}
-
           <Route path="/client-profile" element={<ClientProfilePage />} />
-
           <Route exact path="/preview" element={<ClientPreviews />} />
-
-          <Route
-            exact
-            path="/CompareCandidates"
-            element={<ClientPreviews />}
-          />
-
+          <Route exact path="/preview/:id" element={<ClientPreviews />} />
+          <Route exact path="/CompareCandidates" element={<ClientPreviews />} />
           {/************************* END JOB SEEKER ****************************************/}
-
           <Route path="/contact" element={<ContactusPage />} />
-
           <Route path="/about" element={<AboutUsPage />} />
-
           {/* 
           <Route exact path="/update-form" element={<UploadForm />} />
         */}
-
           {/* /************************* END JOB SEEKER ****************************************/}
-
           <Route exact path="/companyDetails" element={<CompanyDetails />} />
-
-          <Route
+          {/* <Route
             exact
             path="/dashboardCompany"
-            element={<DashboardCompany />}
-          />
-
+            element={<DashboardCompany />} */}
           <Route exact path="/candidates" element={<Candidates />} />
-          <Route exact path="/candidate" element={<CandidateSearch />} /> // added by mohammad
-
-          <Route exact path="/CompanyHomePage" element={<CompanyHomePage/>}/>
-
+          <Route exact path="/candidate" element={<CandidateSearch />} /> //
+          added by mohammad
+          <Route exact path="/CompanyHomePage" element={<CompanyHomePage />} />
           {/* /************************* END JOB SEEKER ****************************************/}
         </Routes>
 
@@ -103,17 +79,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-   

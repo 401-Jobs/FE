@@ -13,11 +13,12 @@ export function JoobSeekerWrapper({ children }) {
     userWork: [{}],
     userMedia: {},
     userDetails: {},
-    summary:{},
-    skills:{},
-    linkedin:{},
-    github:{},
-    porto:{},
+    summary: {},
+    skills: {},
+    linkedin: {},
+    github: {},
+    porto: {},
+    companyInfo: {},
     /********************* */
     jobseekerinterviews: {},
     jobseekerviews: {},
@@ -31,6 +32,7 @@ export function JoobSeekerWrapper({ children }) {
     updatejobseekerMedia: {},
     updatejobseekerDetails: {},
     updatejobseekerInterview: {},
+    GetCompany,
     jobseekerData,
     jobseekerInterviews,
     jobseekerViews,
@@ -46,6 +48,7 @@ export function JoobSeekerWrapper({ children }) {
     updateJobseekerLinks,
     updateJobseekerSkills,
     updateJobseekerInterview,
+    setCanddidate,
   });
 
   async function jobseekerData(token) {
@@ -68,12 +71,11 @@ export function JoobSeekerWrapper({ children }) {
         userWork: res.data["userWork"],
         userMedia: res.data["userMedia"],
 
-        summary:res.data["userDetails"]["summary"],
-        skills:res.data["userDetails"]["skills"],
-        linkedin:res.data["userDetails"]["linkedin"],
-        github:res.data["userDetails"]["github"],
-        porto:res.data["userDetails"]["porto"],
-
+        summary: res.data["userDetails"]["summary"],
+        skills: res.data["userDetails"]["skills"],
+        linkedin: res.data["userDetails"]["linkedin"],
+        github: res.data["userDetails"]["github"],
+        porto: res.data["userDetails"]["porto"],
       });
     } catch {
       console.log("hello");
@@ -111,6 +113,7 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
+
   async function jobseekerAll(token) {
     const config = {
       headers: {
@@ -121,12 +124,14 @@ export function JoobSeekerWrapper({ children }) {
       "https://reqiq.herokuapp.com/jobseeker-all/",
       config
     );
+
     setGlobal({
       ...global,
       jobseekerall: res.data,
     });
     console.log(res.data);
   }
+
   async function updateJobseekerPF(pf, token) {
     const config = {
       headers: {
@@ -294,20 +299,17 @@ export function JoobSeekerWrapper({ children }) {
       linkedin: res.data["websites"]["linkedin"],
       github: res.data["websites"]["github"],
       porto: res.data["websites"]["porto"],
-
-     
-
     });
     console.log(res.data);
   }
-  async function updateJobseekerSkills(pf, token) {
+  async function updateJobseekerSkills(token, pf) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
     let res = await axios.put(
-      "https://reqiq.herokuapp.com/jobseeker-update-links/",
+      "https://reqiq.herokuapp.com/jobseeker-update-skills/",
       pf,
       config
     );
@@ -335,6 +337,43 @@ export function JoobSeekerWrapper({ children }) {
     });
     console.log(res.data);
   }
+
+  async function GetCompany(token) {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.get(
+      "https://reqiq.herokuapp.com/get-company-info/",
+      config
+    );
+
+    setGlobal({
+      ...global,
+      companyInfo: res.data,
+    });
+    console.log(res.data);
+  }
+
+  function setCanddidate(data) {
+    console.log(data);
+    if (data["userContact"]) {
+      setGlobal({
+        ...global,
+        userInfo: data["userContact"],
+        userEducation: data["userEducation"],
+        userWork: data["userWork"],
+        userMedia: data["userMedia"],
+        summary: data["userDetails"]["summary"],
+        skills: data["userDetails"]["skills"],
+        linkedin: data["userDetails"]["linkedin"],
+        github: data["userDetails"]["github"],
+        porto: data["userDetails"]["porto"],
+      });
+    }
+  }
+
   return (
     <JoobSeekerContext.Provider value={global}>
       {children}

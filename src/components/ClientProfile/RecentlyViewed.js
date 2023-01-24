@@ -1,6 +1,33 @@
 import React from 'react'
+import { AuthContext } from '../../context/auth'
+import { useContext } from 'react'
+import axios from 'axios'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 const RecentlyViewed = () => {
+  const [allViews, setAllViews] = useState([])
+  const { token } = useContext(AuthContext)
+  // console.log(token)
+  const jobseekerViews = async () => {
+    const config = {
+      Headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    let res = await axios.get(
+      'https://reqiq.herokuapp.com/jobseeker-views/',
+      config
+    )
+    // console.log(res.data);
+    setAllViews([...allViews, setAllViews(res.data)])
+    console.log(allViews)
+  }
+
+  useEffect(() => {
+    jobseekerViews()
+  }, [])
+
   return (
     <div className='interviewTable'>
       <div class='container' style={{ margin: '30px 0' }}>
@@ -9,64 +36,57 @@ const RecentlyViewed = () => {
             <div class='card shadow'>
               <div class='card-header p-3'>
                 <h5 class='mb-0 d-flex'>
-                <i style={{ paddingRight: '5px' }} class="fa-solid fa-tower-broadcast"></i>
+                  <i
+                    style={{ paddingRight: '5px' }}
+                    class='fa-solid fa-tower-broadcast'
+                  ></i>
                   Recently Viewd
                 </h5>
               </div>
               <div
                 class='card-body'
-                style={{ position: 'relative', height: '200px' ,overflowY:'scroll'}}
+                style={{
+                  position: 'relative',
+                  height: '200px',
+                  overflowY: 'scroll',
+                }}
               >
-                <table class='table mb-0'>
+                <table className="table mb-0">
                   <thead>
-                    <tr >
-                      <th style={{top:'0',zIndex:'2',position:'stickly'}} scope='col'>Company</th>
-                      <th style={{top:'0',zIndex:'2',position:'stickly'}} scope='col'>Status</th>
+                    <tr>
+                      <th
+                        style={{ top: '0', zIndex: '2', position: 'stickly' }}
+                        scope='col'
+                      >
+                        Company
+                      </th>
+                      <th
+                        style={{ top: '0', zIndex: '2', position: 'stickly' }}
+                        scope='col'
+                      >
+                        Status
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class='fw-normal'>
-                      <th>
-                        <img
-                          src='https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp'
-                          class='shadow-1-strong rounded-circle'
-                          alt='avatar 1'
-                          style={{ width: '55px', height: 'auto' }}
-                        />
-                        <span class='ms-2'>Amazon</span>
-                      </th>
-                      <td class='align-middle'>
-                      <i class="fa-solid fa-eye"></i>
-                      </td>
-                    </tr>
-                    <tr class='fw-normal'>
-                      <th>
-                        <img
-                          src='https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp'
-                          class='shadow-1-strong rounded-circle'
-                          alt='avatar 1'
-                          style={{ width: '55px', height: 'auto' }}
-                        />
-                        <span class='ms-2'>Amazon</span>
-                      </th>
-                      <td class='align-middle'>
-                      <i class="fa-solid fa-eye"></i>
-                      </td>
-                    </tr>
-                    <tr class='fw-normal'>
-                      <th>
-                        <img
-                          src='https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp'
-                          class='shadow-1-strong rounded-circle'
-                          alt='avatar 1'
-                          style={{ width: '55px', height: 'auto' }}
-                        />
-                        <span class='ms-2'>Amazon</span>
-                      </th>
-                      <td class='align-middle'>
-                      <i class="fa-solid fa-eye"></i>
-                      </td>
-                    </tr>
+                    {allViews.length>0 && allViews.map((item) => {
+                      return (
+                        <tr class='fw-normal'>
+                          <th>
+                            <img
+                              src={`${process.env.REACT_APP_BACKEND_URL}${item['logo']}`}
+                              class='shadow-1-strong rounded-circle'
+                              alt='avatar 1'
+                              style={{ width: '55px', height: 'auto' }}
+                            />
+                            <span class='ms-2'>{item['company_name']}</span>
+                          </th>
+                          <td class='align-middle'>
+                            <i class='fa-solid fa-eye'></i>
+                          </td>
+                        </tr>
+                      )
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -75,7 +95,7 @@ const RecentlyViewed = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RecentlyViewed

@@ -22,12 +22,29 @@
     display: flex;
     flex-direction: column;
     background-color: #f3f3f3;
-    min-height: 850px;
+    min-height: 100vh;
     max-width: 500px;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 30px;
+ 
 }
+
+
+.right_section2{
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f3f3;
+    min-height: 100vh;
+    max-width: 500px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+ 
+}
+
+
+
 .right_up_section{
     display: flex;
     flex-direction: column;

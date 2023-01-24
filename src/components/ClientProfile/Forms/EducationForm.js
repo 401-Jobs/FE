@@ -58,7 +58,6 @@ const EducationForm = (props) => {
       console.log("error");
     }
   };
-  console.log(degree);
   return (
     <Form onSubmit={props["updateMode"] ? handleUpdate : handelSubmit}>
       <div className="form_div">

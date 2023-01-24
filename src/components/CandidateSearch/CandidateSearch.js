@@ -3,16 +3,75 @@ import search_icon from './search.png'
 import './CandidateSearch.css'
 import Filter from './Filter'
 import CandidateCards from './CandidateCards'
-import { data } from './data'
-import { JoobSeekerContext } from '../../context/joobseeker'
 import { useContext } from 'react'
+import { AuthContext } from '../../context/auth'
+import axios from 'axios'
+import Row from 'react-bootstrap/Row';
+
 const CandidateSearch = () => {
-    const {jobseekerAll}=useContext(JoobSeekerContext)
+    const[userInfo,setuserInfo]=useState({})
+    const { token } = useContext(AuthContext);
     
     const [candidates,setCandidates]=useState([])
-    // set skills functionality
     const [skill,setSkill]=useState('')
     const [skills,setSkills]=useState([])
+
+
+    let getAllJobSeekers=async(e)=>{
+      const config = {
+        headers: {
+          Authorization:`Bearer ${token}`,
+        },
+      };
+      let res = await axios.get(
+        "https://reqiq.herokuapp.com/jobseeker-all/",
+        config
+      );
+      console.log(res.data);
+       let info=res.data['userInfo'];
+       let educate=res.data['userEducation']
+       let contact=res.data['userContact']
+       let work=res.data['userWork'] 
+       let media=res.data['userMedia'] 
+       let details=res.data['userDetails'] 
+       let result = [];
+       result = info.map(obj => {
+          const index = educate.findIndex(el => el["id"] == obj["id"]);
+          const indexCon = contact.findIndex(el => el["id"] == obj["id"]);
+          const indexwor= work.findIndex(el => el["id"] == obj["id"]);
+          const indexMed=media.findIndex(el => el["id"] == obj["id"]);
+          const indexDet=details.findIndex(el => el["id"] == obj["id"]);
+  
+          const{github,linkedin,skills}=indexDet !==-1?details[indexCon]:{};
+          const{image}=indexMed !==-1?media[indexCon]:{};
+          const{title,description}=indexwor !==-1?work[indexCon]:{};
+          const{email,phoneNumber}=indexCon !==-1?contact[indexCon]:{};
+          const { major,degree} = index !== -1 ? educate[index] : {};
+        return {
+           ...obj,
+           major,
+           degree,
+           email,
+           phoneNumber,
+           title,
+           description,
+           image,
+           github,
+           linkedin,
+           skills
+  
+        };
+          return result
+       });
+       console.log(result)
+      //  console.log(userInfo)
+      setuserInfo(result)
+       
+      }
+
+
+
+
     function createKeyword(key) {
         // Create LI
         var li = document.createElement("li");
@@ -57,10 +116,11 @@ const CandidateSearch = () => {
     const submitSearchHandler=(e)=>{
         e.preventDefault()
         let candidate=e.target.q.value
-        let target= data.filter(item=>{
-            if (item.jobTitle.toLowerCase()=== candidate.toLowerCase()) return item
+        let target= userInfo.filter(item=>{
+            if (item.title!== null && item.title.toLowerCase()=== candidate.toLowerCase()) return item
         })
-        setCandidates(target)
+        
+        setuserInfo(target)
  
     }
 // filter functionality
@@ -73,22 +133,23 @@ const submitFilterHandler=(e)=>{
     let minAge=e.target.minAge.value
     let maxAge=e.target.maxAge.value
     let findIntersection=(checkArr)=>{
-        let common = checkArr.filter(x => skills.indexOf(x) !== -1)
+      // console.log(checkArr.split(','));
+        let common = checkArr.split(',').filter(x => skills.indexOf(x) !== -1)
         if (common.length>0) return true
         else return false
     }
     
-    let res=data.filter(item=>{
-        if (jobTitle==item.jobTitle || (parseInt(minExp)<=parseInt(item.yearsOfExp) && parseInt(item.yearsOfExp)<=parseInt(maxExp)) || (parseInt(minAge)<=parseInt(item.age) && parseInt(item.age)<=parseInt(maxAge)) || findIntersection(item.skills)===true) return item
+    let res=userInfo.filter(item=>{
+        if (item.title===null || item.yearsExperience===null || item.age===null) return false
+        if (jobTitle==item.title || (parseInt(minExp)<=parseInt(item.yearsExperience) && parseInt(item.yearsExperience)<=parseInt(maxExp)) || (parseInt(minAge)<=parseInt(item.age) && parseInt(item.age)<=parseInt(maxAge)) || findIntersection(item.skills)===true) return item
     })
-    setCandidates(res)
+    setuserInfo(res)
 }
 
     useEffect(()=>{
-        if (candidates.length==0) setCandidates(data)
-        console.log(jobseekerAll)
+        getAllJobSeekers()
     },[])
-    // console.log(candidates)
+    
   return (
     <div>
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center', paddingTop:'25px'}}>
@@ -102,7 +163,29 @@ const submitFilterHandler=(e)=>{
             <Filter submitFilterHandler={submitFilterHandler} skillHandler={skillHandler} submitHandler={submitHandler}/>
         </div>
         <div>
-            <CandidateCards candidates={candidates}/>
+        <Row xs={1} md={4} className="g-4">
+        {userInfo.length>0 && userInfo.map((person,index)=>{
+        return(
+          
+        <CandidateCards 
+        key={person.index}
+        firstName={person.firstName}
+        lastName={person.lastName}
+        location={person.country}
+        jopTitle={person.title}
+        email={person.email}
+        img={person.image}
+        skills={person.skills}
+        ex={person.yearsExperience}
+        age={person.age}
+        id={person.owner}
+        />
+        
+        )
+        
+      })}
+         </Row> 
+            
         </div>
     </div>
   )

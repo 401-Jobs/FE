@@ -5,7 +5,68 @@ import RedirectViewEmployer from "../ClientProfile/ProfileCompleteness";
 // import "../ClientProfile/ProfileCompleteness.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useContext } from "react";
+import { JoobSeekerContext } from "../../context/joobseeker";
+import { useEffect } from "react";
+import { AuthContext } from "../../context/auth";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 export const CompanyLandingPage = () => {
+  const { logout, token } = useContext(AuthContext);
+  const [first, setfirst] = useState(0);
+  const [second, setsecond] = useState({});
+
+  const navigate = useNavigate();
+
+  const { userMedia, jobseekerData, userInfo, GetCompany, companyInfo } =
+    useContext(JoobSeekerContext);
+
+  const GetCompanyData = async () => {
+    await GetCompany(token);
+  };
+
+  const getViews = async () => {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+
+    let res = await axios.get("https://reqiq.herokuapp.com/get-views/", {
+      headers: headers,
+    });
+    console.log(res);
+    setfirst(res.data["Views"]);
+  };
+
+  const getLastViewd = async () => {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+
+    let res = await axios.get("https://reqiq.herokuapp.com/last-viewd/", {
+      headers: headers,
+    });
+    console.log(res);
+    setsecond({
+      usersInfo: res.data["usersInfo"],
+      usersMedia: res.data["usersMedia"],
+    });
+  };
+
+  useEffect(() => {
+    getViews();
+    getLastViewd();
+  }, []);
+  useEffect(() => {
+    GetCompanyData();
+  }, [token]);
+  console.log(first);
+  console.log(second);
+  // console.log(
+  //   process.env.REACT_APP_BACKEND_URL + second["usersMedia"]["image"]
+  // );
   return (
     <>
       <div style={{ display: "flex" }}>
@@ -13,49 +74,80 @@ export const CompanyLandingPage = () => {
           <CompnyTableInterview />
         </div>
         <div>
-          <CompanyShortList/>
+          <CompanyShortList />
         </div>
       </div>
 
-      <Card className="text-center" style={{width:'65%',marginLeft:'7%',marginTop:'-1%'}}>
-        <Card.Header >Featured</Card.Header>
+      <Card
+        className="text-center"
+        style={{ width: "65%", marginLeft: "7%", marginTop: "-1%" }}
+      >
+        <Card.Header>Featured</Card.Header>
+
         <Card.Body>
-          <Card.Title>Who Visit Our Website?</Card.Title>
+          <Card.Title>Last candidate profile you see</Card.Title>
           <Card.Text>
-          This feature can provide you with valuable insights into who your website visitors are, where they come from, and what pages they are viewing.
+            This feature can provide you with valuable insights into who your
+            website visitors are, where they come from, and what pages they are
+            viewing.
           </Card.Text>
-          <Button variant="primary" style={{textTransform:'unset' }}>Show</Button>
+          <Button variant="primary" style={{ textTransform: "unset" }}>
+            Show
+          </Button>
         </Card.Body>
         {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
       </Card>
 
-       <div style={{marginLeft:'75%',marginTop:'-51%',marginBottom:'15%'}}>
-       <Card border="warning" style={{ width: '18rem' }}>
-        <Card.Header>Header</Card.Header>
-        <Card.Body>
-          <Card.Title>Warning Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-        </Card.Body>
-        <Card.Body><Button variant="primary" style={{marginLeft:'30%',textTransform:'unset' }}>Primary</Button></Card.Body>
-      </Card>
-      <br />
+      <div
+        style={{ marginLeft: "75%", marginTop: "-51%", marginBottom: "15%" }}
+      >
+        <Card
+          border="warning"
+          style={{
+            width: "18rem",
+          }}
+        >
+          <Card.Body>
+            <Card.Title>Company Views</Card.Title>
+            <Card.Text style={{ paddingTop: "2vw", paddingLeft: "2vw" }}>
+              <i class="fa fa-eye fa-3x" aria-hidden="true"></i>
+              <span style={{ marginLeft: "2vw", fontSize: "1.5rem" }}>
+                {first}
+              </span>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <br />
 
-      <Card border="info" style={{ width: '18rem' }}>
-        <Card.Header>Header</Card.Header>
-        <Card.Body>
-          <Card.Title>Info Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-        </Card.Body>
-        <Card.Body><Button variant="primary" style={{marginLeft:'30%',textTransform:'unset'}}>Primary</Button></Card.Body>
-      </Card>
-      <br />
+        <Card style={{ width: "18rem" }}>
+          <Card.Img
+            variant="top"
+            src={
+              second["usersMedia"] &&
+              process.env.REACT_APP_BACKEND_URL + second["usersMedia"]["image"]
+            }
+          />
+          <Card.Body>
+            <Card.Title>
+              {second["usersInfo"] &&
+                second["usersInfo"]["firstName"] +
+                  " " +
+                  second["usersInfo"]["lastName"]}
+            </Card.Title>
 
+            <Button
+              onClick={() => {
+                navigate(`/preview/${second["usersInfo"]["owner"]}`);
+              }}
+              variant="primary"
+            >
+              {" "}
+              Details{" "}
+            </Button>
+          </Card.Body>
+        </Card>
+
+        <br />
       </div>
 
       {/* 

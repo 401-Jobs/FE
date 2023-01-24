@@ -2,12 +2,12 @@ import React from 'react'
 import {client_prev_data} from './client_prev_data.js'
 import Card from 'react-bootstrap/Card'
 
-const Edu = () => {
+const Edu = (props) => {
   return (
     <div>
         <p style={{fontSize:'x-large'}}>Education</p>
         <div>
-          {client_prev_data[0]['education'].map((item) => {
+          {props.userEducation.map((item) => {
             return (
               <Card.Body>
                 <p style={{fontSize:'large'}}>{item.institute}</p>
