@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from 'react'
 import './InterviewTable.css'
 import InterviewsDetails from './InterviewsDetails'
@@ -73,11 +74,14 @@ const InterviewTable = (props) => {
                             <InterviewsDetails company={ele} interview={obj} />
                           </td>
                         </tr>
-                        
+
                       </tbody>
                       )
                     })}
-                   
+                    
+  
+  
+                    
                   </table>
                 </div>
               </div>
@@ -86,10 +90,6 @@ const InterviewTable = (props) => {
         </div>
       </div>
     )
-
   }
-  
-  
 }
-
-export default InterviewTable
+export default InterviewTable;

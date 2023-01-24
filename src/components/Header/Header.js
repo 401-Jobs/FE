@@ -10,21 +10,59 @@ import "./Header.css";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
 import { JoobSeekerContext } from "../../context/joobseeker";
+import { useState } from "react";
+import Spinner from "react-bootstrap/Spinner";
 
 const Header = () => {
   const { pathname } = useLocation();
   const { logout, token } = useContext(AuthContext);
+  const [isLoading, setisLoading] = useState(false);
 
-  const { userMedia, jobseekerData,userInfo } = useContext(JoobSeekerContext);
+  const { userMedia, jobseekerData, userInfo } = useContext(JoobSeekerContext);
   console.log(userMedia);
 
   const getData = async (token) => {
     await jobseekerData(token);
   };
 
+  const init = () => {
+    if (token) {
+      setisLoading(true);
+      getData(token);
+      setisLoading(false);
+    }
+  };
+
   useEffect(() => {
-    if (token) getData(token);
+    init();
+  }, []);
+
+  useEffect(() => {
+    if (token) {
+      setisLoading(true);
+      getData(token);
+      setisLoading(false);
+    }
   }, [token]);
+
+  if (isLoading)
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          alignContent: "center",
+          minHeight: "80vh",
+          paddingTop: "10%",
+        }}
+      >
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden ">Loading...</span>
+        </Spinner>
+      </div>
+    );
+
+  let img =
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png";
 
   if (pathname === "/forgot") return null;
   if (pathname === "/email-varification") return null;
@@ -43,7 +81,7 @@ const Header = () => {
         <Container>
           <Nav>
             <a href="/">
-              <img src={logo} width="60" height="60" alt="logo" />
+              <img src={logo} width="48" height="48" alt="logo" />
             </a>
             <Navbar.Brand href="/">RecruitIQ</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -57,7 +95,11 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
                     <img
-                      src={`${process.env.REACT_APP_BACKEND_URL}${userMedia["image"]}`}
+                      src={
+                        userMedia["image"]
+                          ? `${process.env.REACT_APP_BACKEND_URL}${userMedia["image"]}`
+                          : img
+                      }
                       width={"46px"}
                       height={"46px"}
                       style={{ borderRadius: "46px" }}
@@ -71,7 +113,6 @@ const Header = () => {
                       <NavDropdown.Item href="/client-profile">
                         Profile
                       </NavDropdown.Item>
-
 
                       <NavDropdown.Divider />
                       <NavDropdown.Item href="/" onClick={logoutHandler}>

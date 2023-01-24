@@ -61,6 +61,7 @@ function App() {
           <Route path="/client-profile" element={<ClientProfilePage />} />
 
           <Route exact path="/preview" element={<ClientPreviews />} />
+          <Route exact path="/preview/:id" element={<ClientPreviews />} />
 
           <Route
             exact

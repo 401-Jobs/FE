@@ -4,15 +4,80 @@ import './CandidateSearch.css'
 import Filter from './Filter'
 import CandidateCards from './CandidateCards'
 import { data } from './data'
-import { JoobSeekerContext } from '../../context/joobseeker'
+// import { JoobSeekerContext } from '../../context/joobseeker'
 import { useContext } from 'react'
+import { AuthContext } from '../../context/auth'
+import axios from 'axios'
+import Row from 'react-bootstrap/Row';
+
 const CandidateSearch = () => {
-    const {jobseekerAll}=useContext(JoobSeekerContext)
-    
+    const[userInfo,setuserInfo]=useState({})
+    // const {jobseekerall,jobseekerAll}=useContext(JoobSeekerContext)
+    const { token } = useContext(AuthContext);
+    // const getAllJobSeekers=async()=>{
+    //   await jobseekerAll(token)
+    // }
+    // console.log(jobseekerAll(token))
     const [candidates,setCandidates]=useState([])
     // set skills functionality
     const [skill,setSkill]=useState('')
     const [skills,setSkills]=useState([])
+
+
+    let getAllJobSeekers=async()=>{
+      const config = {
+        headers: {
+          Authorization:`Bearer ${token}`,
+        },
+      };
+      let res = await axios.get(
+        "https://reqiq.herokuapp.com/jobseeker-all/",
+        config
+      );
+       let info=res.data['userInfo'];
+       let educate=res.data['userEducation']
+       let contact=res.data['userContact']
+       let work=res.data['userWork'] 
+       let media=res.data['userMedia'] 
+       let details=res.data['userDetails'] 
+       let result = [];
+       result = info.map(obj => {
+          const index = educate.findIndex(el => el["id"] == obj["id"]);
+          const indexCon = contact.findIndex(el => el["id"] == obj["id"]);
+          const indexwor= work.findIndex(el => el["id"] == obj["id"]);
+          const indexMed=media.findIndex(el => el["id"] == obj["id"]);
+          const indexDet=details.findIndex(el => el["id"] == obj["id"]);
+  
+          const{github,linkedin,skills}=indexDet !==-1?details[indexCon]:{};
+          const{image}=indexMed !==-1?media[indexCon]:{};
+          const{title,description}=indexwor !==-1?work[indexCon]:{};
+          const{email,phoneNumber}=indexCon !==-1?contact[indexCon]:{};
+          const { major,degree} = index !== -1 ? educate[index] : {};
+        return {
+           ...obj,
+           major,
+           degree,
+           email,
+           phoneNumber,
+           title,
+           description,
+           image,
+           github,
+           linkedin,
+           skills
+  
+        };
+          return result
+       });
+       console.log(result)
+      //  console.log(userInfo)
+      setuserInfo(result)
+       
+      }
+
+
+
+
     function createKeyword(key) {
         // Create LI
         var li = document.createElement("li");
@@ -85,9 +150,11 @@ const submitFilterHandler=(e)=>{
 }
 
     useEffect(()=>{
-        if (candidates.length==0) setCandidates(data)
-        console.log(jobseekerAll)
+        // if (userInfo.length==0) setCandidates(data)
+        getAllJobSeekers()
+        // console.log(jobseekerall);
     },[])
+    // console.log(jobseekerall)
     // console.log(candidates)
   return (
     <div>
@@ -102,7 +169,30 @@ const submitFilterHandler=(e)=>{
             <Filter submitFilterHandler={submitFilterHandler} skillHandler={skillHandler} submitHandler={submitHandler}/>
         </div>
         <div>
-            <CandidateCards candidates={candidates}/>
+        
+        {userInfo.length>0 && userInfo.map((person,index)=>{
+        // {console.log('dd',person.owner)}
+        return(
+          <Row xs={1} md={4} className="g-4">
+        <CandidateCards 
+        key={person.index}
+        firstName={person.firstName}
+        lastName={person.lastName}
+        location={person.country}
+        jopTitle={person.title}
+        email={person.email}
+        img={person.image}
+        skills={person.skills}
+        ex={person.yearsExperience}
+        age={person.age}
+        id={person.owner}
+        />
+        </Row>
+        )
+        
+      })}
+          
+            
         </div>
     </div>
   )
