@@ -121,6 +121,7 @@ export function JoobSeekerWrapper({ children }) {
       "https://reqiq.herokuapp.com/jobseeker-all/",
       config
     );
+    
     setGlobal({
       ...global,
       jobseekerall: res.data,
