@@ -78,7 +78,6 @@ export const CompanyLandingPage = () => {
         </div>
       </div>
 
-
       <Card
         className="text-center"
         style={{ width: "65%", marginLeft: "7%", marginTop: "-1%" }}
@@ -98,7 +97,6 @@ export const CompanyLandingPage = () => {
         </Card.Body>
         {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
       </Card>
-
 
       <div
         style={{ marginLeft: "75%", marginTop: "-51%", marginBottom: "15%" }}
@@ -148,7 +146,6 @@ export const CompanyLandingPage = () => {
             </Button>
           </Card.Body>
         </Card>
-
 
         <br />
       </div>

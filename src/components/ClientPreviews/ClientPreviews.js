@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useFetcher, useLocation, useParams } from "react-router-dom";
 import ImageName from "./ImageName";
 import "./ClientPreviews.css";
 import Info from "./Info";
@@ -16,13 +16,15 @@ import ArrangeInterview from "./ArrangeInterview";
 // import './style.css'
 
 const ClientPreviews = () => {
+  let { id } = useParams();
   let [randomUserDetails, setRandomUserDetails] = useState([]);
   let [randomUserInfo, setRandomUserInfo] = useState([]);
   let [randomUserMedia, setRandomUserMedia] = useState([]);
   let [randomUserEducation, setRandomUserEducation] = useState([]);
   let [randomUserWork, setRandomUserWork] = useState([]);
+  let [data, setData] = useState({});
 
-  const {
+  let {
     userInfo,
     userEducation,
     userWork,
@@ -33,6 +35,8 @@ const ClientPreviews = () => {
     github,
     porto,
     jobseekerData,
+    setCanddidate,
+    GetCompany,
   } = useContext(JoobSeekerContext);
   const { token } = useContext(AuthContext);
   let getRandomData = async () => {
@@ -78,13 +82,43 @@ const ClientPreviews = () => {
   let getData = async () => {
     await jobseekerData(token);
   };
+
+  const getCandiddate = async () => {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+
+    let res = await axios.get(
+      `https://reqiq.herokuapp.com/get-canddidate/?id=${id}`,
+      {
+        headers: headers,
+      }
+    );
+
+    setData(res.data);
+
+    console.log(res);
+  };
+
+  const GetCompanyData = async () => {
+    await GetCompany(token);
+  };
+
   useEffect(() => {
-    getData();
-    getRandomData();
+    if (id) {
+      // GET DATA FROM COMPANY SIDE
+      GetCompanyData();
+      getCandiddate();
+      console.log(id);
+    } else {
+      getData();
+      getRandomData();
+    }
   }, []);
-  console.log(randomUserWork);
 
   const { pathname } = useLocation();
+
   if (pathname == "/CompareCandidates") {
     return (
       <div className="Box">
@@ -154,30 +188,62 @@ const ClientPreviews = () => {
     >
       <div className="main_container">
         <div className="left_section">
-          <ImageName userMedia={userMedia} />
-          <Info userInfo={userInfo} />
+          <ImageName
+            userMedia={id && data["userMedia"] ? data["userMedia"] : userMedia}
+          />
+          <Info
+            userInfo={id && data["userMedia"] ? data["userInfo"] : userInfo}
+          />
           <hr />
-          <Skills skills={skills} />
+          <Skills
+            skills={
+              id && data["userMedia"] ? data["userDetails"]["skills"] : skills
+            }
+          />
           <hr />
-          <Media linkedin={linkedin} github={github} porto={porto} />
+          <Media
+            linkedin={
+              id && data["userMedia"]
+                ? data["userDetails"]["linkedin"]
+                : linkedin
+            }
+            github={
+              id && data["userMedia"] ? data["userDetails"]["github"] : github
+            }
+            porto={
+              id && data["userMedia"] ? data["userDetails"]["porto"] : porto
+            }
+          />
         </div>
         <div className="right_section">
           <div className="right_up_section">
-            <Summary summary={summary} />
+            <Summary
+              summary={
+                id && data["userMedia"]
+                  ? data["userDetails"]["summary"]
+                  : summary
+              }
+            />
           </div>
           <hr />
           <div className="right_middle_section">
-            <WorkExp userWork={userWork} />
+            <WorkExp
+              userWork={id && data["userMedia"] ? data["userWork"] : userWork}
+            />
           </div>
           <hr />
           <div className="right_down_section">
-            <Edu userEducation={userEducation} />
+            <Edu
+              userEducation={
+                id && data["userMedia"] ? data["userEducation"] : userEducation
+              }
+            />
           </div>
         </div>
       </div>
       <div style={{ display: "flex", marginBottom: "20px", gap: "20px" }}>
-        <Button variant="primary">Add to Short List</Button>
-        <ArrangeInterview />
+        {id && <Button variant="primary">Add to Short List</Button>}
+        {id && <ArrangeInterview />}
       </div>
     </div>
   );

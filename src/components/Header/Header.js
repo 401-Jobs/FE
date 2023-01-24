@@ -83,77 +83,6 @@ const Header = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
           </Nav>
 
-          {token && userInfo && userInfo["id"] && (
-            <Nav
-              className="flex-grow-0.5 justify-content-evenly nav"
-              style={{ gap: "1vw", marginRight: "2vw" }}
-            >
-              {userInfo["id"] ? (
-                <>
-                  <Navbar.Collapse
-                    id="basic-navbar-nav"
-                    style={{ marginRight: "8vw" }}
-                  >
-                    <Nav className="me-auto">
-                      <img
-                        src={`${process.env.REACT_APP_BACKEND_URL}${userMedia["image"]}`}
-                        width={"46px"}
-                        height={"46px"}
-                        style={{ borderRadius: "46px" }}
-                      />
-                      <NavDropdown
-                        title=""
-                        id="basic-nav-dropdown"
-                        className="test "
-                      >
-                        <NavDropdown.Item>
-                          {userInfo && userInfo["firstName"]
-                            ? userInfo["firstName"] + " " + userInfo["lastName"]
-                            : ""}
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="/">
-                          <hr></hr>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="/">Home</NavDropdown.Item>
-                        <NavDropdown.Item href="/client-profile">
-                          Profile
-                        </NavDropdown.Item>
-
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="/" onClick={logoutHandler}>
-                          Logout
-                        </NavDropdown.Item>
-                      </NavDropdown>
-                    </Nav>
-                  </Navbar.Collapse>
-                </>
-              ) : (
-                <>
-                  <Nav.Link href="/contact">Contact Us</Nav.Link>
-                  <Nav.Link href="/about">About</Nav.Link>
-
-                  <Nav.Link
-                    variant="light"
-                    style={{ border: "1px solid black", borderRadius: "15px" }}
-                    href="/clientLogin"
-                    className="links"
-                  >
-                    Seeker
-                  </Nav.Link>
-
-                  <Nav.Link
-                    variant="light"
-                    style={{ border: "1px solid black", borderRadius: "15px" }}
-                    href="/companyLogin"
-                    className="links"
-                  >
-                    employer
-                  </Nav.Link>
-                </>
-              )}
-            </Nav>
-          )}
-
           {token &&
             companyInfo["companyInfo"] &&
             companyInfo["companyInfo"]["id"] && (
@@ -245,6 +174,84 @@ const Header = () => {
                 )}
               </Nav>
             )}
+
+          {token && userInfo && userInfo["id"] && (
+            <Nav
+              className="flex-grow-0.5 justify-content-evenly nav"
+              style={{ gap: "1vw", marginRight: "2vw" }}
+            >
+              {userInfo["id"] ? (
+                <>
+                  <Navbar.Collapse
+                    id="basic-navbar-nav"
+                    style={{ marginRight: "8vw" }}
+                  >
+                    <Nav className="me-auto">
+                      <img
+                        src={`${process.env.REACT_APP_BACKEND_URL}${userMedia["image"]}`}
+                        width={"46px"}
+                        height={"46px"}
+                        style={{ borderRadius: "46px" }}
+                      />
+                      <NavDropdown
+                        title=""
+                        id="basic-nav-dropdown"
+                        className="test "
+                      >
+                        <NavDropdown.Item>
+                          {userInfo && userInfo["firstName"]
+                            ? userInfo["firstName"] + " " + userInfo["lastName"]
+                            : ""}
+                        </NavDropdown.Item>
+                        <NavDropdown.Item href="/">
+                          <hr></hr>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item href="/">Home</NavDropdown.Item>
+                        <NavDropdown.Item href="/client-profile">
+                          Profile
+                        </NavDropdown.Item>
+
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="/" onClick={logoutHandler}>
+                          Logout
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </Nav>
+                  </Navbar.Collapse>
+                </>
+              ) : (
+                <>
+                  <Nav.Link href="/contact">Contact Us</Nav.Link>
+                  <Nav.Link href="/about">About</Nav.Link>
+
+                  <Nav.Link
+                    variant="light"
+                    style={{
+                      border: "1px solid black",
+                      borderRadius: "15px",
+                    }}
+                    href="/clientLogin"
+                    className="links"
+                  >
+                    Seeker
+                  </Nav.Link>
+
+                  <Nav.Link
+                    variant="light"
+                    style={{
+                      border: "1px solid black",
+                      borderRadius: "15px",
+                    }}
+                    href="/companyLogin"
+                    className="links"
+                  >
+                    employer
+                  </Nav.Link>
+                </>
+              )}
+            </Nav>
+          )}
+
           {!token && (
             <Nav>
               <Nav.Link href="/contact">Contact Us</Nav.Link>
