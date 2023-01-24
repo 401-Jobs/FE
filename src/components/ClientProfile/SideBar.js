@@ -12,7 +12,7 @@ const SideBar = () => {
   return (
     <div className="sidebar_container">
       <div className="top_section">
-        <h1 className="logo">Categories</h1>
+        <h1 className="logo">Profile</h1>
         <i className="fa-solid fa-list bars"></i>
       </div>
       <div className="big_wrapper">
