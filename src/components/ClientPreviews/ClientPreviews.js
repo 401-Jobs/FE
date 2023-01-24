@@ -8,6 +8,9 @@ import Media from './Media'
 import Summary from './Summary'
 import WorkExp from './WorkExp'
 import Edu from './Edu'
+import Button from 'react-bootstrap/Button';
+
+import ArrangeInterview from './ArrangeInterview';
 // import './style.css'
 const ClientPreviews = () => {
     const { pathname } = useLocation();
@@ -66,7 +69,7 @@ const ClientPreviews = () => {
         )
     }
   return (
-    
+    <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'20px'}}>
     <div className='main_container'>
         <div className='left_section'>
                 <ImageName />
@@ -89,6 +92,14 @@ const ClientPreviews = () => {
             <Edu />
         </div>
         </div>
+        
+    </div>
+    <div style={{display:'flex',marginBottom:'20px',gap:'20px'}}>
+    <Button variant="primary">
+    Add to Short List
+  </Button>
+    <ArrangeInterview/>
+    </div>
     </div>
     
 

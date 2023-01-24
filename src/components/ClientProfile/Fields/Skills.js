@@ -4,7 +4,6 @@ import Modal from 'react-bootstrap/Modal';
 import SkillsForm from '../Forms/SkillsForm';
 import '../Skills.css'
 function MyVerticallyCenteredModal(props) {
-  const [keywords,setKeywords]=useState([])
   const [skill,setSkill]=useState('')
   const [skills,setSkills]=useState('')
 
@@ -32,17 +31,17 @@ function MyVerticallyCenteredModal(props) {
       var div = this;
       let key = div.parentElement.firstChild.textContent.trim();
       div.parentElement.style.display = "none";
-      let keys = keywords.filter(function (item) {
+      let keys = skills.filter(function (item) {
         return item !== key;
       });
-      setKeywords(keys)
+      setSkills(keys)
     };
     li.appendChild(span);
   }
 
   const submitHandler=()=>{
     createKeyword(skill)
-    setSkills(skills+skill+",")
+    setSkills([...skills,skill])
     console.log(skills)
     
     
