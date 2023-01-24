@@ -11,9 +11,9 @@ import Edu from './Edu'
 import { JoobSeekerContext } from '../../context/joobseeker';
 import { AuthContext } from '../../context/auth';
 import axios from 'axios';
-
-
-
+import Button from 'react-bootstrap/Button';
+import ArrangeInterview from './ArrangeInterview';
+// import './style.css'
 
 const ClientPreviews = () => {
 
@@ -139,7 +139,7 @@ const ClientPreviews = () => {
         )
     }
   return (
-    
+    <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'20px'}}>
     <div className='main_container'>
         <div className='left_section'>
         <ImageName userMedia={userMedia}/>
@@ -162,6 +162,14 @@ const ClientPreviews = () => {
             <Edu userEducation={userEducation}  />
         </div>
         </div>
+        
+    </div>
+    <div style={{display:'flex',marginBottom:'20px',gap:'20px'}}>
+    <Button variant="primary">
+    Add to Short List
+  </Button>
+    <ArrangeInterview/>
+    </div>
     </div>
     
 

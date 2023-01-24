@@ -1,19 +1,147 @@
-
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
+import { AuthContext } from "../../context/auth";
+import { useContext } from "react";
 import about from './assest/download.png'
 import Carousel from 'react-bootstrap/Carousel';
 import  './Candidates.css'
 import { MDBCheckbox } from 'mdb-react-ui-kit';
-const Candidates=()=> {
+import axios from "axios";
+import Cards from "./Cards";
+import { data } from "autoprefixer";
 
-const[showcollapse,setShowCollapse]=useState(false)
+
+
+
+
+
+
+
+
+
+const Candidates=()=> {
+  const  token  = useContext(AuthContext);
+
+
+  const[userInfo,setuserInfo]=useState({})
+
+  let getRandomData=async()=>{
+    const config = {
+        headers: {
+          Authorization:` Bearer ${token['token']}`,
+        },
+      };
+      let res = await axios.get(
+        "https://reqiq.herokuapp.com/jobseeker-all/",
+        config
+      );
     
+
+     let info=res.data['userInfo'];
+     let educate=res.data['userEducation']
+     let contact=res.data['userContact']
+     let work=res.data['userWork'] 
+     let media=res.data['userMedia'] 
+     let details=res.data['userDetails'] 
+     let result = [];
+     result = info.map(obj => {
+        const index = educate.findIndex(el => el["id"] == obj["id"]);
+        const indexCon = contact.findIndex(el => el["id"] == obj["id"]);
+        const indexwor= work.findIndex(el => el["id"] == obj["id"]);
+        const indexMed=media.findIndex(el => el["id"] == obj["id"]);
+        const indexDet=details.findIndex(el => el["id"] == obj["id"]);
+
+        const{github,linkedin,skills}=indexDet !==-1?details[indexCon]:{};
+        const{image}=indexMed !==-1?media[indexCon]:{};
+        const{title,description}=indexwor !==-1?work[indexCon]:{};
+        const{email,phoneNumber}=indexCon !==-1?contact[indexCon]:{};
+        const { major,degree} = index !== -1 ? educate[index] : {};
+      return {
+         ...obj,
+         major,
+         degree,
+         email,
+         phoneNumber,
+         title,
+         description,
+         image,
+         github,
+         linkedin,
+         skills
+
+      };
+        return result
+     });
+     console.log(result)
+     setuserInfo(result)
+
+
+     
+    //  Object.keys(result).forEach((key) => {
+    //   menuItems = menuItems.concat(result[key].map((item)=>{
+    //     return item;
+    //   }))
+    //  })
+     
+    // setuserInfo(menuItems)
+     
+    }
+
+
+
+ 
+  useEffect(()=>{
+    // axios.get('https://reqiq.herokuapp.com/jobseeker-all/', {
+       
+    //  }, {
+    //    headers: {
+    //      "Content-Type": "application/json",
+    //      'Authorization': `Bearer ${token}` 
+    //    }
+    //  })
+    //  .then((res) => {
+    //    console.log(res.data)
+    //  })
+    //  .catch((error) => {
+    //   console.log("whuyyyyyyy")
+    //    console.error(error)
+    //  })
+    getRandomData()
+   
+
+    console.log(userInfo)
+    
+  },[])
+ 
+const[showcollapse,setShowCollapse]=useState(false)
+// if (userInfo.length>0){
+//   var candidate_array = userInfo.reduce((prev, t, index, arr) => {
+//     if (typeof prev[t.id] === 'undefined') {
+//       prev[t.id] = [];
+//     }
+//     prev[t.id].push(t);
+//     return prev;
+    
+//   }, {});
+   
+ 
+ 
+//  let cars = userInfo.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i);
+//  const arrayHashmap = userInfo.reduce((obj, item) => {
+//   obj[item.id] ? obj[item.id].userContact.push(...item.userContact) : (obj[item.id] = { ...item });
+//   return obj;
+// }, {});
+
+// const mergedArray = Object.values(arrayHashmap);
+
+// console.log(mergedArray);
+
+
 
     return (
         <>
@@ -29,7 +157,25 @@ const[showcollapse,setShowCollapse]=useState(false)
             </div>
             <div className="text2">
         <h3 className="texxx">View the latest professionals available</h3>
-
+      {userInfo.length>0 && userInfo.map((person,index)=>{
+        
+        return(
+          <>
+        <Cards 
+        key={person.index}
+        firstName={person.firstName}
+        lastName={person.lastName}
+        location={person.country}
+        jopTitle={person.title}
+        email={person.email}
+        img={person.image}
+        skills={person.skills}
+        ex={person.yearsExperience}
+        />
+        </>
+        )
+        
+      })}
     </div>
   <div className="coll">
     
@@ -46,14 +192,20 @@ const[showcollapse,setShowCollapse]=useState(false)
   <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Rate' />
   <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='web developer' />
   <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='mobile developer' />
-
-      
+     
+    
   </div> 
+{/* {userInfo.length>0 && console.log(userInfo)} */}
+
+
+
+
+
   
   </div>
  </div>
 </div>
-<CardGroup>
+{/* <CardGroup>
     
 <div class="item">
               <Card style={{ width: "18rem" ,"background-color":"white", 'marginTop':'75px' }} >
@@ -434,7 +586,7 @@ const[showcollapse,setShowCollapse]=useState(false)
               </div>
               
       
-</CardGroup>
+</CardGroup> */}
       </>
     );
   

@@ -16,6 +16,7 @@ import ClientProfilePage from "./screens/ClientProfilePage";
 import ClientPreviews from "./components/ClientPreviews/ClientPreviews";
 
 import Candidates from "./components/Candidates/Candidates";
+import CandidateSearch from "./components/CandidateSearch/CandidateSearch";
 
 import CompanyDetails from "./components/company/Infromations/CompanyDetails";
 import DashboardCompany from "./components/company/Dashboard/DashboardCompany";
@@ -25,6 +26,7 @@ import { SignUpPage } from "./screens/SignUpPage";
 
 import React, { useContext, useEffect } from "react";
 
+import { CompanyHomePage } from "./screens/CompanyHomePage";
 function App() {
   return (
     <div>
@@ -87,6 +89,9 @@ function App() {
           />
 
           <Route exact path="/candidates" element={<Candidates />} />
+          <Route exact path="/candidate" element={<CandidateSearch />} /> // added by mohammad
+
+          <Route exact path="/CompanyHomePage" element={<CompanyHomePage/>}/>
 
           {/* /************************* END JOB SEEKER ****************************************/}
         </Routes>
