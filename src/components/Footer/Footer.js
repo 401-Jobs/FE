@@ -26,12 +26,7 @@ const Footer = () => {
               right talent for your organization. That's why we have created a
               cutting-edge recruitment platform that makes it easy for companies
               to identify, attract, and hire the best candidates for their open
-              positions. Our platform is powered by advanced technologies, which
-              enable us to match job seekers with the most relevant
-              opportunities. Additionally, we provide a wide range of tools and
-              resources to support both companies and job seekers throughout the
-              hiring process. Join us in revolutionizing the way we recruit, and
-              discover the power of <i>RecruitIQ.</i>
+              positions.
             </p>
           </div>
 
