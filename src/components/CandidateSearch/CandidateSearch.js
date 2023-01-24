@@ -15,7 +15,7 @@ const CandidateSearch = () => {
     const [candidates,setCandidates]=useState([])
     const [skill,setSkill]=useState('')
     const [skills,setSkills]=useState([])
-
+    
 
     let getAllJobSeekers=async(e)=>{
       const config = {
@@ -152,6 +152,7 @@ const submitFilterHandler=(e)=>{
     
   return (
     <div>
+     
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center', paddingTop:'25px'}}>
             <p style={{fontSize:'x-large'}}>Search for Candidate</p>
         <form onSubmit={submitSearchHandler} action='' className='search-bar'>
@@ -159,11 +160,13 @@ const submitFilterHandler=(e)=>{
             <button type='submit'><img src={search_icon} alt='search bar'/></button>
         </form>
         </div>
-        <div>
+        
+      
+        <div style={{'display':'flex','justifyContent':'center'}}>
             <Filter submitFilterHandler={submitFilterHandler} skillHandler={skillHandler} submitHandler={submitHandler}/>
         </div>
         <div>
-        <Row xs={1} md={4} className="g-4">
+        <Row xs={1} md={3} className="g-4" >
         {userInfo.length>0 && userInfo.map((person,index)=>{
         return(
           

@@ -1,4 +1,7 @@
+
+
 import React, { useContext, useEffect, useState } from "react";
+
 import Form from "react-bootstrap/Form";
 import { MDBSelect } from "mdb-react-ui-kit";
 import Country from "./assets/Country";
@@ -20,36 +23,111 @@ import { AuthContext } from "../../../context/auth";
 import axios from "axios";
 import { JoobSeekerContext } from "../../../context/joobseeker";
 
+
+
+
 const CompanyDetails = () => {
-  const [data, setData] = useState({});
-  const { token } = useContext(AuthContext);
-  const { userMedia, jobseekerData, userInfo, GetCompany, companyInfo } =
-    useContext(JoobSeekerContext);
 
-  // const getData = async () => {
-  //   console.log(token);
-  //   const headers = {
-  //     "Content-Type": "application/json",
-  //     Authorization: `Bearer ${token}`,
-  //   };
 
-  //   let url = "https://reqiq.herokuapp.com/get-company-info/";
-  //   let data = await axios.get(url, {
-  //     headers: headers,
-  //   });
+  const  token  = useContext(AuthContext);
+  let UpdatecompanyInfo=async(data2)=> {
+   
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token['token']}`,
+      },
+    };
+    let res = await axios.put(
+      "https://reqiq.herokuapp.com/update-company-info/",
+      data2,
+      config
+    );
+    }
 
-  //   console.log(data);
 
-  //   return data;
-  // };
 
-  useEffect(() => {
-    GetCompany(token);
-    // setData(companyInfo);
-  }, []);
-  console.log(data);
+
+
+
+
+
+
+
+
+  const[fisrtName,setFirstName]=useState("")
+  const[lastName,setLastName]=useState("")
+  const[country,setCountry]=useState("")
+  const[city,setCity]=useState("")
+  const[companyName,setCompanyName]=useState("")
+  const[website,setWebSite]=useState("")
+  const[about,setAbout]=useState("")
+  const[phone,setPhone]=useState("")
+  const[logo,setLogo]=useState("")
+  const[email,setEmail]=useState("")
+  const[address,setAddres]=useState("")
+  const[obj,setobj]=useState({})
+
+
+  const FirstNameHandler=(e)=>{
+    setFirstName(e.target.value)
+  }
+  const LastNameHandler=(e)=>{
+    setLastName(e.target.value)
+  }
+  const CountryHandler=(e)=>{
+    setCountry(e.target.value)
+  }
+  const cityHandler=(e)=>{
+    setCity(e.target.value)
+  }
+  const PhoneHandler=(e)=>{
+    setPhone(e.target.value)
+  }
+  const EmailHandler=(e)=>{
+    setEmail(e.target.value)
+  }
+  const CompanyNameHandler=(e)=>{
+    setCompanyName(e.target.value)
+  }
+  const websiteHandler=(e)=>{
+    setWebSite(e.target.value)
+  }
+  const addressHandler=(e)=>{
+    setAddres(e.target.value)
+  }
+  const aboutCompanyHandler=(e)=>{
+    setAbout(e.target.value)
+  }
+
+const companyInfo=(e)=>{
+  e.preventDefault()
+ setobj({
+  firstName:fisrtName,
+  lastName:lastName,
+  country:country,
+  city:city,
+  email:email,
+  phone:phone,
+  company_name:companyName,
+  company_website:website,
+  company_address:address,
+  about_company:about
+ })
+ console.log(obj)
+UpdatecompanyInfo({obj})
+}
+useEffect(()=>{
+ 
+  
+ 
+ 
+  // console.log(obj)
+  
+},[])
+
   return (
     <>
+
       <MDBContainer className="py-5" style={{ maxWidth: "1200px" }}>
         <MDBRow className="justify-content-center align-items-center">
           <MDBCol>
@@ -60,10 +138,15 @@ const CompanyDetails = () => {
                 </MDBCol>
                 <MDBCol md="6">
                   <MDBCardBody className="p-md-5 text-black text-center">
+
+
+
+
                     <Form.Group controlId="formFile" className="mb-3">
                       <Form.Label>logo</Form.Label>
                       <Form.Control type="file" />
                     </Form.Group>
+
                     <MDBTypography tag="h4" className="mb-5 text-uppercase ">
                       Welcome to your Company Page
                     </MDBTypography>
@@ -75,31 +158,52 @@ const CompanyDetails = () => {
                           size="lg"
                           required
                           label="First Name"
+                          onChange={FirstNameHandler}
                         />
                       </MDBCol>
+                      
                       <MDBCol md="6" className="mb-4">
                         <MDBInput
                           type="text"
                           size="lg"
                           required
                           label="Last Name"
+                          onChange={LastNameHandler}
                         />
                       </MDBCol>
                       {/* component  */}
                       <Country />
 
                       <MDBCol md="6" className="mb-4">
-                        <MDBInput type="text" size="lg" label="City" />
+                        <MDBInput 
+                        
+                        type="text" 
+                        size="lg" 
+                        label="City"
+                        onChange={cityHandler}
+                        
+                        />
                       </MDBCol>
 
                       <MDBCol md="6" className="mb-4" required>
-                        <MDBInput type="text" size="lg" label="Phone Number" />
+                        <MDBInput
+                        
+                        type="text" 
+                        size="lg" 
+                        label="Phone Number" 
+                        
+                        onChange={PhoneHandler}
+                        />
+                        
+                        
                       </MDBCol>
+                      
                       <MDBCol md="6" className="mb-4">
                         <MDBInput
                           type="text"
                           size="lg"
                           label="Email"
+                          onChange={EmailHandler}
                           required
                         />
                       </MDBCol>
@@ -110,14 +214,24 @@ const CompanyDetails = () => {
                       className="mb-4"
                       size="lg"
                       label="Company Name"
+                      onChange={CompanyNameHandler}
                       required
                     />
+                    
+                 
+                    <MDBCol  className="mb-4">
+                  
+        <Form.Control type="file" className="files" />
+        </MDBCol>
 
+
+    
                     <MDBInput
                       type="text"
                       className="mb-4"
                       size="lg"
                       label="Company Website"
+                      onChange={websiteHandler}
                     />
 
                     <MDBInput
@@ -125,6 +239,7 @@ const CompanyDetails = () => {
                       className="mb-4"
                       size="lg"
                       label="Company Address"
+                      onChange={addressHandler}
                       required
                     />
 
@@ -133,10 +248,13 @@ const CompanyDetails = () => {
                       class="form-control"
                       id="exampleFormControlTextarea5"
                       rows="3"
+                      onChange={aboutCompanyHandler}
                     ></textarea>
+                  
 
                     <div className="d-flex justify-content-start pt-3 align-items-center justify-content-center ">
                       <MDBBtn
+                       onClick={companyInfo}
                         size="lg"
                         className="ms-2 align-items-center"
                         style={{ backgroundColor: "hsl(210, 100%, 50%)" }}
