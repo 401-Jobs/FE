@@ -1,51 +1,44 @@
-import React from 'react'
-import './Sliding.css'
+import React from "react";
+import "./Sliding.css";
 import { Carousel } from "react-bootstrap";
-import x from './assets/x.jpg'
-import y from './assets/y.jpg'
-import z from './assets/z.jpg'
-
+import x from "./assets/x.jpg";
+import y from "./assets/y.jpg";
+import z from "./assets/z.jpg";
+import google from "./assets/google.jpg";
+import facebook from "./assets/facebook.jpg";
+import unity from "./assets/unity1.jpg";
+import curasol from './assets/testIMG_cleanup.png'
+import logo from '../Header/logo.png'
+import mainIMG from './assets/LASTIMAGE.png'
 const Sliding = () => {
   return (
-    
-    <Carousel className="carousel-container" fade>
-      <Carousel.Item >
-        <img
-          className="d-block w-100 carousel-img "
-          src={x}
-          alt="First slide"
-        />
-        <Carousel.Caption className="overlay"> 
-          <h3>Google</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100 carousel-img"
-          src={y}
-          alt="Second slide"
-        />
-        <Carousel.Caption>
-          <h3>Facebook</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100 carousel-img"
-          src={z}
-          alt="Third slide"
-        />
-        <Carousel.Caption>
-          <h3>Amazon</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-  )
-}
+    // <Carousel className="carousel-container" fade>
+    //   <Carousel.Item>
+    //     <img
+    //       className="d-block w-100 carousel-img "
+    //       src={google}
+    //       alt="First slide"
+    //     />
+    //   </Carousel.Item>
+    //   <Carousel.Item>
+    //     <img
+    //       className="d-block w-100 carousel-img"
+    //       src={facebook}
+    //       alt="Second slide"
+    //     />
+    //   </Carousel.Item>
+    //   <Carousel.Item>
+    //     <img
+    //       className="d-block w-100 carousel-img"
+    //       src={unity}
+    //       alt="Third slide"
+    //     />
+    //   </Carousel.Item>
+    // </Carousel>
 
-export default Sliding
+    <img src={mainIMG} alt="lastImage"/>
+   
+  );
+};
+
+export default Sliding;
