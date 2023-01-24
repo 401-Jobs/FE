@@ -25,6 +25,7 @@ import { SignUpPage } from "./screens/SignUpPage";
 
 import React, { useContext, useEffect } from "react";
 
+import { CompanyHomePage } from "./screens/CompanyHomePage";
 function App() {
   return (
     <div>
@@ -87,6 +88,8 @@ function App() {
           />
 
           <Route exact path="/candidates" element={<Candidates />} />
+
+          <Route exact path="/CompanyHomePage" element={<CompanyHomePage/>}/>
 
           {/* /************************* END JOB SEEKER ****************************************/}
         </Routes>
