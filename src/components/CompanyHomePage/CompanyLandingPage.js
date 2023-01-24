@@ -18,9 +18,9 @@ export const CompanyLandingPage = () => {
       </div>
 
       <Card className="text-center" style={{width:'65%',marginLeft:'7%',marginTop:'-1%'}}>
-        <Card.Header >Featured</Card.Header>
+        <Card.Header >RecruitIQ</Card.Header>
         <Card.Body>
-          <Card.Title>Who Visit Our Website?</Card.Title>
+          <Card.Title>Last candidate profile you see</Card.Title>
           <Card.Text>
           This feature can provide you with valuable insights into who your website visitors are, where they come from, and what pages they are viewing.
           </Card.Text>
@@ -31,20 +31,20 @@ export const CompanyLandingPage = () => {
 
        <div style={{marginLeft:'75%',marginTop:'-51%',marginBottom:'15%'}}>
        <Card border="warning" style={{ width: '18rem' }}>
-        <Card.Header>Header</Card.Header>
+        <Card.Header>RecruitIQ</Card.Header>
         <Card.Body>
-          <Card.Title>Warning Card Title</Card.Title>
+          <Card.Title>Get randomly candidated</Card.Title>
           <Card.Text>
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </Card.Text>
         </Card.Body>
-        <Card.Body><Button variant="primary" style={{marginLeft:'30%',textTransform:'unset' }}>Primary</Button></Card.Body>
+        <Card.Body><Button variant="primary" style={{marginLeft:'30%',textTransform:'unset' }}>Show</Button></Card.Body>
       </Card>
       <br />
 
       <Card border="info" style={{ width: '18rem' }}>
-        <Card.Header>Header</Card.Header>
+        <Card.Header>RecruitIQ</Card.Header>
         <Card.Body>
           <Card.Title>Info Card Title</Card.Title>
           <Card.Text>
@@ -52,7 +52,7 @@ export const CompanyLandingPage = () => {
             bulk of the card's content.
           </Card.Text>
         </Card.Body>
-        <Card.Body><Button variant="primary" style={{marginLeft:'30%',textTransform:'unset'}}>Primary</Button></Card.Body>
+        <Card.Body><Button variant="primary" style={{marginLeft:'30%',textTransform:'unset'}}>Show</Button></Card.Body>
       </Card>
       <br />
 
