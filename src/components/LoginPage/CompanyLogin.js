@@ -14,13 +14,14 @@ import React from "react";
 import './Login.css'
 import Telecommuting from "./Assets/Telecommuting.png";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
 import Spinner from "react-bootstrap/Spinner";
 import { useEffect } from "react";
 import { JoobSeekerContext } from "../../context/joobseeker";
-
+import axios from "axios";
+import { data } from "autoprefixer";
 
 export const CompanyLogin = () => {
   const [email, setEmail] = useState("");
@@ -28,15 +29,17 @@ export const CompanyLogin = () => {
 
   const [errors, setErrors] = useState("");
   const [isLoading, setisLoading] = useState(false);
-
+  let [data1,setData1]=useState([])
   const navigate = useNavigate();
   const { login, token } = useContext(AuthContext);
-
-  const { userInfo } = useContext(JoobSeekerContext);
-
+  console.log(token)
+  
   useEffect(() => {
-    if (token && userInfo['id']) navigate("/companyDetails");
-  }, [token, userInfo]);
+    
+   
+  if (token  && data1['companyInfo']['id'] ) navigate("/");
+    
+  }, [token,data1['companyInfo']]);
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
