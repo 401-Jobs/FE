@@ -73,7 +73,7 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar bg="light" expand="lg" style={{ padding: "1px" }}>
+      <Navbar bg="light" expand="lg" style={{ padding: "15px" }}>
         <Container>
           <Nav>
             <a href="/">
@@ -150,20 +150,22 @@ const Header = () => {
                     <Nav.Link
                       variant="light"
                       style={{
-                        border: "1px solid black",
-                        borderRadius: "15px",
+                        // border: "1px solid black",
+                        // borderRadius: "15px",
                       }}
                       href="/clientLogin"
                       className="links"
                     >
                       Seeker
+                      
                     </Nav.Link>
 
                     <Nav.Link
+                    
                       variant="light"
                       style={{
-                        border: "1px solid black",
-                        borderRadius: "15px",
+                        // border: "1px solid black",
+                        // borderRadius: "15px",
                       }}
                       href="/companyLogin"
                       className="links"
