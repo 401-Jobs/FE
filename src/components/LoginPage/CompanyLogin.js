@@ -15,7 +15,7 @@ import {
 import "./Login.css";
 import Telecommuting from "./Assets/Telecommuting.png";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
 import Spinner from "react-bootstrap/Spinner";
@@ -23,21 +23,24 @@ import { useEffect } from "react";
 import TelecommutingCuate from "./Assets/TelecommutingCuate.png";
 import { JoobSeekerContext } from "../../context/joobseeker";
 
+
 export const CompanyLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassowrd] = useState("");
 
   const [errors, setErrors] = useState("");
   const [isLoading, setisLoading] = useState(false);
-
+  let [data1,setData1]=useState([])
   const navigate = useNavigate();
   const { login, token } = useContext(AuthContext);
+
 
   const { userInfo } = useContext(JoobSeekerContext);
 
   // useEffect(() => {
   //   if (token && companyInfo["id"]) navigate("/client-profile");
   // }, [token, userInfo]);
+
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
