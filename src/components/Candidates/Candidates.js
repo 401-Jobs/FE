@@ -15,15 +15,6 @@ import axios from "axios";
 import Cards from "./Cards";
 import { data } from "autoprefixer";
 
-
-
-
-
-
-
-
-
-
 const Candidates=()=> {
   const  token  = useContext(AuthContext);
 
@@ -78,6 +69,7 @@ const Candidates=()=> {
         return result
      });
      console.log(result)
+     console.log(userInfo)
      setuserInfo(result)
 
 
@@ -171,6 +163,7 @@ const[showcollapse,setShowCollapse]=useState(false)
         img={person.image}
         skills={person.skills}
         ex={person.yearsExperience}
+        age={person.age}
         />
         </>
         )
