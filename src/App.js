@@ -16,6 +16,7 @@ import ClientProfilePage from "./screens/ClientProfilePage";
 import ClientPreviews from "./components/ClientPreviews/ClientPreviews";
 
 import Candidates from "./components/Candidates/Candidates";
+import CandidateSearch from "./components/CandidateSearch/CandidateSearch";
 
 import CompanyDetails from "./components/company/Infromations/CompanyDetails";
 import DashboardCompany from "./components/company/Dashboard/DashboardCompany";
@@ -87,6 +88,7 @@ function App() {
           />
 
           <Route exact path="/candidates" element={<Candidates />} />
+          <Route exact path="/candidate" element={<CandidateSearch />} /> // added by mohammad
 
           {/* /************************* END JOB SEEKER ****************************************/}
         </Routes>
