@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { AuthContext } from "../../context/auth";
@@ -51,7 +51,11 @@ const InterviewsDetails = (props) => {
 
     setShow(false);
   };
-  console.log(props.interview);
+
+  useEffect(() => {
+    console.log(props["date"]);
+  }, [props["date"]]);
+
   return (
     <>
       {/* <button className='details_btn' onClick={handleShow} > */}
@@ -87,7 +91,7 @@ const InterviewsDetails = (props) => {
                 backgroundColor: "#ebe9ee",
               }}
             >
-              <span>Date:{props["date"] && props.interview["date"]}</span>
+              <span>Date:{props["interview"] && props.interview["date"]}</span>
             </div>
             <p
               style={{
@@ -100,7 +104,8 @@ const InterviewsDetails = (props) => {
                 backgroundColor: "#ebe9ee",
               }}
             >
-              Company Name: {props["date"] && props.company["company_name"]}
+              Company Name:{" "}
+              {props["interview"] && props.company["company_name"]}
             </p>
             <p
               style={{
@@ -113,79 +118,17 @@ const InterviewsDetails = (props) => {
                 backgroundColor: "#ebe9ee",
               }}
             >
-              Description: You have a technical interview, prepare yourself well
-              please.
+              {props["interview"] && props.interview["notes"]}
             </p>
           </div>
-
+        </Modal.Body>
+        <Modal.Footer>
           <button className="accept_btn" onClick={handelTrue}>
             <i class="fa-solid fa-check"></i>
           </button>
           <button className="reject_btn" onClick={handelFalse}>
             <i
               class="fa-solid fa-xmark"
-              style={{ paddingRight: "5px", gap: "10px" }}
-            ></i>
-          </button>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-              justifyContent: "space-around",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-                alignItems: "center",
-                padding: "10px 5px",
-                border: "1px solid #281870",
-                borderRadius: "10px",
-                backgroundColor: "#ebe9ee",
-              }}
-            >
-              <span>Date: 30/1/2023</span>
-              <span>Time: 15:00 PM</span>
-              <span>Location: onsite</span>
-            </div>
-            <p
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-                alignItems: "center",
-                padding: "10px 5px",
-                border: "1px solid #281870",
-                borderRadius: "10px",
-                backgroundColor: "#ebe9ee",
-              }}
-            >
-              Company Name: Amazon
-            </p>
-            <p
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-                alignItems: "center",
-                padding: "10px 5px",
-                border: "1px solid #281870",
-                borderRadius: "10px",
-                backgroundColor: "#ebe9ee",
-              }}
-            >
-              Description: You have a technical interview, prepare yourself well
-              please.
-            </p>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <button className="accept_btn">
-            <i className="fa-solid fa-check"></i>
-          </button>
-          <button className="reject_btn">
-            <i
-              className="fa-solid fa-xmark"
               style={{ paddingRight: "5px", gap: "10px" }}
             ></i>
           </button>
