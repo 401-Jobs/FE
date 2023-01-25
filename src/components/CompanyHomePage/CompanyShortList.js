@@ -18,15 +18,24 @@ export const CompanyShortList = () => {
     let res = await axios.get('https://reqiq.herokuapp.com/get-shortlist/', {
       headers: headers,
     })
+    setUsersInfo(res.data['usersInfo'])
+    setUsersMedia(res.data['usersMedia'])
   }
   const handleDelete = async (id) => {
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    }
-    let res2 = await axios.delete('https://reqiq.herokuapp.com/delete-shortlist/',{"id":id}, {
-      headers: headers,
-    })
+    // console.log(id)
+    console.log(token)
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    await axios.get(
+      `https://reqiq.herokuapp.com/delete-shortlist/?id=${id}`,
+      config
+    );
+    window.location.reload(false);
   }
 
   useEffect(() => {

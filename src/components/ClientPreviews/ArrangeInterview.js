@@ -23,9 +23,9 @@ const ArrangeInterview = ({ id }) => {
           <ArrangeInterviewForm id={id} />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+          {/* <Button variant="primary" onClick={handleClose}>
             Arrange
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
     </div>

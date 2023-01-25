@@ -6,6 +6,7 @@ import { useContext } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 export const CompnyTableInterview = () => {
   const [interviews, setInterviews] = useState([])
   const [userInfo, setUserInfo] = useState([])
@@ -13,6 +14,7 @@ export const CompnyTableInterview = () => {
   const { token } = useContext(AuthContext)
   // console.log(token)
   const getInterviews = async () => {
+    
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -28,7 +30,10 @@ export const CompnyTableInterview = () => {
     setUserInfo(res.data['usersInfo'])
     setUserMedia(res.data['usersMedia'])
   }
-
+  const navigate=useNavigate()
+  const RedirectViewEmployer=()=>{
+    navigate('/candidate')
+  }
   useEffect(() => {
     getInterviews()
   }, [])
@@ -119,6 +124,28 @@ export const CompnyTableInterview = () => {
             </div>
           </div>
         </div>
+        <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "400px",
+          padding: "20px 15px",
+          border: "1px solid #281870",
+          borderRadius: "10px",
+          // position:'absolute',
+          marginButtom:'200px',
+          marginLeft:'100px'
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+          <i class="fa-solid fa-eye"></i>
+          <h5 style={{ marginBottom: "0" }}>View our Candidates</h5>
+        </div>
+        <button onClick={RedirectViewEmployer} className="view_btn">
+          View
+        </button>
+      </div>
       </>
     )
   }

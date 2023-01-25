@@ -254,8 +254,9 @@ const ClientPreviews = () => {
         </div>
       </div>
 
-      <div style={{ display: "flex", marginBottom: "20px", gap: "20px" }}>
+      <div style={{ display: "flex", marginBottom: "20px", gap: "20px",width:'100%',justifyContent:'center',}}>
         {id && (
+          
           <Button onClick={AddShortListHandler} variant="primary">
             Add to Short List
           </Button>

@@ -31,13 +31,13 @@ const ArrangeInterviewForm = ({ id }) => {
           headers: headers,
         }
       );
-      navigate();
+      navigate('/candidate');
     } catch (error) {}
   };
 
   return (
     <div>
-      <Form>
+      <Form onSubmit={createInterview}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Job Title</Form.Label>
           <Form.Control type="textarea" placeholder="job title" />
@@ -58,10 +58,12 @@ const ArrangeInterviewForm = ({ id }) => {
             rows="3"
           ></textarea>
         </Form.Group>
+<div style={{display:'flex',justifyContent:'center'}}>
 
-        {/* <Button variant="primary" type="submit">
-        Submit
-      </Button> */}
+        <Button variant="primary" type="submit">
+        Arrange
+      </Button>
+</div>
       </Form>
     </div>
   );

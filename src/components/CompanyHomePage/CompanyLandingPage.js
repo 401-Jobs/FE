@@ -150,26 +150,8 @@ export const CompanyLandingPage = () => {
         <br />
       </div>
 
-      {/* 
-        <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          width: "400px",
-          padding: "20px 15px",
-          border: "1px solid #281870",
-          borderRadius: "10px",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-          <i class="fa-solid fa-eye"></i>
-          <h5 style={{ marginBottom: "0" }}>View as Employer</h5>
-        </div>
-        <button onClick={RedirectViewEmployer} className="view_btn">
-          View
-        </button>
-      </div> */}
+      
+       
 
       {/* //////////////////// Some Styling////////// */}
 
