@@ -40,10 +40,11 @@
     align-items: center;
 }
 .labelInputMaxMin{
-    display: flex;
+    display: grid;
     gap: 10px;
-    justify-content: center;
+    justify-content:flex-start;
     align-items: center;
+   
 }
 .labelInput input{
     padding: 3px 7px;
@@ -51,6 +52,7 @@
     border: none;
     background-color:#d4ccec;
     text-align: center;
+    
 }
 .skill_container input {
     padding: 3px 7px;

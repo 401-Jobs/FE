@@ -65,9 +65,8 @@ function App() {
             exact
             path="/dashboardCompany"
             element={<DashboardCompany />} */}
-          <Route exact path="/candidates" element={<Candidates />} />
-          <Route exact path="/candidate" element={<CandidateSearch />} /> //
-          added by mohammad
+          {/* <Route exact path="/candidates" element={<Candidates />} /> */}
+          <Route exact path="/candidate" element={<CandidateSearch />} />
           <Route exact path="/CompanyHomePage" element={<CompanyHomePage />} />
           {/* /************************* END JOB SEEKER ****************************************/}
         </Routes>

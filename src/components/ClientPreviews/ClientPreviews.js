@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import ImageName from "./ImageName";
 import "./ClientPreviews.css";
 import Info from "./Info";
@@ -120,6 +120,24 @@ const ClientPreviews = () => {
 
   const { pathname } = useLocation();
 
+  const navigate = useNavigate();
+  const AddShortListHandler = async () => {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    try {
+      let res = await axios.post(
+        "https://reqiq.herokuapp.com/create-shortlist/",
+        { id: parseInt(id) },
+        {
+          headers: headers,
+        }
+      );
+      navigate("/candidate");
+    } catch (error) {}
+  };
+
   if (pathname == "/CompareCandidates") {
     return (
       <div className="Box" style={{backgroundColor:'none'}}>
@@ -235,9 +253,14 @@ const ClientPreviews = () => {
           </div>
         </div>
       </div>
-      <div style={{ display: "flex",backgroundColor:'#f3f3f3', paddingBottom: "20px", gap: "20px" }}>
-        {id &&<Button variant="primary">Add to Short List</Button>}
-        {id &&<ArrangeInterview />}
+
+      <div style={{ display: "flex", marginBottom: "20px", gap: "20px" }}>
+        {id && (
+          <Button onClick={AddShortListHandler} variant="primary">
+            Add to Short List
+          </Button>
+        )}
+        {id && <ArrangeInterview id={id} />}
       </div>
     </div>
   );

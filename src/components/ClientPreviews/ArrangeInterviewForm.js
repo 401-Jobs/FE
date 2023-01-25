@@ -1,43 +1,70 @@
-import React from 'react'
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import axios from "axios";
+import React from "react";
+import { useContext } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/auth";
 
-const ArrangeInterviewForm = () => {
+const ArrangeInterviewForm = ({ id }) => {
+  const { token } = useContext(AuthContext);
+
+  console.log(id);
+
+  const navigate = useNavigate();
+
+  const createInterview = async (e) => {
+    e.preventDefault();
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    try {
+      let res = await axios.post(
+        "https://reqiq.herokuapp.com/create-company-interview/",
+        {
+          id: parseInt(id),
+          notes: e.target.note.value,
+          date: e.target.date.value,
+        },
+        {
+          headers: headers,
+        }
+      );
+      navigate();
+    } catch (error) {}
+  };
+
   return (
     <div>
-        <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Job Title</Form.Label>
-        <Form.Control type="email" placeholder="job title" />
-      </Form.Group>
-      <div style={{display:'flex',justifyContent:'space-around'}}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Date</Form.Label>
-        <Form.Control type="date" placeholder="date" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Time</Form.Label>
-        <Form.Control type="time" placeholder="time" />
-      </Form.Group>
-      </div>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Place of Interview</Form.Label>
-        <Form.Control type="text" placeholder="location" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Description</Form.Label>
-        <textarea class="form-control rounded-2" id="exampleFormControlTextarea2" rows="3"></textarea>
-      </Form.Group>
-      
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Job Title</Form.Label>
+          <Form.Control type="textarea" placeholder="job title" />
+        </Form.Group>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Date</Form.Label>
+            <Form.Control type="date" placeholder="date" name="date" />
+          </Form.Group>
+        </div>
 
-      
-     
-      {/* <Button variant="primary" type="submit">
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Description</Form.Label>
+          <textarea
+            name="note"
+            class="form-control rounded-2"
+            id="exampleFormControlTextarea2"
+            rows="3"
+          ></textarea>
+        </Form.Group>
+
+        {/* <Button variant="primary" type="submit">
         Submit
       </Button> */}
-    </Form>
+      </Form>
     </div>
-  )
-}
+  );
+};
 
-export default ArrangeInterviewForm
+export default ArrangeInterviewForm;
