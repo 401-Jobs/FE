@@ -161,6 +161,7 @@ const CandidateSearch = () => {
     console.log(result);
     setData(result);
   };
+
   // filter functionality
   const submitFilterHandler = (e) => {
     // console.log('ffff')
