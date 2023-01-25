@@ -1,46 +1,45 @@
 import React from 'react'
 import './Cards.css'
 import { data } from './data'
+import Row from "react-bootstrap/Row";
+
 
 const Cards = () => {
   return (
-    <div class='row text-center containerr'>
+    <Row class='text-center'
+          xs={1}
+          md={5}
+          className="g-4"
+          // style={{
+          //   display: "flex",
+          //   gap: "50px",
+          //   padding: "2vw",
+          //   justifyContent: "center",
+          //   marginTop: "5vw",
+          // }}
+        >
       {data.map((card) => {
         return (
-          <div class='col-xl-3 col-sm-6 mb-5'>
-            <div class='bg-white rounded shadow-sm py-5 px-6'>
+          <div class='col-sm-6' style={{textAlign:'center'}}>
+            <div class='bg-white rounded shadow-sm' style={{padding:'15px 0'}}>
+            <div style={{height:"250px",padding:'0 7px'}}>
+
               <img
-                src='https://bootstrapious.com/i/snippets/sn-about/avatar-4.png'
+                src={card.image}
                 alt=''
-                width='100'
-                class='img-fluid rounded-circle mb-3 img-thumbnail shadow-sm'
+                class='mb-3 shadow-sm'
               />
-              <h5 class='mb-0'>{card.name}</h5>
+            </div>
+              <h5 class='mb-2'>{card.name}</h5>
               <span class='small text-uppercase text-muted'>
                 {card.Specialization}
               </span>
-              <ul class='social mb-0 list-inline mt-3'>
-                <li class='list-inline-item'>
-                  <a href={card.facebook} class='social-link'>
-                    <i class='fa fa-facebook-f' style={{color:'grey'}}></i>
-                  </a>
-                </li>
-                <li class='list-inline-item'>
-                  <a href={card.github} class='social-link'>
-                    <i class='fa fa-github' style={{color:'grey'}}></i>
-                  </a>
-                </li>
-                <li class='list-inline-item'>
-                  <a href={card.linkedIn} class='social-link'>
-                    <i class='fa fa-linkedin' style={{color:'grey'}}></i>
-                  </a>
-                </li>
-              </ul>
+              
             </div>
           </div>
         )
       })}
-    </div>
+    </Row>
   )
 }
 

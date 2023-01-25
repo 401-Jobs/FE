@@ -2,7 +2,7 @@ export const data = [
   {
     name: 'Islam Alghoul',
     Specialization: 'Software Developer',
-    image: './assets/islam.jpg',
+    image: require('./assets/islam.jpg'),
     linkedIn: '#',
     github: '#',
     facebook: '#',
@@ -10,7 +10,7 @@ export const data = [
   {
     name: 'Alaa Abualadoos',
     Specialization: 'Software Developer',
-    image: './assets/alaa.jpg',
+    image: require('./assets/alaa.png'),
     linkedIn: '#',
     github: '#',
     facebook: '#',
@@ -18,7 +18,7 @@ export const data = [
   {
     name: 'Bayan Bushnaq',
     Specialization: 'Software Developer',
-    image: './assets/bayan.jpg',
+    image: require('./assets/bayan.jpg'),
     linkedIn: '#',
     github: '#',
     facebook: '#',
@@ -26,7 +26,7 @@ export const data = [
   {
     name: 'Mohammad Alfayoume',
     Specialization: 'Software Developer',
-    image: './assets/mohammad.jpg',
+    image: require('./assets/moh.jpg'),
     linkedIn: '#',
     github: '#',
     facebook: '#',
@@ -34,7 +34,7 @@ export const data = [
   {
     name: 'Abdelrahman Alasal',
     Specialization: 'CEO RecruitlQ',
-    image: './assets/abed.jpg',
+    image: require('./assets/abd.jpg'),
     linkedIn: '#',
     github: '#',
     facebook: '#',
