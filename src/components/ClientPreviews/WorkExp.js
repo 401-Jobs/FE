@@ -1,6 +1,4 @@
 import React from 'react'
-import Card from 'react-bootstrap/Card'
-import {client_prev_data} from './client_prev_data.js'
 
 const WorkExp = (props) => {
   return (
@@ -9,9 +7,9 @@ const WorkExp = (props) => {
         <div>
           {props.userWork.map((item) => {
             return (
-              <Card.Body>
+              <div>
                 <p style={{fontSize:'large'}}>{item.title}</p>
-                <Card.Text>
+                <div>
                   <div
                     style={{ display: 'flex', justifyContent: 'space-between' }}
                   >
@@ -21,8 +19,8 @@ const WorkExp = (props) => {
                     </p>
                   </div>
                   <p>{item.description}</p>
-                </Card.Text>
-              </Card.Body>
+                </div>
+              </div>
             )
           })}
         </div>

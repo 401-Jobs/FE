@@ -1,12 +1,11 @@
 import React from 'react'
-import { client_prev_data } from './client_prev_data.js'
 import './ClientPreviews.css'
 
 const Info = (props) => {
 
   return (
     <div>
-      <p style={{fontSize:'x-large',marginTop:'10px'}}>Personal Information</p>
+      <p style={{fontSize:'x-large'}}>Personal Information</p>
       
        
           <div className='infor'>
