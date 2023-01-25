@@ -18,6 +18,7 @@ const ExperienceForm = (props) => {
   let handleUpdate = async (e) => {
     console.log("UPDATING");
     e.preventDefault();
+
     try {
       let obj = {
         userWork: {
@@ -32,6 +33,7 @@ const ExperienceForm = (props) => {
 
       await updateJobseekerWorkXP(obj, token);
       props.onHide();
+      window.location.reload(false);
     } catch (error) {
       console.log(error);
       console.log("error");

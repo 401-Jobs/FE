@@ -27,6 +27,7 @@ const SkillsForm = (props) => {
   const HandleSave = (e) => {
     props.save();
     props.onHide();
+    window.location.reload(false);
   };
 
   // console.log(skills);
@@ -48,12 +49,14 @@ const SkillsForm = (props) => {
           </div>
         </div>
 
-        <Button variant="primary" onClick={props.submitHandler}>
-          ADD
-        </Button>
-        <Button type="submit" onClick={HandleSave}>
-          Save
-        </Button>
+        <div style={{ display: "flex", gap: "2vw", padding: "2vw" }}>
+          <Button variant="primary" onClick={props.submitHandler}>
+            ADD
+          </Button>
+          <Button type="submit" onClick={HandleSave}>
+            Save
+          </Button>
+        </div>
       </Form>
     </div>
   );

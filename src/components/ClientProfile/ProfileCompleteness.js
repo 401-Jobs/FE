@@ -33,17 +33,19 @@ const ProfileCompleteness = () => {
       isImage: false,
     };
 
+    console.log(skills);
     if (userInfo["firstName"]) obj.isPf = true;
     if (userContact["email"] && userContact["phoneNumber"])
       obj.iscontact = true;
     if (userEducation[0]["institute"]) obj.isedu = true;
     if (userWork[0]["title"]) obj.iswork = true;
-    if (summary) obj.issummary = true;
-    if (skills) obj.isskills = true;
-    if (linkedin) obj.islinked = true;
-    if (github) obj.isgithub = true;
+    if (summary && typeof summary == "string") obj.issummary = true;
+    if (skills && typeof skills == "string") obj.isskills = true;
+    if (linkedin && typeof linkedin == "string") obj.islinked = true;
+    if (github && typeof github == "string") obj.isgithub = true;
     if (userMedia["image"]) obj.isImage = true;
 
+    console.log(obj);
     return obj;
   };
 
@@ -62,7 +64,19 @@ const ProfileCompleteness = () => {
     }
 
     setProgress(parseInt((progress / Object.keys(objProgress).length) * 100));
-  }, [userInfo]);
+  }, [
+    userInfo,
+    userContact,
+    userEducation,
+    userWork,
+    userMedia,
+    userDetails,
+    summary,
+    skills,
+    linkedin,
+    github,
+    porto,
+  ]);
 
   const navigate = useNavigate();
 

@@ -78,7 +78,6 @@ export const CompanyLandingPage = () => {
         </div>
       </div>
 
-
       {/* <Card
         className="text-center"
         style={{ width: "65%", marginLeft: "7%", marginTop: "-1%" }}
@@ -99,7 +98,6 @@ export const CompanyLandingPage = () => {
         <Card.Footer className="text-muted">2 days ago</Card.Footer>
        </Card>  */}
 
-
       <div
         style={{ marginLeft: "75%", marginTop: "-42%", marginBottom: "30%" }}
       >
@@ -111,7 +109,7 @@ export const CompanyLandingPage = () => {
         >
           <Card.Body>
             <Card.Title>Company Views</Card.Title>
-            <Card.Text style={{ paddingTop: "2vw", paddingLeft: "2vw"}}>
+            <Card.Text style={{ paddingTop: "2vw", paddingLeft: "2vw" }}>
               <i class="fa fa-eye fa-3x" aria-hidden="true"></i>
               <span style={{ marginLeft: "2vw", fontSize: "1.5rem" }}>
                 {first}
@@ -122,9 +120,13 @@ export const CompanyLandingPage = () => {
         <br />
 
         <Card style={{ width: "18rem" }}>
+          <Card.Header>Recently viewed</Card.Header>
           <Card.Img
             variant="top"
-            src={second["usersMedia"] && process.env.REACT_APP_BACKEND_URL + second["usersMedia"]["image"]}
+            src={
+              second["usersMedia"] &&
+              process.env.REACT_APP_BACKEND_URL + second["usersMedia"]["image"]
+            }
           />
           <Card.Body>
             <Card.Title>
@@ -134,24 +136,20 @@ export const CompanyLandingPage = () => {
                   second["usersInfo"]["lastName"]}
             </Card.Title>
 
-            <Button
+            <button
+              className="view_btn"
               onClick={() => {
                 navigate(`/preview/${second["usersInfo"]["owner"]}`);
               }}
-              variant="primary"
             >
               {" "}
-              Details{" "}
-            </Button>
+              Visit again{" "}
+            </button>
           </Card.Body>
         </Card>
 
-
         <br />
       </div>
-
-      
-       
 
       {/* //////////////////// Some Styling////////// */}
 

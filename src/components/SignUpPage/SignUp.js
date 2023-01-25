@@ -10,14 +10,15 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
+  MDBIcon,
+  MDBCardImage,
 } from "mdb-react-ui-kit";
 
-import './SignUp.css'
+import "./SignUp.css";
 
-import { useLocation } from "react-router";
+import { Navigate, useLocation, useNavigate } from "react-router";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
-
 
 export const SignUp = () => {
   const [values, setValues] = useState({
@@ -33,6 +34,8 @@ export const SignUp = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setisLoading] = useState(false);
   const [isClicked, setisClicked] = useState(false);
+
+  const [errorMessage, seterrorMessage] = useState("");
 
   const handleInput = (e) => {
     setValues({ ...values, [e.target.name]: [e.target.value] });
@@ -58,98 +61,135 @@ export const SignUp = () => {
       setisLoading(true);
       await Register(userInfo);
       setisLoading(false);
-    } catch (error) {
+      setisClicked(false);
+
+      seterrorMessage("A verification message was sent to your email");
+    } catch (e) {
+      seterrorMessage(e.message);
       setisLoading(false);
+      setisClicked(false);
     }
   }
+  const navigate = useNavigate();
 
   return (
     <>
-      <MDBContainer fluid className="p-4">
-        <MDBRow>
-          <MDBCol
-            md="6"
-            className="text-center text-md-start d-flex flex-column justify-content-center paragraph "
-          >
-            <h1 className="my-5 display-5 fw-bold ls-tight px-3 ">
-              A powerful tool <br/>
-              <span className="text-primary display-4 ">
-                for identifying top talent and streamlining the hiring process.
-              </span>
-            </h1>
-          </MDBCol>
+      <MDBContainer fluid>
+        <MDBCard className="text-black m-5" style={{ borderRadius: "25px" }}>
+          <MDBCardBody>
+            <i
+              onClick={() => navigate(-1)}
+              className="fa-solid fa-arrow-left arrow"
+            ></i>
 
-          <MDBCol md="6">
-            <MDBCard className="my-5">
-              <MDBCardBody className="p-5">
-                <MDBInput
-                  wrapperClass="mb-4"
-                  label="UserName"
-                  id="form1"
-                  type="text"
-                  name="username"
-                  onChange={handleInput}
-                />
-                {errors.username && (
-                  <p style={{ color: "red" }}>{errors.username}</p>
-                )}
-                <MDBInput
-                  wrapperClass="mb-4"
-                  label="Email"
-                  id="form1"
-                  type="email"
-                  name="email"
-                  onChange={handleInput}
-                />
-                {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
-                <MDBInput
-                  wrapperClass="mb-4"
-                  label="Password"
-                  id="form1"
-                  type="password"
-                  name="password"
-                  onChange={handleInput}
-                />
-                {errors.password && (
-                  <p style={{ color: "red" }}>{errors.password}</p>
-                )}
-                <MDBInput
-                  wrapperClass="mb-4"
-                  label="Confirm Password"
-                  id="form1"
-                  type="password"
-                  name="confirmPassword"
-                  onChange={handleInput}
-                />
-                {errors.confirmPassword && (
-                  <p style={{ color: "red" }}>{errors.confirmPassword}</p>
-                )}
+            <MDBRow>
+              <MDBCol
+                md="10"
+                lg="6"
+                className="order-2 order-lg-1 d-flex flex-column align-items-center"
+                style={{ justifyContent: "center" }}
+              >
+                <p classNAme="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                  Sign up
+                </p>
 
+                <div className="d-flex flex-row align-items-center mb-4 ">
+                  <MDBIcon fas icon="user me-3" size="lg" />
+                  <MDBInput
+                    label="Your Name"
+                    id="form1"
+                    type="text"
+                    className="w-100"
+                    name="username"
+                    onChange={handleInput}
+                    placeholder=""
+                  />
+                </div>
 
-                {isLoading ? (
-                  <div style={{ textAlign: "center", alignContent: "center" }}>
-                    <Spinner animation="border" role="status">
-                      <span className="visually-hidden ">Loading...</span>
-                    </Spinner>
-                  </div>
-                ) : !isClicked ? (
-                  <MDBBtn
-                    type="submit"
-                    className="w-70 mb-4 button111"
-                    size="md"
-                    onClick={handleValidation}
-                  >
-                    sign up
-                  </MDBBtn>
-                ) : (
-                  "A verification message was sent to your email"
-                )}
+                <div className="d-flex flex-row align-items-center mb-4">
+                  <MDBIcon fas icon="envelope me-3" size="lg" />
+                  <MDBInput
+                    label="Your Email"
+                    id="form2"
+                    type="email"
+                    name="email"
+                    onChange={handleInput}
+                  />
+                </div>
 
-                <div className="text-center"></div>
-              </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
-        </MDBRow>
+                <div className="d-flex flex-row align-items-center mb-4">
+                  <MDBIcon fas icon="lock me-3" size="lg" />
+                  <MDBInput
+                    label="Password"
+                    id="form3"
+                    type="password"
+                    name="password"
+                    onChange={handleInput}
+                  />
+                </div>
+
+                <div className="d-flex flex-row align-items-center mb-4">
+                  <MDBIcon fas icon="key me-3" size="lg" />
+                  <MDBInput
+                    label="Repeat your password"
+                    id="form4"
+                    type="password"
+                    name="confirmPassword"
+                    onChange={handleInput}
+                  />
+                </div>
+
+                <div
+                  style={{
+                    padding: "2vw",
+                  }}
+                >
+                  {isLoading ? (
+                    <div
+                      style={{
+                        textAlign: "center",
+                        alignContent: "center",
+                      }}
+                    >
+                      <Spinner animation="border" role="status">
+                        <span className="visually-hidden ">Loading...</span>
+                      </Spinner>
+                    </div>
+                  ) : (
+                    <MDBBtn
+                      type="submit"
+                      className="w-70 mb-4 button111"
+                      size="md"
+                      onClick={handleValidation}
+                      style={{
+                        textAlign: "center",
+                        alignContent: "center",
+                        justifyContent: "center",
+                        right: "50%",
+                        width: "100%",
+                      }}
+                    >
+                      sign up
+                    </MDBBtn>
+                  )}
+                </div>
+
+                <label>{errorMessage}</label>
+              </MDBCol>
+
+              <MDBCol
+                md="10"
+                lg="6"
+                className="order-1 order-lg-2 d-flex align-items-center"
+              >
+                <MDBCardImage
+                  src="https://img.freepik.com/premium-vector/online-registration-illustration-design-concept-websites-landing-pages-other_108061-939.jpg?w=2000"
+                  fluid
+                />
+              </MDBCol>
+            </MDBRow>
+          </MDBCardBody>
+        </MDBCard>
       </MDBContainer>
     </>
   );

@@ -28,6 +28,7 @@ const InterviewsDetails = (props) => {
       config
     );
     console.log(res.data);
+    window.location.reload(false);
 
     setShow(false);
   };
@@ -48,6 +49,7 @@ const InterviewsDetails = (props) => {
       config
     );
     console.log(props.interview["isApproved_jobseeker"]);
+    window.location.reload(false);
 
     setShow(false);
   };

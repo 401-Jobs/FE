@@ -12,10 +12,7 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 
-
-
-
-import './Login.css'
+import "./Login.css";
 import Telecommuting from "./Assets/Telecommuting.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +22,6 @@ import Spinner from "react-bootstrap/Spinner";
 import { useEffect } from "react";
 import TelecommutingCuate from "./Assets/TelecommutingCuate.png";
 import { JoobSeekerContext } from "../../context/joobseeker";
-
 
 export const ClientLogin = () => {
   const [email, setEmail] = useState("");
@@ -39,9 +35,11 @@ export const ClientLogin = () => {
 
   const { userInfo } = useContext(JoobSeekerContext);
 
+  const [error, Seterror] = useState(false);
+
   useEffect(() => {
-    if (token && userInfo['id']) navigate("/client-profile");
-  }, [token,userInfo]);
+    if (token && userInfo["id"]) navigate("/client-profile");
+  }, [token, userInfo]);
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
@@ -62,11 +60,17 @@ export const ClientLogin = () => {
       console.log(token);
       setisLoading(true);
 
-      await login(userInfo);
+      let result = await login(userInfo);
+      navigate("/client-profile");
+
+      console.log(result);
       setisLoading(false);
 
+      console.log(error);
       console.log(token);
-    } catch (error) {
+    } catch (e) {
+      console.log(e);
+      Seterror(e.message);
       setisLoading(false);
     }
   };
@@ -74,6 +78,10 @@ export const ClientLogin = () => {
   return (
     <>
       <MDBContainer className="my-5">
+        <i
+          onClick={() => navigate(-1)}
+          className="fa-solid fa-arrow-left arrow"
+        ></i>
         <MDBCard>
           <MDBRow className="g-0">
             <MDBCol md="6">
@@ -137,6 +145,11 @@ export const ClientLogin = () => {
                   </MDBBtn>
                 )}
 
+                <label
+                  style={{ textAlign: "center", margin: "1vw", color: "red" }}
+                >
+                  {error}
+                </label>
 
                 {/* <MDBBtn className="mb-4 px-5 bt" color="dark" size="lg">
                   Login
@@ -144,7 +157,7 @@ export const ClientLogin = () => {
                 <a
                   className="small text-muted"
                   href="/forgot"
-                  style={{ textAlign: "center"}}
+                  style={{ textAlign: "center" }}
                 >
                   Forgot password?
                 </a>
@@ -153,9 +166,7 @@ export const ClientLogin = () => {
                   style={{ color: "#393f81", textAlign: "center" }}
                 >
                   Don't have an account?{" "}
-
                   <a href="/ClientSignUp" style={{ color: "#A31ACB" }}>
-
                     Register here
                   </a>
                 </p>

@@ -23,24 +23,23 @@ import { useEffect } from "react";
 import TelecommutingCuate from "./Assets/TelecommutingCuate.png";
 import { JoobSeekerContext } from "../../context/joobseeker";
 
-
 export const CompanyLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassowrd] = useState("");
 
   const [errors, setErrors] = useState("");
   const [isLoading, setisLoading] = useState(false);
-  let [data1,setData1]=useState([])
+  let [data1, setData1] = useState([]);
   const navigate = useNavigate();
   const { login, token } = useContext(AuthContext);
 
-
   const { userInfo } = useContext(JoobSeekerContext);
+
+  const [error, Seterror] = useState(false);
 
   // useEffect(() => {
   //   if (token && companyInfo["id"]) navigate("/client-profile");
   // }, [token, userInfo]);
-
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
@@ -68,7 +67,8 @@ export const CompanyLogin = () => {
       navigate("/CompanyHomePage");
 
       console.log(token);
-    } catch (error) {
+    } catch (e) {
+      Seterror(e.message);
       setisLoading(false);
     }
   };
@@ -76,6 +76,10 @@ export const CompanyLogin = () => {
   return (
     <>
       <MDBContainer className="my-5">
+        <i
+          onClick={() => navigate(-1)}
+          className="fa-solid fa-arrow-left arrow"
+        ></i>
         <MDBCard>
           <MDBRow className="g-0">
             <MDBCol md="6">
@@ -101,7 +105,7 @@ export const CompanyLogin = () => {
                   className="fw-normal my-4 pb-3"
                   style={{ letterSpacing: "1px" }}
                 >
-                  Sign in Into Jobseeker account
+                  Sign in Into Company account
                 </h5>
 
                 <MDBInput
@@ -138,6 +142,12 @@ export const CompanyLogin = () => {
                     Login
                   </MDBBtn>
                 )}
+
+                <label
+                  style={{ textAlign: "center", margin: "1vw", color: "red" }}
+                >
+                  {error}
+                </label>
 
                 {/* <MDBBtn className="mb-4 px-5 bt" color="dark" size="lg">
                   Login

@@ -102,9 +102,9 @@ const Header = () => {
                       <Nav className="me-auto">
                         <img
                           src={
-                            companyInfo && companyInfo["companyInfo"]["id"]
+                            companyInfo && companyInfo["companyInfo"]["logo"]
                               ? `${process.env.REACT_APP_BACKEND_URL}${companyInfo["companyInfo"]["logo"]}`
-                              : { img }
+                              : "https://as2.ftcdn.net/v2/jpg/02/15/84/43/1000_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
                           }
                           width={"46px"}
                           height={"46px"}
@@ -115,28 +115,27 @@ const Header = () => {
                           id="basic-nav-dropdown"
                           className="test "
                         >
-                          <NavDropdown.Item>
-                            {userInfo && userInfo["firstName"]
-                              ? userInfo["firstName"] +
-                                " " +
-                                userInfo["lastName"]
-                              : ""}
+                          <NavDropdown.Item disabled="true">
+                            {companyInfo["companyInfo"]
+                              ? companyInfo["companyInfo"][
+                                  "company_name"
+                                ].toUpperCase()
+                              : "Company"}
                           </NavDropdown.Item>
-                          <NavDropdown.Item href="/">
-                            <hr></hr>
-                          </NavDropdown.Item>
+
+                          <NavDropdown.Divider />
 
                           <NavDropdown.Item href="/CompanyHomePage">
                             Dashboard
                           </NavDropdown.Item>
 
-                          <NavDropdown.Item href="/companyDetails">
-                            Profile
+                          <NavDropdown.Item href="/candidate">
+                            Candidates
                           </NavDropdown.Item>
 
                           <NavDropdown.Divider />
                           <NavDropdown.Item href="/" onClick={logoutHandler}>
-                            Logout
+                            <span style={{ color: "red" }}> Logout</span>
                           </NavDropdown.Item>
                         </NavDropdown>
                       </Nav>
@@ -149,24 +148,26 @@ const Header = () => {
 
                     <Nav.Link
                       variant="light"
-                      style={{
-                        // border: "1px solid black",
-                        // borderRadius: "15px",
-                      }}
+                      style={
+                        {
+                          // border: "1px solid black",
+                          // borderRadius: "15px",
+                        }
+                      }
                       href="/clientLogin"
                       className="links"
                     >
                       Seeker
-                      
                     </Nav.Link>
 
                     <Nav.Link
-                    
                       variant="light"
-                      style={{
-                        // border: "1px solid black",
-                        // borderRadius: "15px",
-                      }}
+                      style={
+                        {
+                          // border: "1px solid black",
+                          // borderRadius: "15px",
+                        }
+                      }
                       href="/companyLogin"
                       className="links"
                     >
@@ -190,7 +191,11 @@ const Header = () => {
                   >
                     <Nav className="me-auto">
                       <img
-                        src={`${process.env.REACT_APP_BACKEND_URL}${userMedia["image"]}`}
+                        src={
+                          userMedia && userMedia["image"]
+                            ? `${process.env.REACT_APP_BACKEND_URL}${userMedia["image"]}`
+                            : "https://as2.ftcdn.net/v2/jpg/02/15/84/43/1000_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
+                        }
                         width={"46px"}
                         height={"46px"}
                         style={{ borderRadius: "46px" }}
@@ -200,14 +205,14 @@ const Header = () => {
                         id="basic-nav-dropdown"
                         className="test "
                       >
-                        <NavDropdown.Item>
+                        <NavDropdown.Item disabled="true">
                           {userInfo && userInfo["firstName"]
                             ? userInfo["firstName"] + " " + userInfo["lastName"]
                             : ""}
                         </NavDropdown.Item>
-                        <NavDropdown.Item href="/">
-                          <hr></hr>
-                        </NavDropdown.Item>
+
+                        <NavDropdown.Divider />
+
                         <NavDropdown.Item href="/">Home</NavDropdown.Item>
                         <NavDropdown.Item href="/client-profile">
                           Profile
@@ -215,7 +220,7 @@ const Header = () => {
 
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="/" onClick={logoutHandler}>
-                          Logout
+                          <span style={{ color: "red" }}>Logout</span>
                         </NavDropdown.Item>
                       </NavDropdown>
                     </Nav>

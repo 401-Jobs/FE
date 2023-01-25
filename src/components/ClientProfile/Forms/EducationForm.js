@@ -32,6 +32,7 @@ const EducationForm = (props) => {
 
       await updateJobseekerEducation(obj, token);
       props.onHide();
+      window.location.reload(false);
     } catch (error) {
       console.log(error);
       console.log("error");

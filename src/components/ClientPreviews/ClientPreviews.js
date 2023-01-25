@@ -140,8 +140,17 @@ const ClientPreviews = () => {
 
   if (pathname == "/CompareCandidates") {
     return (
-      <div className="Box" style={{backgroundColor:'none'}}>
+      <div
+        className="Box"
+        style={{ backgroundColor: "none", paddingTop: "12vw" }}
+      >
         <div className="main_container">
+          <i
+            onClick={() => navigate(-1)}
+            className="fa-solid fa-arrow-left arrow"
+            style={{ marginLeft: "5vw", marginTop: "10vw" }}
+          ></i>
+
           <div className="left_section">
             <ImageName userMedia={userMedia} />
             <Info userInfo={userInfo} />
@@ -199,6 +208,11 @@ const ClientPreviews = () => {
   return (
     <div>
       <div className="main_container">
+        <i
+          onClick={() => navigate(-1)}
+          className="fa-solid fa-arrow-left arrow"
+          style={{ marginLeft: "5vw", marginTop: "7vw" }}
+        ></i>
         <div className="left_section">
           <ImageName
             userMedia={id && data["userMedia"] ? data["userMedia"] : userMedia}
@@ -254,9 +268,16 @@ const ClientPreviews = () => {
         </div>
       </div>
 
-      <div style={{ display: "flex", marginBottom: "20px", gap: "20px",width:'100%',justifyContent:'center',}}>
+      <div
+        style={{
+          display: "flex",
+          marginBottom: "20px",
+          gap: "20px",
+          width: "100%",
+          justifyContent: "center",
+        }}
+      >
         {id && (
-          
           <Button onClick={AddShortListHandler} variant="primary">
             Add to Short List
           </Button>

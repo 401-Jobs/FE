@@ -22,6 +22,7 @@ const ContactForm = ({ onHide }) => {
     };
     await updateJobseekerContact(contactInfo, token);
     onHide();
+    window.location.reload(false);
   };
 
   return (

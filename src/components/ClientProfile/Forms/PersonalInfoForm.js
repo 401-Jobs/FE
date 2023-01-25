@@ -7,37 +7,32 @@ import { AuthContext } from "../../../context/auth";
 import { JoobSeekerContext } from "../../../context/joobseeker";
 
 const PersonalInfoForm = (props) => {
-  const { userInfo, updateJobseekerPF} = useContext(JoobSeekerContext);
+  const { userInfo, updateJobseekerPF } = useContext(JoobSeekerContext);
   const { token } = useContext(AuthContext);
 
   let { firstName, country, lastName, jobtitle, yearsExperience, age } =
     userInfo;
 
-
   const FormHandler = async (e) => {
     e.preventDefault();
-    try{
-    let info={
-      "userInfo":{
-        "firstName":e.target.firstName.value,
-        "country":e.target.country.value,
-        "lastName":e.target.lastName.value,
-        "jobtitle":e.target.jobtitle.value,
-        "yearsExperience":e.target.yearsOfExperience.value,
-        "age":e.target.age.value
-
-
-      }
+    try {
+      let info = {
+        userInfo: {
+          firstName: e.target.firstName.value,
+          country: e.target.country.value,
+          lastName: e.target.lastName.value,
+          jobtitle: e.target.jobtitle.value,
+          yearsExperience: e.target.yearsOfExperience.value,
+          age: e.target.age.value,
+        },
+      };
+      console.log(info);
+      await updateJobseekerPF(info, token);
+      window.location.reload(false);
+    } catch {
+      console.log("error");
     }
-    console.log(info);
-    await updateJobseekerPF(info,token)
-  }
-  catch{
-    console.log("error");
-  }
-    props.onHide()
-    
-
+    props.onHide();
   };
 
   return (
@@ -73,7 +68,6 @@ const PersonalInfoForm = (props) => {
               defaultValue={country}
             />
           </Form.Group>
-        
         </div>
         <div className="name_div">
           <Form.Group className="mb-3" controlId="formBasicEmail">

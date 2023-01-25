@@ -27,6 +27,7 @@ const MediaForm = (props) => {
       console.log("error");
     }
     props.onHide();
+    window.location.reload(false);
   };
 
   const GetAllData = async () => {

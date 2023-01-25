@@ -51,6 +51,21 @@ export function JoobSeekerWrapper({ children }) {
     setCanddidate,
   });
 
+  useEffect(() => {}, [
+    global.userInfo,
+    global.userContact,
+    global.userEducation,
+    global.userWork,
+    global.userMedia,
+    global.userDetails,
+    global.summary,
+    global.skills,
+    global.linkedin,
+    global.github,
+    global.porto,
+    global.companyInfo,
+  ]);
+
   async function jobseekerData(token) {
     const headers = {
       "Content-Type": "application/json",
