@@ -135,11 +135,31 @@ const Section3 = () => {
             <div class='col-lg-6 order-2 order-lg-1 ma' style={{marginTop:'-8%'}}>
               <i class='fa fa-bar-chart fa-2x mb-3 text-primary icons'></i>
               <h2 class='font-weight-light'>Company</h2>
-              <div style={{marginLeft:'5%',display:'flex',flexDirection:'column',gap:'10px',paddingTop:'2%'}}>
-                <p>1-Sign up &gt; Sign in</p>
-                <p>2-Fill your profile</p>
-                <p>3-Compare profile with other</p>
-                <p>4-Waiting for interview</p>
+              <div style={{marginLeft:'5%',display:'flex',flexDirection:'column',gap:'5px',paddingTop:'2%'}}>
+                <div className='ic'>
+                <i class="fa-solid fa-user-plus"></i>
+                <p>Sign up</p>
+                </div>
+                <div className='ic'>
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <p>Sign in</p>
+                </div>
+                <div className='ic'>
+                <i class="fa-solid fa-user-pen"></i>
+                <p> Fill your profile</p>
+                </div>
+                <div className='ic'>
+                <i class="fa-solid fa-code-compare"> </i>
+                <p>Compare profile with other</p>
+                </div>
+                <div className='ic'>
+                <i class="fa-solid fa-pause"></i>
+                <p> Waiting for interview</p>
+                </div>
+                
+                
+                
+                
               </div>
             </div>
             <div class='col-lg-5 px-5 mx-auto order-1 order-lg-2'>
@@ -169,11 +189,27 @@ const Section3 = () => {
             <div class='col-lg-6' style={{paddingLeft:'17%'}}>
               <i class='fa fa-leaf fa-2x mb-3 text-primary icon1'></i>
               <h2 class='font-weight-light'>Jobseeker</h2>
-              <div style={{marginLeft:'5%',display:'flex',flexDirection:'column',gap:'10px',paddingTop:'2%'}}>
-                <p>1-Sign up &gt; Sign in</p>
-                <p>2-Fill your profile</p>
-                <p>3-Search for candidates</p>
-                <p>4-Waiting for interview</p>
+              <div style={{marginLeft:'5%',display:'flex',flexDirection:'column',gap:'5px',paddingTop:'2%'}}>
+              <div className='ic'>
+                <i class="fa-solid fa-user-plus"></i>
+                <p>Sign up</p>
+                </div>
+                <div className='ic'>
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <p>Sign in</p>
+                </div>
+                <div className='ic'>
+                <i class="fa-solid fa-user-pen"></i>
+                <p> Fill your profile</p>
+                </div>
+                <div className='ic'>
+                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                <p>Search for candidates</p>
+                </div>
+                <div className='ic'>
+                <i class="fa-solid fa-people-arrows"></i>
+                <p> making interview</p>
+                </div>
               </div>
             </div>
           </div>
@@ -185,3 +221,4 @@ const Section3 = () => {
 };
 
 export default Section3;
+

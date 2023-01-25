@@ -41,3 +41,8 @@
  .container:hover .overlay {
   opacity: 1;
 } 
+
+.ic{
+  display: flex;
+  gap: 5px;
+}
