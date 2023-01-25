@@ -1,5 +1,4 @@
 import React from "react";
-import { client_prev_data } from "./client_prev_data.js";
 const Media = (props) => {
   return (
     <div>

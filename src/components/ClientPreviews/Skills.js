@@ -1,5 +1,3 @@
-import React, { useEffect } from 'react'
-import {client_prev_data} from './client_prev_data.js'
 const Skills = (props) => {
   let skills=String(props.skills)
     skills=skills.split(",") 

@@ -1,6 +1,4 @@
 import React from 'react'
-import {client_prev_data} from './client_prev_data.js'
-import Card from 'react-bootstrap/Card'
 
 const Edu = (props) => {
   return (
@@ -9,9 +7,9 @@ const Edu = (props) => {
         <div>
           {props.userEducation.map((item) => {
             return (
-              <Card.Body>
+              <div>
                 <p style={{fontSize:'large'}}>{item.institute}</p>
-                <Card.Text>
+                <div>
                   <div
                     style={{ display: 'flex', justifyContent: 'space-between' }}
                   >
@@ -20,8 +18,8 @@ const Edu = (props) => {
                       {item.start} - {item.end}
                     </p>
                   </div>
-                </Card.Text>
-              </Card.Body>
+                </div>
+              </div>
             )
           })}
         </div>

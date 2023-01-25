@@ -140,7 +140,7 @@ const ClientPreviews = () => {
 
   if (pathname == "/CompareCandidates") {
     return (
-      <div className="Box">
+      <div className="Box" style={{backgroundColor:'none'}}>
         <div className="main_container">
           <div className="left_section">
             <ImageName userMedia={userMedia} />
@@ -166,7 +166,7 @@ const ClientPreviews = () => {
         </div>
 
         <div className="main_container">
-          <div className="right_section" style={{ minHeight: "100%" }}>
+          <div className="right_section">
             <div className="right_up_section">
               <Summary summary={randomUserDetails["summary"]} />
             </div>
@@ -197,16 +197,9 @@ const ClientPreviews = () => {
     );
   }
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "20px",
-      }}
-    >
+    <div>
       <div className="main_container">
-        <div className="left_section" style={{ minHeight: "100%" }}>
+        <div className="left_section">
           <ImageName
             userMedia={id && data["userMedia"] ? data["userMedia"] : userMedia}
           />
@@ -235,7 +228,7 @@ const ClientPreviews = () => {
           />
         </div>
         <div className="right_section">
-          <div className="right_up_section" style={{ minHeight: "100%" }}>
+          <div className="right_up_section">
             <Summary
               summary={
                 id && data["userMedia"]
@@ -260,6 +253,7 @@ const ClientPreviews = () => {
           </div>
         </div>
       </div>
+
       <div style={{ display: "flex", marginBottom: "20px", gap: "20px" }}>
         {id && (
           <Button onClick={AddShortListHandler} variant="primary">
