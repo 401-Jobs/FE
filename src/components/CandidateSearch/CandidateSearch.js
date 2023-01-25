@@ -7,6 +7,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
 import axios from "axios";
 import Row from "react-bootstrap/Row";
+import Spinner from "react-bootstrap/Spinner";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const CandidateSearch = () => {
   const [userInfo, setuserInfo] = useState({});
@@ -17,17 +19,23 @@ const CandidateSearch = () => {
   const [skills, setSkills] = useState([]);
   const [data, setData] = useState(null);
 
+  const [alldata, setallData] = useState(null);
+
+  const [isLoading, setisLoading] = useState(false);
+
   let getAllJobSeekers = async (e) => {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
+    setisLoading(true);
     let res = await axios.get(
       "https://reqiq.herokuapp.com/jobseeker-all/",
       config
     );
-    console.log(res.data);
+    setisLoading(false);
+    // console.log(res.data);
     let info = res.data["userInfo"];
     let educate = res.data["userEducation"];
     let contact = res.data["userContact"];
@@ -36,6 +44,7 @@ const CandidateSearch = () => {
     let details = res.data["userDetails"];
     let result = [];
     setData(res.data);
+    setallData(res.data);
     result = info.map((obj) => {
       const index = educate.findIndex((el) => el["id"] == obj["id"]);
       const indexCon = contact.findIndex((el) => el["id"] == obj["id"]);
@@ -110,17 +119,47 @@ const CandidateSearch = () => {
   };
   // search functionality
   const submitSearchHandler = (e) => {
-    e.preventDefault();
-    let candidate = e.target.q.value;
-    let target = userInfo.filter((item) => {
-      if (
-        item.title !== null &&
-        item.title.toLowerCase() === candidate.toLowerCase()
-      )
-        return item;
+    //e.preventDefault();
+    let candidate = e.target.value;
+
+    if (candidate == "") {
+      setData(alldata);
+      return;
+    }
+
+    candidate = candidate.toLowerCase();
+
+    let target = alldata["userInfo"].filter((item) => {
+      if (!item["jobtitle"]) return false;
+
+      if (item["jobtitle"].toLowerCase().includes(candidate)) return true;
     });
 
-    setuserInfo(target);
+    let result = {
+      userInfo: [],
+      userContact: [],
+      userDetails: [],
+      userMedia: [],
+      userWork: [],
+      userEducation: [],
+    };
+    if (target.length == 0) {
+      return;
+    }
+
+    for (let i = 0; i < target.length; i++) {
+      let owner = target[i]["owner"];
+      let arr = [];
+
+      for (const key in alldata) {
+        arr = alldata[key];
+
+        result[key] = [...result[key], ...arr.filter((i) => i.owner == owner)];
+      }
+    }
+
+    console.log(result);
+    setData(result);
   };
   // filter functionality
   const submitFilterHandler = (e) => {
@@ -162,6 +201,24 @@ const CandidateSearch = () => {
     getAllJobSeekers();
   }, []);
 
+  if (isLoading) {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          alignContent: "center",
+          minHeight: "50vh",
+          marignTop: "20vw",
+        }}
+      >
+        <span className="visually-hidden ">Loading...</span>
+        <Spinner animation="border" role="status" style={{ marignTop: "20vw" }}>
+          <span className="visually-hidden ">Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div
@@ -174,8 +231,13 @@ const CandidateSearch = () => {
         }}
       >
         <p style={{ fontSize: "x-large" }}>Search for Candidate</p>
-        <form onSubmit={submitSearchHandler} action="" className="search-bar">
-          <input type="text" placeholder="Search job title" name="q" />
+        <form action="" className="search-bar">
+          <input
+            onChange={submitSearchHandler}
+            type="text"
+            placeholder="Search job title"
+            name="q"
+          />
           <button type="submit">
             <img src={search_icon} alt="search bar" />
           </button>
@@ -189,8 +251,20 @@ const CandidateSearch = () => {
           submitHandler={submitHandler}
         />
       </div>
-      <div >
-        <Row xs={1} md={4} className="g-4" style={{display:'flex',gap:'50px'}}>
+
+      <div>
+        <Row
+          xs={1}
+          md={4}
+          className="g-4"
+          style={{
+            display: "flex",
+            gap: "50px",
+            padding: "2vw",
+            justifyContent: "center",
+            marginTop: "5vw",
+          }}
+        >
           {data &&
             data["userInfo"] &&
             data["userInfo"].map((person, index) => {
@@ -210,10 +284,8 @@ const CandidateSearch = () => {
               let userEducation = data["userEducation"].filter(
                 (i) => i.owner == owner
               );
-              console.log(pf)
 
               return (
-                
                 <CandidateCards
                   key={person.index}
                   firstName={pf.firstName}

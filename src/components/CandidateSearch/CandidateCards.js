@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import Col from 'react-bootstrap/Col'
-import { useNavigate } from 'react-router-dom'
-import { data } from './data'
-import CardGroup from 'react-bootstrap/CardGroup'
-import Card from 'react-bootstrap/Card'
-import '../Candidates/Candidates.css'
-import Row from 'react-bootstrap/Row'
-import { Grid } from 'react-bootstrap'
-import './CandidateSearch.css'
+import React, { useState, useEffect } from "react";
+import Col from "react-bootstrap/Col";
+import { useNavigate } from "react-router-dom";
+import { data } from "./data";
+import CardGroup from "react-bootstrap/CardGroup";
+import Card from "react-bootstrap/Card";
+import "../Candidates/Candidates.css";
+import Row from "react-bootstrap/Row";
+import { Grid } from "react-bootstrap";
+import "./CandidateSearch.css";
 
 const CandidateCards = (props) => {
-  const navegate = useNavigate()
+  const navegate = useNavigate();
   const clickHandler = () => {
-    console.log(props.id)
-    navegate('/preview/' + props.id)
-  }
+    console.log(props.id);
+    navegate("/preview/" + props.id);
+  };
 
   return (
     <Card>
-      <div style={{ minHeight: '300px' }}>
+      <div style={{ minHeight: "270px" }}>
         <img
           src={`${process.env.REACT_APP_BACKEND_URL}${props.img}`}
-          className='cardsImages'
+          className="cardsImages"
         />
       </div>
       <Card.Body>
@@ -29,40 +29,46 @@ const CandidateCards = (props) => {
           {props.firstName} {props.lastName}
         </Card.Title>
         <Card.Text>
-          <div>
+          <div style={{ minHeight: "240px" }}>
             <div
               style={{
-                display: 'flex',
-                gap: '1.25vw',
-                alignItems: 'center',
-                padding: '1vw',
-                justifyContent: 'center',
+                display: "flex",
+                gap: "1.25vw",
+                alignItems: "center",
+                marginTop: "1.5vw",
               }}
             >
-              <i st class='fa fa-clock-o' aria-hidden='true'></i>
-              <p style={{ fontSize: 'large' }}>{props.jopTitle}</p>
+              <p style={{ fontSize: "large" }}>{props.jopTitle}</p>
             </div>
-            <div style={{ display: 'flex', gap: '1.25vw' }}>
-              <i class='fa fa-clock-o' aria-hidden='true'></i>
-              <p>Age: {props.age} years old</p>
+            <hr></hr>
+            <div style={{ display: "flex", gap: "1.25vw" }}>
+              <i class="fa fa-hourglass-start" aria-hidden="true"></i>
+              <p>
+                Age: {props.age} {props.age && "years old"}
+              </p>
             </div>
-            <div style={{ display: 'flex', gap: '1.25vw' }}>
-              <i class='fa fa-clock-o' aria-hidden='true'></i>
+            <div style={{ display: "flex", gap: "1.25vw" }}>
+              <i class="fa fa-star" aria-hidden="true"></i>
               <p>Skills: {props.skills}</p>
             </div>
-            <div style={{ display: 'flex', gap: '1.25vw' }}>
-              <i class='fa fa-clock-o' aria-hidden='true'></i>
+            <div
+              style={{
+                display: "flex",
+                gap: "1.25vw",
+              }}
+            >
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
               <p>Years of Experience: {props.ex}</p>
             </div>
           </div>
 
-          <button className='btnnn' onClick={clickHandler}>
+          <button className="btnnn" onClick={clickHandler}>
             View Profile
           </button>
         </Card.Text>
       </Card.Body>
     </Card>
-  )
-}
+  );
+};
 
-export default CandidateCards
+export default CandidateCards;

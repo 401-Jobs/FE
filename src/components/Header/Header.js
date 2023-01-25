@@ -148,15 +148,6 @@ const Header = () => {
 
                     <Nav.Link
                       variant="light"
-<<<<<<< HEAD
-                      style={
-                        {
-                          // border: "1px solid black",
-                          // borderRadius: "15px",
-                        }
-                      }
-=======
->>>>>>> 906505ec5357c3f0800443a92647f8cfa64e0d73
                       href="/clientLogin"
                       className="s_links"
                     >
@@ -165,15 +156,6 @@ const Header = () => {
 
                     <Nav.Link
                       variant="light"
-<<<<<<< HEAD
-                      style={
-                        {
-                          // border: "1px solid black",
-                          // borderRadius: "15px",
-                        }
-                      }
-=======
->>>>>>> 906505ec5357c3f0800443a92647f8cfa64e0d73
                       href="/companyLogin"
                       className="e_links"
                     >
@@ -239,7 +221,6 @@ const Header = () => {
 
                   <Nav.Link
                     variant="light"
-                    
                     href="/clientLogin"
                     className="s_links"
                   >
@@ -248,7 +229,6 @@ const Header = () => {
 
                   <Nav.Link
                     variant="light"
-                    
                     href="/companyLogin"
                     className="e_links"
                   >
@@ -264,18 +244,12 @@ const Header = () => {
               <Nav.Link href="/contact">Contact Us</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
 
-              <Nav.Link
-                variant="light"
-                
-                href="/clientLogin"
-                className="s_links"
-              >
+              <Nav.Link variant="light" href="/clientLogin" className="s_links">
                 Seeker
               </Nav.Link>
 
               <Nav.Link
                 variant="light"
-                
                 href="/companyLogin"
                 className="e_links"
               >
