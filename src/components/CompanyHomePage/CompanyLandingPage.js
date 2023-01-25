@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { AuthContext } from "../../context/auth";
 import axios from "axios";
 import { useState } from "react";
+import './style.css'
 import { useNavigate } from "react-router-dom";
 export const CompanyLandingPage = () => {
   const { logout, token } = useContext(AuthContext);
@@ -121,13 +122,17 @@ export const CompanyLandingPage = () => {
 
         <Card style={{ width: "18rem" }}>
           <Card.Header>Recently viewed</Card.Header>
-          <Card.Img
+          <div >
+
+          <img
+        className="cardsImages"
             variant="top"
             src={
               second["usersMedia"] &&
               process.env.REACT_APP_BACKEND_URL + second["usersMedia"]["image"]
             }
           />
+          </div>
           <Card.Body>
             <Card.Title>
               {second["usersInfo"] &&

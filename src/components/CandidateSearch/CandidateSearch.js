@@ -245,13 +245,13 @@ const CandidateSearch = () => {
         </form>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      {/* <div style={{ display: "flex", justifyContent: "center" }}>
         <Filter
           submitFilterHandler={submitFilterHandler}
           skillHandler={skillHandler}
           submitHandler={submitHandler}
         />
-      </div>
+      </div> */}
 
       <div>
         <Row
