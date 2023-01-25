@@ -21,7 +21,7 @@
   -moz-transition: opacity 0.25s ease-in-out;
   -webkit-transition: opacity 0.25s ease-in-out;
 
-} */
+}
 
 
  .overlay h1{
@@ -37,7 +37,7 @@
   font-size: 20px;
   padding: 20px;
   text-align: center;
-} */
+}
  .container:hover .overlay {
   opacity: 1;
 } 

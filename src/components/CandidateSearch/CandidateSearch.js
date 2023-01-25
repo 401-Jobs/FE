@@ -210,6 +210,7 @@ const CandidateSearch = () => {
               let userEducation = data["userEducation"].filter(
                 (i) => i.owner == owner
               );
+              console.log(pf)
 
               return (
                 <CandidateCards
@@ -217,7 +218,7 @@ const CandidateSearch = () => {
                   firstName={pf.firstName}
                   lastName={pf.lastName}
                   location={pf.country}
-                  jopTitle={pf.title}
+                  jopTitle={pf.jobtitle}
                   email={contact.email}
                   img={userMedia.image}
                   skills={details.skills}
