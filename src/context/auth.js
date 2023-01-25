@@ -63,8 +63,6 @@ export function AuthWrapper({ children }) {
     SetGlobalState({
       ...globalState,
     });
-
-    localStorage.setItem("token", res.data);
   }
 
   return (
