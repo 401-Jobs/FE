@@ -12,6 +12,7 @@ const Cards=(props)=>{
         <CardGroup>
     
     <div class="item">
+      
                   <Card style={{ width: "18rem" ,"background-color":"white", 'marginTop':'75px' }} >
                     <Card.Img
                       variant="top"

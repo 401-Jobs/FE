@@ -1,60 +1,68 @@
-
-import React,{useState,useEffect} from 'react'
-import Col from 'react-bootstrap/Col';
-import { useNavigate } from 'react-router-dom';
-import { data } from './data';
-import CardGroup from 'react-bootstrap/CardGroup';
-import Card from 'react-bootstrap/Card';
+import React, { useState, useEffect } from 'react'
+import Col from 'react-bootstrap/Col'
+import { useNavigate } from 'react-router-dom'
+import { data } from './data'
+import CardGroup from 'react-bootstrap/CardGroup'
+import Card from 'react-bootstrap/Card'
 import '../Candidates/Candidates.css'
-import Row from 'react-bootstrap/Row';
-import { Grid } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row'
+import { Grid } from 'react-bootstrap'
+import './CandidateSearch.css'
 
 const CandidateCards = (props) => {
-  const navegate = useNavigate();
+  const navegate = useNavigate()
   const clickHandler = () => {
-    console.log(props.id);
-    navegate("/preview/" + props.id);
-  };
+    console.log(props.id)
+    navegate('/preview/' + props.id)
+  }
 
   return (
-    <>
-
-    
-    <CardGroup>
-  
-   
-    <div style={{ width: "80%" ,"background-color":"white", 'marginTop':'75px', }} className="card testimonial-card item" >
-      <div class="card-up aqua-gradient " ></div>
-      
-      <div class="avatar mx-auto white ">
-        <img 
-         variant="top"
-        src={`${process.env.REACT_APP_BACKEND_URL}${props.img}`}
-         className="size"
-         style={{ width: "18rem" ,"background-color":"#FF99D7" }} 
-          alt=" avatar"/>
+    <Card>
+      <div style={{ minHeight: '300px' }}>
+        <img
+          src={`${process.env.REACT_APP_BACKEND_URL}${props.img}`}
+          className='cardsImages'
+        />
       </div>
-      <div className="card-body text-cente " style={{display:'flex','flex-direction': 'column'}}>
-        <h4 class="card-title font-weight-bold">{props.firstName} {props.lastName}</h4>
-        <hr/>
-        <p style={{fontSize:'large'}}>{props.jopTitle}</p>
-        <p>Years of Experience: {props.ex}</p>
-        <p>Age: {props.age} years old</p>
-        <p>Skills: {props.skills}</p>
-        
-        <button class="align-self-end" onClick={clickHandler} style={{padding:'10px 50px',backgroundColor:'#d4ccec',border:'none',borderRadius:'10px',marginTop:'auto',marginRight:'50px',}}>View Profile</button>
-      
-      </div>
-   
-    </div>
-    
-   
-   </CardGroup>
-  
-</>
+      <Card.Body>
+        <Card.Title>
+          {props.firstName} {props.lastName}
+        </Card.Title>
+        <Card.Text>
+          <div>
+            <div
+              style={{
+                display: 'flex',
+                gap: '1.25vw',
+                alignItems: 'center',
+                padding: '1vw',
+                justifyContent: 'center',
+              }}
+            >
+              <i st class='fa fa-clock-o' aria-hidden='true'></i>
+              <p style={{ fontSize: 'large' }}>{props.jopTitle}</p>
+            </div>
+            <div style={{ display: 'flex', gap: '1.25vw' }}>
+              <i class='fa fa-clock-o' aria-hidden='true'></i>
+              <p>Age: {props.age} years old</p>
+            </div>
+            <div style={{ display: 'flex', gap: '1.25vw' }}>
+              <i class='fa fa-clock-o' aria-hidden='true'></i>
+              <p>Skills: {props.skills}</p>
+            </div>
+            <div style={{ display: 'flex', gap: '1.25vw' }}>
+              <i class='fa fa-clock-o' aria-hidden='true'></i>
+              <p>Years of Experience: {props.ex}</p>
+            </div>
+          </div>
 
+          <button className='btnnn' onClick={clickHandler}>
+            View Profile
+          </button>
+        </Card.Text>
+      </Card.Body>
+    </Card>
   )
 }
 
-
-export default CandidateCards;
+export default CandidateCards

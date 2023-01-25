@@ -77,7 +77,7 @@ const Header = () => {
         <Container>
           <Nav>
             <a href="/">
-              <img src={logo} width="48" height="48" alt="logo" />
+              <img src={logo} width="54" height="54" alt="logo" />
             </a>
             <Navbar.Brand href="/">RecruitIQ</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -106,9 +106,9 @@ const Header = () => {
                               ? `${process.env.REACT_APP_BACKEND_URL}${companyInfo["companyInfo"]["logo"]}`
                               : "https://as2.ftcdn.net/v2/jpg/02/15/84/43/1000_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
                           }
-                          width={"46px"}
-                          height={"46px"}
-                          style={{ borderRadius: "46px" }}
+                          width={"54px"}
+                          height={"54px"}
+                          style={{ borderRadius: "54px" }}
                         />
                         <NavDropdown
                           title=""
@@ -148,30 +148,36 @@ const Header = () => {
 
                     <Nav.Link
                       variant="light"
+<<<<<<< HEAD
                       style={
                         {
                           // border: "1px solid black",
                           // borderRadius: "15px",
                         }
                       }
+=======
+>>>>>>> 906505ec5357c3f0800443a92647f8cfa64e0d73
                       href="/clientLogin"
-                      className="links"
+                      className="s_links"
                     >
                       Seeker
                     </Nav.Link>
 
                     <Nav.Link
                       variant="light"
+<<<<<<< HEAD
                       style={
                         {
                           // border: "1px solid black",
                           // borderRadius: "15px",
                         }
                       }
+=======
+>>>>>>> 906505ec5357c3f0800443a92647f8cfa64e0d73
                       href="/companyLogin"
-                      className="links"
+                      className="e_links"
                     >
-                      employer
+                      Employer
                     </Nav.Link>
                   </>
                 )}
@@ -233,26 +239,20 @@ const Header = () => {
 
                   <Nav.Link
                     variant="light"
-                    style={{
-                      border: "1px solid black",
-                      borderRadius: "15px",
-                    }}
+                    
                     href="/clientLogin"
-                    className="links"
+                    className="s_links"
                   >
                     Seeker
                   </Nav.Link>
 
                   <Nav.Link
                     variant="light"
-                    style={{
-                      border: "1px solid black",
-                      borderRadius: "15px",
-                    }}
+                    
                     href="/companyLogin"
-                    className="links"
+                    className="e_links"
                   >
-                    employer
+                    Employer
                   </Nav.Link>
                 </>
               )}
@@ -266,26 +266,20 @@ const Header = () => {
 
               <Nav.Link
                 variant="light"
-                style={{
-                  border: "1px solid black",
-                  borderRadius: "15px",
-                }}
+                
                 href="/clientLogin"
-                className="links"
+                className="s_links"
               >
                 Seeker
               </Nav.Link>
 
               <Nav.Link
                 variant="light"
-                style={{
-                  border: "1px solid black",
-                  borderRadius: "15px",
-                }}
+                
                 href="/companyLogin"
-                className="links"
+                className="e_links"
               >
-                employer
+                Employer
               </Nav.Link>
             </Nav>
           )}

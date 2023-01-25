@@ -189,8 +189,8 @@ const CandidateSearch = () => {
           submitHandler={submitHandler}
         />
       </div>
-      <div>
-        <Row xs={1} md={3} className="g-4">
+      <div >
+        <Row xs={1} md={4} className="g-4" style={{display:'flex',gap:'50px'}}>
           {data &&
             data["userInfo"] &&
             data["userInfo"].map((person, index) => {
@@ -210,14 +210,16 @@ const CandidateSearch = () => {
               let userEducation = data["userEducation"].filter(
                 (i) => i.owner == owner
               );
+              console.log(pf)
 
               return (
+                
                 <CandidateCards
                   key={person.index}
                   firstName={pf.firstName}
                   lastName={pf.lastName}
                   location={pf.country}
-                  jopTitle={pf.title}
+                  jopTitle={pf.jobtitle}
                   email={contact.email}
                   img={userMedia.image}
                   skills={details.skills}

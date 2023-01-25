@@ -42,6 +42,6 @@
     .button.accept-btn:hover {
         background-color:#7952B3;
         box-shadow: 0px 15px 20px #281870;
-        color: #fff;
+        color: #000;
         transform: translateY(-7px);
       }

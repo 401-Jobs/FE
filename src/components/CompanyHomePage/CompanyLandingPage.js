@@ -99,7 +99,7 @@ export const CompanyLandingPage = () => {
        </Card>  */}
 
       <div
-        style={{ marginLeft: "75%", marginTop: "-42%", marginBottom: "30%" }}
+        style={{ marginLeft: "75%", marginTop: "-42%", marginBottom: "10%" }}
       >
         <Card
           border="warning"

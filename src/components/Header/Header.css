@@ -8,21 +8,33 @@
 
 
 
-.links{
-    /* padding:5px 15px; */
-    /* border: 1px solid #e9e398; */
-    /* border-radius: 10px; */
-    /* background-color: #ac9ce1; */
+.s_links{
+    border-radius: 10px;
     transition: all 0.5s;
     color: white;
     font-weight: 700;
+    border:'none';
    
 }
-.links:hover{
-    background-color: rgb(218, 188, 19);
+.s_links:hover{
+    background-color: rgb(255, 193, 7);
     transition: all 0.5s;
     transform: translateY(5px); 
 
+}
+.e_links{
+    border-radius: 10px;
+    transition: all 0.5s;
+    color: white;
+    font-weight: 700;
+    border:'none';
+    margin-left: 5px;
+   
+}
+.e_links:hover{
+    background-color: rgb(248, 56, 0);
+    transition: all 0.5s;
+    transform: translateY(5px); 
 }
 
 
