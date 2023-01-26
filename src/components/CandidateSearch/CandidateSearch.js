@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import search_icon from "./search.png";
 import "./CandidateSearch.css";
-import Filter from "./Filter";
 import CandidateCards from "./CandidateCards";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth";
@@ -245,13 +244,7 @@ const CandidateSearch = () => {
         </form>
       </div>
 
-      {/* <div style={{ display: "flex", justifyContent: "center" }}>
-        <Filter
-          submitFilterHandler={submitFilterHandler}
-          skillHandler={skillHandler}
-          submitHandler={submitHandler}
-        />
-      </div> */}
+      
 
       <div>
         <Row
@@ -266,9 +259,16 @@ const CandidateSearch = () => {
             marginTop: "5vw",
           }}
         >
+          
           {data &&
             data["userInfo"] &&
+            data["userContact"] &&
+            data["userDetails"] &&
+            data["userMedia"] &&
+            data["userWork"] &&
+            data["userEducation"] &&
             data["userInfo"].map((person, index) => {
+              console.log(person);
               let owner = person["owner"];
               let pf = person;
               let contact = data["userContact"].filter(
